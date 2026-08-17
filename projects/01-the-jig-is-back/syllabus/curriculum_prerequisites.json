@@ -1,0 +1,35 @@
+{
+  "courses": [
+    {
+      "file": "JIG-101-the-intent-record.md",
+      "prerequisites": []
+    },
+    {
+      "file": "JIG-102-path-geometry-and-tangent-continuity.md",
+      "prerequisites": [
+        "JIG-101"
+      ]
+    },
+    {
+      "file": "JIG-103-the-timing-pipeline.md",
+      "prerequisites": [
+        "JIG-101"
+      ]
+    },
+    {
+      "file": "JIG-104-the-instrument.md",
+      "prerequisites": [
+        "JIG-101"
+      ]
+    },
+    {
+      "file": "THESIS-the-jig-is-back.md",
+      "prerequisites": [
+        "JIG-101",
+        "JIG-102",
+        "JIG-103",
+        "JIG-104"
+      ]
+    }
+  ]
+}

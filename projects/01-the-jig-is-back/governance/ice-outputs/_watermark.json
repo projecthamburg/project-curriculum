@@ -1,0 +1,16 @@
+{
+  "domain": "the-jig-is-back",
+  "next_chapter": 2,
+  "chapters": [
+    {
+      "chapter": 1,
+      "file": "ch01_2026-08-17_paper-plane-path-editor_ICE.md",
+      "label": "paper-plane-path-editor",
+      "authored": "2026-08-17",
+      "sources": [
+        "2026-05-05_specstory_transcript.md"
+      ],
+      "status": "scaffolded"
+    }
+  ]
+}

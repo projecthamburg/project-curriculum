@@ -20,6 +20,19 @@ search_index.json
 # 100 MB blob limit. The true native original lives outside git anyway.
 **/*-global-adjacent.json
 
+# ─── Reference-only upstream evidence ────────────────────────────────────────
+# Where a seed declares `redistribution: reference-only` — the upstream states no
+# licence, or its licence does not cover the conversation about it — the captured
+# sources are a LOCAL WORKING COPY only. The committed profile records a pointer,
+# a pinned commit and a content hash; the seeding run re-fetches at execution
+# time. Short quotations inside an authored ICE chapter are analysis, and those
+# chapters ARE committed. See each project's seed.yaml.
+projects/01-the-jig-is-back/governance/sources/
+
+# Upstream working clones are never committed — they are re-fetchable from the
+# pointer in the seed.
+/upstream-*/
+
 # ─── Secrets ─────────────────────────────────────────────────────────────────
 # Never a substitute for the mandatory secret sweep before any evidence lands
 # in a tracked folder — this only stops the obvious cases.

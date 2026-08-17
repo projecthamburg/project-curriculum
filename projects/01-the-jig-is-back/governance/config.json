@@ -1,0 +1,7 @@
+{
+  "project_id": "01-the-jig-is-back",
+  "ice_domain": "the-jig-is-back",
+  "content_root": "..",
+  "external_root": "/home/user/upstream-the-jig-is-back",
+  "manifest": "sources/01-project-files-manifest.yaml"
+}

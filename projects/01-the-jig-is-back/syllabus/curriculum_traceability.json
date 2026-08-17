@@ -1,0 +1,38 @@
+{
+  "artifacts": [
+    {
+      "path": "../governance/ice-outputs/ch01_2026-08-17_paper-plane-path-editor_ICE.md",
+      "disposition": "seeded-the-curriculum",
+      "courses": [
+        "JIG-101",
+        "JIG-102",
+        "JIG-103",
+        "JIG-104"
+      ],
+      "thesis_chapters": [
+        "intent-fidelity",
+        "implementation-fidelity",
+        "composition"
+      ]
+    },
+    {
+      "path": "COVERAGE_PROFILE.md",
+      "disposition": "run-record",
+      "courses": [
+        "JIG-101",
+        "JIG-102",
+        "JIG-103",
+        "JIG-104"
+      ],
+      "thesis_chapters": []
+    },
+    {
+      "path": "../seed.yaml",
+      "disposition": "upstream-pointer",
+      "courses": [],
+      "thesis_chapters": [
+        "intent-fidelity"
+      ]
+    }
+  ]
+}

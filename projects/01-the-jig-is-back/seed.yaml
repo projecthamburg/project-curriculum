@@ -1,0 +1,67 @@
+# Seed 01 — the-jig-is-back
+#
+# The upstream repository and its transcript are NOT redistributed by this
+# repository. This file is the pointer the seeding run resolves at execution time.
+
+project:
+  id: "github:specstoryai/the-jig-is-back"
+  title: "The Jig Is Back — paper-plane hero animation and its in-page path editor"
+
+seed:
+  id: "seed:2026-08-17:intent-fidelity"
+  class: intent-fidelity
+  objective: >
+    Reconstruct the design intent, behavioural expectations, and implementation
+    decisions behind the paper-plane hero animation and its in-page path editor,
+    and determine whether the current code satisfies them — including the three
+    defects the human reported and the one approach abandoned mid-build.
+
+upstream:
+  repository: https://github.com/specstoryai/the-jig-is-back
+  commit: 70041403230a109ab17ccfbef718665fb4901553
+  commit_date: "2026-06-12"
+  fetch: |
+    git clone https://github.com/specstoryai/the-jig-is-back <dir>
+    git -C <dir> checkout 70041403230a109ab17ccfbef718665fb4901553
+
+evidence:
+  - kind: conversation
+    path: transcript.md
+    format: specstory-markdown
+    capture_tool: specstory
+    lines: 1499
+    human_turns: 5
+    agent_turns: 69
+    sha256_prefix: "97469ebe8582d349"
+    association: explicit
+    timestamp_confidence: exact      # the export carries per-turn timestamps
+  - kind: source
+    path: code/
+    files: 5
+    lines: 2621
+  - kind: repository
+    commits: 3
+
+licensing:
+  upstream_code:
+    stated: none
+    note: >
+      No LICENSE file exists at the pinned commit. Public visibility is not a
+      licence — no reuse rights are granted by publication alone.
+  upstream_conversation:
+    stated: none
+    note: >
+      A repository's code licence, where one exists, would not cover a
+      conversation about that code in any case — separate work, separate owner.
+  redistribution: reference-only
+  disposition: >
+    Do not vendor transcript.md or code/ into this repository. Resolve the
+    pointer above at execution time. Short quotations with line numbers inside
+    an authored ICE chapter are analysis and are committed.
+
+verification:
+  verified_at: "2026-08-17"
+  method: >
+    Cloned at the pinned commit and inspected directly. Turn counts, line counts
+    and the absence of a LICENSE file were read from the working tree, not from
+    the repository's own description.

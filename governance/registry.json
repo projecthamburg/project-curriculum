@@ -1,3 +1,14 @@
 {
-  "projects": []
+  "projects": [
+    {
+      "number": 1,
+      "slug": "the-jig-is-back",
+      "folder": "01-the-jig-is-back",
+      "parent": "/home/user/upstream-the-jig-is-back",
+      "kind": "external",
+      "objective": "Reconstruct the design intent, behavioural expectations, and implementation decisions behind the paper-plane hero animation and its in-page path editor, and determine whether the current code satisfies them \u2014 including the three defects the human reported and the one approach abandoned mid-build.",
+      "ice_domain": "the-jig-is-back",
+      "registered": "2026-08-17"
+    }
+  ]
 }
