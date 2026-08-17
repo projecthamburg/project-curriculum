@@ -80,7 +80,7 @@ untested · contradicted) and needs no conversation at all.
 conversation history — and a Pathway B curriculum must **declare that no intent record exists**
 rather than infer intent from code. Evidence is **Tier 1** (agent work sessions, can act),
 **Tier 2** (LLM chat logs, dialogue only), **Tier 3** (notes and screenshots — one voice, so
-they can carry Ideas and Concerns but **never an Expectation**). **Do not decide the pathway by hand — run `governance/intake.py`,** which probes
+they can carry Ideas and Concerns but **never a negotiated Expectation**). **Do not decide the pathway by hand — run `governance/intake.py`,** which probes
 what exists and declares what the curriculum will and will not be able to claim.
 See `protocol/EVIDENCE_AND_PATHWAYS.md`.
 

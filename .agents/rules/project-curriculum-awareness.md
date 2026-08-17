@@ -36,7 +36,8 @@ discovery, chat-log import, ICE scaffolding, security scan, project intake) · `
 **Does not exist yet — do not reference as working, do not invent:** `SPEC.md` · a CORE course
 catalog (empty, so the bootstrap exception applies) · global-adjacent session discovery
 (documented, not implemented, so capture is incomplete) · the adversarial panel (VALIDATION.md
-Layer 3, designed but run by hand) · a Pathway B worked example.
+Layer 3, designed but run by hand) · a Pathway B run against a real codebase (02's
+parent is a 75-line synthetic fixture).
 
 ## Two pathways, three tiers
 
@@ -46,7 +47,7 @@ conversation and is judged by conformance, not lock-in.
 **Pathway A** = ICE + codebase. **Pathway B** = codebase only, and must **declare that no intent
 record exists** rather than infer intent from code. Evidence tiers: **1** agent work sessions,
 **2** LLM chat logs, **3** notes and screenshots — one voice, so Tier 3 carries Ideas and
-Concerns but **never an Expectation**. **Do not decide the pathway by hand — run
+Concerns but **never a negotiated Expectation**. **Do not decide the pathway by hand — run
 `governance/intake.py`.** See `protocol/EVIDENCE_AND_PATHWAYS.md`.
 
 ## Standing rules
