@@ -90,7 +90,7 @@ The item is closed as **unexplained-and-bounded**, not as a broken commitment.
 ### Honest gaps
 
 1. **No assessment has been taken.** Four exams are defined; no submission/evaluation pair exists.
-   No course in this run is "passed" — and per `MASTER_SYLLABUS.md`, an exam-taker and its evaluator
+   No course in this run is "passed" — and per `protocol/MASTER_SYLLABUS.md`, an exam-taker and its evaluator
    must never be the same pass, so this run could not have graded itself in any case.
 2. **One session is the entire conversational corpus.** Intent formed before or after it is not
    recoverable from public evidence.

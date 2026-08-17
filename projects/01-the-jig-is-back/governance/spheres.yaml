@@ -1,0 +1,16 @@
+# Spheres — named areas of this project's evidence.
+#
+# A query-time view over the ONE index, never a partition. Nothing is copied, nothing is
+# rebuilt when a sphere changes, and a source may belong to several spheres at once.
+#
+# Proposed by `spheres.py propose`, CONFIRMED HERE BY A HUMAN. Machine-drawn boundaries are
+# a starting hypothesis; naming an area is a judgment about what the project is.
+
+spheres:
+  path-geometry:
+    terms: [anchor, control, tangent, bezier, kink, collinear]
+    description: "How the flight path is represented and why tangent continuity across an anchor determines whether the plane reads as smooth. Adopted 2026-08-17 from proposal 3."
+
+  timing:
+    terms: [easing, flight_ms, duration, raf, arc, sampling]
+    description: "The animation timing pipeline: easing, flight duration, and arc-length sampling for the trail. Adopted 2026-08-17."

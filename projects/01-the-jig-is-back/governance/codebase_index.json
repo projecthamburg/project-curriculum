@@ -1,0 +1,6070 @@
+{
+  "metadata": {
+    "generated_at": "2026-08-17T16:37:03+00:00",
+    "root": "/home/user/upstream-the-jig-is-back",
+    "project_id": "01-the-jig-is-back",
+    "index_kind": "keyword-lexical",
+    "embeddings": false,
+    "analysis_depth": "lexical only \u2014 no AST, no call graph, no complexity analysis",
+    "file_count": 7,
+    "chunk_count": 84,
+    "total_lines": 4171,
+    "by_kind": {
+      "docs": 2,
+      "code": 5
+    },
+    "languages": {
+      "markdown": 2,
+      "typescript": 5
+    }
+  },
+  "sources": [
+    {
+      "path": "README.md",
+      "kind": "docs",
+      "language": "markdown",
+      "lines": 51,
+      "sha256": "9f296594324409ef80b8d27f68c8e3419c6196cb6a26f3b58bce32541238c457",
+      "chunk_count": 4
+    },
+    {
+      "path": "code/CopyCommand.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "lines": 47,
+      "sha256": "2f7a850e855f640f2cb0545652e91b971b23d4e0fcd5382053b32d6d1ad93d2d",
+      "chunk_count": 3
+    },
+    {
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "lines": 1092,
+      "sha256": "b69262c39513a4f176e6355b96ba72869c185b6c3dc1204e62c74a61cd9837e7",
+      "chunk_count": 32
+    },
+    {
+      "path": "code/InstallGlow.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "lines": 79,
+      "sha256": "84964168f7d2e8be2a331e92a75c617be183c6772543af642d02a09000e912c2",
+      "chunk_count": 2
+    },
+    {
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "lines": 930,
+      "sha256": "26aab485c98dcee8a205c0131f365e613c0cf3ec13d1718cae84b0dbbd57e1c1",
+      "chunk_count": 23
+    },
+    {
+      "path": "code/page.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "lines": 473,
+      "sha256": "ee4cdcc5484c22e02bd2f3a1a8d519aa6a0b61c952cd7f42f47ef3b1f3fa2f32",
+      "chunk_count": 8
+    },
+    {
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "lines": 1499,
+      "sha256": "97469ebe8582d349fcc5132561abda3f577cf9d038f4c995c1fdd00d75d3b953",
+      "chunk_count": 12
+    }
+  ],
+  "chunks": [
+    {
+      "id": "cb_000001",
+      "path": "README.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "The Jig Is Back",
+      "line_start": 1,
+      "line_end": 12,
+      "keywords": [
+        "https",
+        "back",
+        "com",
+        "is",
+        "jig",
+        "blog",
+        "chat",
+        "history",
+        "md",
+        "sharelocalhost",
+        "specstory",
+        "transcript",
+        "transcript.md",
+        "withstoa",
+        "ai",
+        "animation",
+        "awqovbrassq",
+        "be",
+        "behind",
+        "button",
+        "captured",
+        "code",
+        "down",
+        "flies",
+        "hero"
+      ],
+      "preview": "# The Jig Is Back\n\nSource code and the AI chat history behind Stoa's [/sharelocalhost hero animation](https://withstoa.com/sharelocalhost) \u2014 the paper plane that flies from the share button down into the install instructions.\n\n\ud83d\udcdd **Blog post:** [The Jig Is Back..."
+    },
+    {
+      "id": "cb_000002",
+      "path": "README.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "Why this exists",
+      "line_start": 13,
+      "line_end": 20,
+      "keywords": [
+        "built",
+        "hand",
+        "path",
+        "plane",
+        "production",
+        "we",
+        "an",
+        "animated",
+        "as",
+        "at",
+        "authored",
+        "bezier",
+        "blog",
+        "building",
+        "button",
+        "chat",
+        "code",
+        "code/",
+        "coding",
+        "control",
+        "converge",
+        "copy",
+        "cubic",
+        "cubic-bezier",
+        "curve"
+      ],
+      "preview": "## Why this exists\n\nWe were building an animated hero where a paper plane traces a hand-authored flight path from a \"Share\" button down through the install steps. Hand-coding cubic-Bezier control points didn't converge \u2014 every iteration felt rough. So instead ..."
+    },
+    {
+      "id": "cb_000003",
+      "path": "README.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "The jig: how `?editPath=1` works",
+      "line_start": 21,
+      "line_end": 37,
+      "keywords": [
+        "anchor",
+        "is",
+        "at",
+        "an",
+        "based",
+        "control",
+        "in",
+        "of",
+        "reveal",
+        "to",
+        "trail",
+        "anchors",
+        "are",
+        "as",
+        "current",
+        "dragging",
+        "editor",
+        "editpath",
+        "handles",
+        "its",
+        "jig",
+        "live",
+        "mask",
+        "mask-based",
+        "md"
+      ],
+      "preview": "## The jig: how `?editPath=1` works\n\n`HeroDemo` reads the URL on mount. If `editPath=1` is present, it renders `<PathEditor />` instead of the production demo. The editor:\n\n1. **Decomposes the current path** into an array of points typed as `anchor` or `contro..."
+    },
+    {
+      "id": "cb_000004",
+      "path": "README.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "Repo layout",
+      "line_start": 38,
+      "line_end": 51,
+      "keywords": [
+        "tsx",
+        "md",
+        "ai",
+        "back",
+        "capture",
+        "code",
+        "code/",
+        "copycommand",
+        "copycommand.tsx",
+        "herodemo",
+        "herodemo.tsx",
+        "installglow",
+        "installglow.tsx",
+        "is",
+        "jig",
+        "layout",
+        "of",
+        "page",
+        "page.tsx",
+        "patheditor",
+        "patheditor.tsx",
+        "readme",
+        "readme.md",
+        "repo",
+        "session"
+      ],
+      "preview": "## Repo layout\n\n```\nthe-jig-is-back/\n\u251c\u2500\u2500 README.md\n\u251c\u2500\u2500 transcript.md              # SpecStory capture of the AI session\n\u2514\u2500\u2500 code/\n    \u251c\u2500\u2500 HeroDemo.tsx\n    \u251c\u2500\u2500 PathEditor.tsx\n    \u251c\u2500\u2500 InstallGlow.tsx\n    \u251c\u2500\u2500 CopyCommand.tsx\n    \u2514\u2500\u2500 page.tsx\n```"
+    },
+    {
+      "id": "cb_000005",
+      "path": "code/CopyCommand.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "<module>",
+      "line_start": 1,
+      "line_end": 5,
+      "keywords": [
+        "import",
+        "react",
+        "check",
+        "client",
+        "copy",
+        "lucide",
+        "lucide-react",
+        "use",
+        "usestate"
+      ],
+      "preview": "\"use client\";\n\nimport { useState } from \"react\";\nimport { Check, Copy } from \"lucide-react\";"
+    },
+    {
+      "id": "cb_000006",
+      "path": "code/CopyCommand.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "CopyCommandProps",
+      "line_start": 6,
+      "line_end": 9,
+      "keywords": [
+        "copycommandprops",
+        "interface",
+        "lines",
+        "lines:",
+        "string"
+      ],
+      "preview": "interface CopyCommandProps {\n  lines: string[];\n}"
+    },
+    {
+      "id": "cb_000007",
+      "path": "code/CopyCommand.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "CopyCommand",
+      "line_start": 10,
+      "line_end": 47,
+      "keywords": [
+        "text",
+        "classname",
+        "div",
+        "border",
+        "copied",
+        "var",
+        "accent",
+        "button",
+        "line",
+        "lines",
+        "setcopied",
+        "sm",
+        "text-",
+        "bg",
+        "center",
+        "clipboard",
+        "const",
+        "copy",
+        "false",
+        "hover",
+        "oncopy",
+        "rounded",
+        "shadow",
+        "size",
+        "span"
+      ],
+      "preview": "export default function CopyCommand({ lines }: CopyCommandProps) {\n  const [copied, setCopied] = useState(false);\n\n  const onCopy = async () => {\n    try {\n      await navigator.clipboard.writeText(lines.join(\"\\n\"));\n      setCopied(true);\n      setTimeout(() ..."
+    },
+    {
+      "id": "cb_000008",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "<module>",
+      "line_start": 1,
+      "line_end": 30,
+      "keywords": [
+        "import",
+        "button",
+        "motion",
+        "to",
+        "localhost",
+        "path",
+        "patheditor",
+        "plane",
+        "public",
+        "react",
+        "share",
+        "sharelocalhost",
+        "url",
+        "3000",
+        "address",
+        "animated",
+        "animatepresence",
+        "at",
+        "authored",
+        "bottom",
+        "browser",
+        "browser-chrome",
+        "chrome",
+        "clean",
+        "client"
+      ],
+      "preview": "\"use client\";\n\nimport { useEffect, useLayoutEffect, useRef, useState } from \"react\";\nimport {\n  motion,\n  AnimatePresence,\n  useReducedMotion,\n  useInView,\n} from \"framer-motion\";\nimport { Lock, Globe } from \"lucide-react\";\nimport PathEditor from \"./PathEditor..."
+    },
+    {
+      "id": "cb_000009",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "Stage",
+      "line_start": 31,
+      "line_end": 32,
+      "keywords": [
+        "framein",
+        "idle",
+        "init",
+        "live",
+        "shareclicked",
+        "stage",
+        "type"
+      ],
+      "preview": "type Stage = \"init\" | \"frameIn\" | \"idle\" | \"shareClicked\" | \"live\" | \"done\";"
+    },
+    {
+      "id": "cb_000010",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PRIVATE_URL",
+      "line_start": 33,
+      "line_end": 33,
+      "keywords": [
+        "3000",
+        "const",
+        "localhost",
+        "localhost:3000",
+        "private",
+        "private_url",
+        "url"
+      ],
+      "preview": "const PRIVATE_URL = \"localhost:3000\";"
+    },
+    {
+      "id": "cb_000011",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PUBLIC_URL",
+      "line_start": 34,
+      "line_end": 37,
+      "keywords": [
+        "abc123",
+        "abc123.share.withstoa.com",
+        "above",
+        "below",
+        "beneath",
+        "can",
+        "com",
+        "const",
+        "container",
+        "fly",
+        "headline",
+        "overflow",
+        "overflow:visible",
+        "plane",
+        "public",
+        "public_url",
+        "renders",
+        "section",
+        "share",
+        "so",
+        "space",
+        "svg",
+        "url",
+        "viewbox",
+        "visible"
+      ],
+      "preview": "const PUBLIC_URL = \"abc123.share.withstoa.com\";\n\n// Container viewBox. SVG renders with overflow:visible so the plane can\n// fly above (into headline space) and below (into the section beneath)."
+    },
+    {
+      "id": "cb_000012",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "VB_W",
+      "line_start": 38,
+      "line_end": 38,
+      "keywords": [
+        "const",
+        "vb",
+        "vb_w"
+      ],
+      "preview": "const VB_W = 800;"
+    },
+    {
+      "id": "cb_000013",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "VB_H",
+      "line_start": 39,
+      "line_end": 41,
+      "keywords": [
+        "const",
+        "deliberate",
+        "flight",
+        "is",
+        "pacing",
+        "showpiece",
+        "slow",
+        "vb",
+        "vb_h"
+      ],
+      "preview": "const VB_H = 400;\n\n// Pacing \u2014 slow and deliberate. The flight is the showpiece."
+    },
+    {
+      "id": "cb_000014",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "FLIGHT_MS",
+      "line_start": 42,
+      "line_end": 46,
+      "keywords": [
+        "path",
+        "at",
+        "flight",
+        "origin",
+        "4100",
+        "anchor",
+        "authored",
+        "button",
+        "const",
+        "drawn",
+        "editor",
+        "editpath",
+        "first",
+        "flight_ms",
+        "hand",
+        "hand-authored",
+        "in",
+        "lines",
+        "measured",
+        "ms",
+        "position",
+        "runtime",
+        "sharelocalhost",
+        "so",
+        "translate"
+      ],
+      "preview": "const FLIGHT_MS = 4100;\n\n// Hand-authored flight path (drawn in the path editor at /sharelocalhost?editPath=1).\n// Origin = first M anchor; we translate the whole path at runtime so the\n// origin lines up with the measured button position."
+    },
+    {
+      "id": "cb_000015",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "FLIGHT_PATH",
+      "line_start": 47,
+      "line_end": 48,
+      "keywords": [
+        "1030",
+        "1081",
+        "1114",
+        "1158",
+        "1160",
+        "const",
+        "flight",
+        "flight_path",
+        "path"
+      ],
+      "preview": "const FLIGHT_PATH =\n  \"M 716 77 C 918 75, 1081 -14, 1114 -70 C 1160 -148, 1158 -261, 1030 -294 C 889 -330, 779 -97, 379 -65 C 306 -59, 12 -56, -68 -84 C -125 -104, -152 -134, -150 -167 C -149 -191, -120 -254, 24 -162 C 79 -127, 201 -4, 256 69 C 343 185, 410 38..."
+    },
+    {
+      "id": "cb_000016",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "FLIGHT_PATH_ORIGIN_X",
+      "line_start": 49,
+      "line_end": 49,
+      "keywords": [
+        "const",
+        "flight",
+        "flight_path_origin_x",
+        "origin",
+        "path"
+      ],
+      "preview": "const FLIGHT_PATH_ORIGIN_X = 716;"
+    },
+    {
+      "id": "cb_000017",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "FLIGHT_PATH_ORIGIN_Y",
+      "line_start": 50,
+      "line_end": 52,
+      "keywords": [
+        "path",
+        "along",
+        "arc",
+        "between",
+        "const",
+        "denser",
+        "dots",
+        "flight",
+        "flight_path_origin_y",
+        "length",
+        "origin",
+        "smaller",
+        "spacing",
+        "trail"
+      ],
+      "preview": "const FLIGHT_PATH_ORIGIN_Y = 77;\n\n// Spacing between dots along the path's arc length. Smaller = denser trail."
+    },
+    {
+      "id": "cb_000018",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "DOT_SPACING",
+      "line_start": 53,
+      "line_end": 56,
+      "keywords": [
+        "click",
+        "is",
+        "long",
+        "too",
+        "begins",
+        "button",
+        "const",
+        "dot",
+        "dot_spacing",
+        "down",
+        "drags",
+        "held",
+        "how",
+        "imperceptible",
+        "it",
+        "matters",
+        "morph",
+        "pacing",
+        "plane",
+        "response",
+        "share",
+        "short",
+        "spacing",
+        "takeoff",
+        "type"
+      ],
+      "preview": "const DOT_SPACING = 11;\n// How long the share button is visibly held down after the click before\n// the response (morph, URL type, plane takeoff) begins. Pacing matters\n// here \u2014 too short and the click is imperceptible; too long and it drags."
+    },
+    {
+      "id": "cb_000019",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PRESS_HOLD_MS",
+      "line_start": 57,
+      "line_end": 57,
+      "keywords": [
+        "const",
+        "hold",
+        "ms",
+        "press",
+        "press_hold_ms"
+      ],
+      "preview": "const PRESS_HOLD_MS = 220;"
+    },
+    {
+      "id": "cb_000020",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "URL_TYPE_MS",
+      "line_start": 58,
+      "line_end": 58,
+      "keywords": [
+        "const",
+        "ms",
+        "type",
+        "url",
+        "url_type_ms"
+      ],
+      "preview": "const URL_TYPE_MS = 540;"
+    },
+    {
+      "id": "cb_000021",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "URL_TYPE_INTERVAL_MS",
+      "line_start": 59,
+      "line_end": 84,
+      "keywords": [
+        "is",
+        "back",
+        "flap",
+        "plane",
+        "spine",
+        "top",
+        "url",
+        "wing",
+        "above",
+        "as",
+        "at",
+        "bottom",
+        "in",
+        "math",
+        "ms",
+        "of",
+        "on",
+        "paper",
+        "shape",
+        "so",
+        "type",
+        "1.6:1",
+        "3/4",
+        "above-side",
+        "anatomy"
+      ],
+      "preview": "const URL_TYPE_INTERVAL_MS = Math.max(\n  20,\n  Math.round(URL_TYPE_MS / PUBLIC_URL.length),\n);\n\n/* \u2500\u2500\u2500 Paper plane (centered at origin, pointing right) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n *\n * Vertex anatomy:\n *   tip       ( 15,  0)  \u2014 front point\n *   wingBack  (-12,-10)  \u2014 back ..."
+    },
+    {
+      "id": "cb_000022",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PLANE_OUTLINE_D",
+      "line_start": 85,
+      "line_end": 85,
+      "keywords": [
+        "const",
+        "l-12",
+        "l-3",
+        "l-9",
+        "m15",
+        "outline",
+        "plane",
+        "plane_outline_d"
+      ],
+      "preview": "const PLANE_OUTLINE_D = \"M15 0 L-12 -10 L-3 0 L-9 7 Z\";"
+    },
+    {
+      "id": "cb_000023",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PLANE_TOP_WING_D",
+      "line_start": 86,
+      "line_end": 86,
+      "keywords": [
+        "const",
+        "l-12",
+        "l-3",
+        "m15",
+        "plane",
+        "plane_top_wing_d",
+        "top",
+        "wing"
+      ],
+      "preview": "const PLANE_TOP_WING_D = \"M15 0 L-12 -10 L-3 0 Z\";"
+    },
+    {
+      "id": "cb_000024",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PLANE_BOTTOM_FLAP_D",
+      "line_start": 87,
+      "line_end": 87,
+      "keywords": [
+        "bottom",
+        "const",
+        "flap",
+        "l-3",
+        "l-9",
+        "m15",
+        "plane",
+        "plane_bottom_flap_d"
+      ],
+      "preview": "const PLANE_BOTTOM_FLAP_D = \"M15 0 L-3 0 L-9 7 Z\";"
+    },
+    {
+      "id": "cb_000025",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PLANE_SPINE_D",
+      "line_start": 88,
+      "line_end": 91,
+      "keywords": [
+        "1-unit",
+        "bounds",
+        "const",
+        "encompasses",
+        "height",
+        "icon",
+        "icon:",
+        "inline",
+        "l-3",
+        "m15",
+        "margins",
+        "path",
+        "plane",
+        "plane_spine_d",
+        "spine",
+        "unit",
+        "viewbox",
+        "width"
+      ],
+      "preview": "const PLANE_SPINE_D = \"M15 0 L-3 0\";\n\n// ViewBox for the inline icon: encompasses the path bounds (x \u2208 [-12, 15],\n// y \u2208 [-10, 7]) with 1-unit margins. Width 29, height 19."
+    },
+    {
+      "id": "cb_000026",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "ICON_VIEWBOX_W",
+      "line_start": 92,
+      "line_end": 92,
+      "keywords": [
+        "const",
+        "icon",
+        "icon_viewbox_w",
+        "viewbox"
+      ],
+      "preview": "const ICON_VIEWBOX_W = 29;"
+    },
+    {
+      "id": "cb_000027",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "ICON_VIEWBOX_H",
+      "line_start": 93,
+      "line_end": 95,
+      "keywords": [
+        "icon",
+        "viewbox",
+        "at",
+        "compute",
+        "const",
+        "icon_viewbox_h",
+        "in",
+        "launch",
+        "matches",
+        "native",
+        "pixel",
+        "pixel-for-pixel",
+        "plane",
+        "rendered",
+        "scale",
+        "size",
+        "takeoff",
+        "to",
+        "units",
+        "width"
+      ],
+      "preview": "const ICON_VIEWBOX_H = 19;\n// Native plane width in viewBox units \u2014 used to compute the launch scale\n// that matches the icon's rendered size pixel-for-pixel at takeoff."
+    },
+    {
+      "id": "cb_000028",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PLANE_NATIVE_W",
+      "line_start": 96,
+      "line_end": 96,
+      "keywords": [
+        "const",
+        "native",
+        "plane",
+        "plane_native_w"
+      ],
+      "preview": "const PLANE_NATIVE_W = 27;"
+    },
+    {
+      "id": "cb_000029",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "ICON_DEFAULT_PX",
+      "line_start": 97,
+      "line_end": 102,
+      "keywords": [
+        "icon",
+        "in",
+        "plane",
+        "as",
+        "at",
+        "bare",
+        "between",
+        "button",
+        "const",
+        "cross",
+        "cross-fade",
+        "default",
+        "dom",
+        "fade",
+        "fading",
+        "flat",
+        "flight",
+        "icon_default_px",
+        "in-button",
+        "is",
+        "layer",
+        "literally",
+        "look",
+        "no",
+        "of"
+      ],
+      "preview": "const ICON_DEFAULT_PX = 16;\n\n/** Bare plane silhouette \u2014 no outer <svg>, used as the flat layer in\n *  both the in-button icon AND the flight plane's pre-rich state. Single\n *  source of truth for the \"icon look\", so the cross-fade at takeoff is\n *  literally ..."
+    },
+    {
+      "id": "cb_000030",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PaperPlaneFlatShape",
+      "line_start": 103,
+      "line_end": 120,
+      "keywords": [
+        "plane",
+        "fill",
+        "paperplaneflatshape",
+        "path",
+        "0.18",
+        "0.5",
+        "button",
+        "ensuring",
+        "flat",
+        "flight",
+        "function",
+        "handoff",
+        "icon",
+        "identical",
+        "in",
+        "inline",
+        "inside",
+        "is",
+        "itself",
+        "layer",
+        "none",
+        "outline",
+        "plane_outline_d",
+        "plane_spine_d",
+        "return"
+      ],
+      "preview": "function PaperPlaneFlatShape() {\n  return (\n    <>\n      <path d={PLANE_OUTLINE_D} fill=\"white\" />\n      <path\n        d={PLANE_SPINE_D}\n        stroke=\"rgba(0,0,0,0.18)\"\n        strokeWidth=\"0.5\"\n        strokeLinecap=\"round\"\n        fill=\"none\"\n      />\n    ..."
+    },
+    {
+      "id": "cb_000031",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PaperPlaneIcon",
+      "line_start": 121,
+      "line_end": 137,
+      "keywords": [
+        "icon",
+        "viewbox",
+        "size",
+        "icon_viewbox_h",
+        "icon_viewbox_w",
+        "ratio",
+        "svg",
+        "aria",
+        "aria-hidden",
+        "at",
+        "block",
+        "button",
+        "click",
+        "const",
+        "default",
+        "display",
+        "display:",
+        "function",
+        "height",
+        "hidden",
+        "icon_default_px",
+        "number",
+        "overflow",
+        "overflow:",
+        "paperplaneflatshape"
+      ],
+      "preview": "function PaperPlaneIcon({ size = ICON_DEFAULT_PX }: { size?: number }) {\n  const ratio = ICON_VIEWBOX_H / ICON_VIEWBOX_W;\n  return (\n    <svg\n      width={size}\n      height={size * ratio}\n      viewBox={`-13 -11 ${ICON_VIEWBOX_W} ${ICON_VIEWBOX_H}`}\n      sty..."
+    },
+    {
+      "id": "cb_000032",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "ClickRipple",
+      "line_start": 138,
+      "line_end": 165,
+      "keywords": [
+        "active",
+        "opacity",
+        "opacity:",
+        "0.7",
+        "animatepresence",
+        "scale",
+        "scale:",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "absolute",
+        "active:",
+        "animate",
+        "aria",
+        "aria-hidden",
+        "background",
+        "background:",
+        "boolean",
+        "classname",
+        "clickripple",
+        "demo",
+        "duration",
+        "duration:",
+        "ease"
+      ],
+      "preview": "function ClickRipple({ active }: { active: boolean }) {\n  return (\n    <AnimatePresence>\n      {active && (\n        <motion.span\n          key=\"ripple\"\n          aria-hidden\n          className=\"absolute rounded-full pointer-events-none\"\n          style={{\n   ..."
+    },
+    {
+      "id": "cb_000033",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "HeroDemo",
+      "line_start": 166,
+      "line_end": 180,
+      "keywords": [
+        "editpath",
+        "return",
+        "if",
+        "mount",
+        "seteditpath",
+        "window",
+        "acceptable",
+        "brief",
+        "const",
+        "default",
+        "dev",
+        "dev-only",
+        "disable",
+        "editor",
+        "effect",
+        "eslint",
+        "eslint-disable-next-line",
+        "export",
+        "false",
+        "flash",
+        "function",
+        "has",
+        "herodemo",
+        "herodemoinner",
+        "hooks"
+      ],
+      "preview": "export default function HeroDemo() {\n  // Toggle the live path editor with `?editPath=1`. Reading the URL after\n  // mount keeps this SSR-safe; the brief flash before mount is acceptable\n  // for a dev-only tool.\n  const [editPath, setEditPath] = useState(fals..."
+    },
+    {
+      "id": "cb_000034",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "HeroDemoInner",
+      "line_start": 181,
+      "line_end": 340,
+      "keywords": [
+        "const",
+        "path",
+        "null",
+        "flight",
+        "plane",
+        "len",
+        "if",
+        "target",
+        "useref",
+        "number",
+        "return",
+        "total",
+        "container",
+        "cb",
+        "top",
+        "current",
+        "planestart",
+        "pt",
+        "ro",
+        "to",
+        "usestate",
+        "card",
+        "containerref",
+        "so",
+        "svggelement"
+      ],
+      "preview": "function HeroDemoInner() {\n  const containerRef = useRef<HTMLDivElement>(null);\n  const planeIconRef = useRef<HTMLSpanElement>(null);\n  const pathRef = useRef<SVGPathElement>(null);\n  const planeGroupRef = useRef<SVGGElement>(null);\n  // Sub-refs for the layer..."
+    },
+    {
+      "id": "cb_000035",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "HeroDemoInner",
+      "line_start": 341,
+      "line_end": 500,
+      "keywords": [
+        "const",
+        "plane",
+        "at",
+        "bank",
+        "stage",
+        "to",
+        "is",
+        "path",
+        "back",
+        "flight",
+        "icon",
+        "let",
+        "math",
+        "ms",
+        "if",
+        "launch",
+        "total",
+        "current",
+        "of",
+        "pitch",
+        "so",
+        "speed",
+        "url",
+        "fwd",
+        "return"
+      ],
+      "preview": "const at = (ms: number, fn: () => void) =>\n      cancels.push(window.setTimeout(fn, ms));\n\n    setStage(\"frameIn\");\n    at(600, () => setStage(\"idle\"));\n    at(1200, () => setStage(\"shareClicked\"));\n    // After the press releases AND the URL finishes typing, ..."
+    },
+    {
+      "id": "cb_000036",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "HeroDemoInner",
+      "line_start": 501,
+      "line_end": 660,
+      "keywords": [
+        "const",
+        "math",
+        "bank",
+        "current",
+        "launch",
+        "if",
+        "scale",
+        "currentlen",
+        "window",
+        "min",
+        "so",
+        "in",
+        "kick",
+        "math.min",
+        "plane",
+        "stability",
+        "to",
+        "at",
+        "dtheta",
+        "opacity",
+        "pitch",
+        "style",
+        "by",
+        "dt",
+        "fade"
+      ],
+      "preview": "const dyNorm = dirLen > 0 ? dy / dirLen : 0;\n\n      // Target speed factor based on direction; smooth toward it so the\n      // plane has a sense of momentum.\n      const targetFactor = Math.max(\n        MIN_FACTOR,\n        Math.min(MAX_FACTOR, 1 + GRAVITY * d..."
+    },
+    {
+      "id": "cb_000037",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "HeroDemoInner",
+      "line_start": 661,
+      "line_end": 820,
+      "keywords": [
+        "stage",
+        "const",
+        "vb",
+        "url",
+        "fill",
+        "height",
+        "mask",
+        "plane",
+        "so",
+        "style",
+        "width",
+        "offset",
+        "path",
+        "return",
+        "stop",
+        "stopcolor",
+        "2000",
+        "4000",
+        "dot",
+        "gradient",
+        "id",
+        "is",
+        "ispublic",
+        "shadow",
+        "vb_h"
+      ],
+      "preview": "setPressFlash(true);\n      const release = window.setTimeout(() => {\n        setPressFlash(false);\n        setMorphAndLaunch(true);\n      }, PRESS_HOLD_MS);\n      return () => clearTimeout(release);\n    }\n    if (stage === \"init\" || stage === \"frameIn\" || stag..."
+    },
+    {
+      "id": "cb_000038",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "HeroDemoInner",
+      "line_start": 821,
+      "line_end": 980,
+      "keywords": [
+        "opacity",
+        "classname",
+        "opacity:",
+        "rgba",
+        "motion",
+        "scale",
+        "scale:",
+        "fill",
+        "ref",
+        "span",
+        "0.6",
+        "div",
+        "path",
+        "plane",
+        "rotate",
+        "rotate:",
+        "sm",
+        "to",
+        "animate",
+        "duration",
+        "duration:",
+        "ease",
+        "ease:",
+        "flex",
+        "motion.span"
+      ],
+      "preview": "ref={planeShadowRef}\n            d={PLANE_OUTLINE_D}\n            fill=\"rgba(40, 30, 80, 0.24)\"\n            transform=\"translate(0.6 1.8)\"\n            filter=\"url(#planeBlur)\"\n            style={{ opacity: 0 }}\n          />\n          <g ref={planeBodyRef}>\n    ..."
+    },
+    {
+      "id": "cb_000039",
+      "path": "code/HeroDemo.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "HeroDemoInner",
+      "line_start": 981,
+      "line_end": 1092,
+      "keywords": [
+        "motion",
+        "opacity",
+        "opacity:",
+        "span",
+        "duration",
+        "duration:",
+        "ease",
+        "ease:",
+        "motion.span",
+        "rgba",
+        "showsharelive",
+        "0.36",
+        "classname",
+        "y:",
+        "4px",
+        "animate",
+        "center",
+        "text",
+        "transition",
+        "white",
+        "0.22",
+        "0.4",
+        "div",
+        "flex",
+        "inset"
+      ],
+      "preview": "type=\"button\"\n              tabIndex={showShareLive ? 0 : -1}\n              aria-hidden={showShareLive ? undefined : true}\n              aria-label={showShareLive ? \"Jump to install steps\" : undefined}\n              onClick={\n                showShareLive\n    ..."
+    },
+    {
+      "id": "cb_000040",
+      "path": "code/InstallGlow.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "<module>",
+      "line_start": 1,
+      "line_end": 14,
+      "keywords": [
+        "area",
+        "flight",
+        "hero",
+        "import",
+        "install",
+        "motion",
+        "soft",
+        "ambient",
+        "animation",
+        "attention",
+        "behind",
+        "blooms",
+        "blur",
+        "brand",
+        "brand-color",
+        "by",
+        "carries",
+        "client",
+        "color",
+        "complete",
+        "dispatched",
+        "down",
+        "end",
+        "event",
+        "framer"
+      ],
+      "preview": "\"use client\";\n\nimport { motion, useReducedMotion } from \"framer-motion\";\nimport { useEffect, useState } from \"react\";\n\n/**\n * Soft purple radial blur that \"ignites\" behind the install steps once\n * the hero flight animation reaches its end. Listens for the\n * ..."
+    },
+    {
+      "id": "cb_000041",
+      "path": "code/InstallGlow.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "InstallGlow",
+      "line_start": 15,
+      "line_end": 79,
+      "keywords": [
+        "const",
+        "animate",
+        "opacity",
+        "opacity:",
+        "rgba",
+        "scale",
+        "scale:",
+        "transition",
+        "0.6",
+        "blur",
+        "card",
+        "filter",
+        "handler",
+        "motion",
+        "reducedmotion",
+        "0.22",
+        "0.55",
+        "absolute",
+        "aria",
+        "aria-hidden",
+        "as",
+        "at",
+        "background",
+        "background:",
+        "bloom"
+      ],
+      "preview": "export default function InstallGlow() {\n  const [lit, setLit] = useState(false);\n  const reducedMotion = useReducedMotion();\n\n  useEffect(() => {\n    const handler = () => setLit(true);\n    window.addEventListener(\"hero-flight-complete\", handler);\n    return (..."
+    },
+    {
+      "id": "cb_000042",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "<module>",
+      "line_start": 1,
+      "line_end": 19,
+      "keywords": [
+        "as",
+        "anchor",
+        "copy",
+        "cubic",
+        "editor",
+        "hero",
+        "import",
+        "live",
+        "path",
+        "points",
+        "react",
+        "to",
+        "activate",
+        "anchors",
+        "animated",
+        "animation",
+        "any",
+        "appending",
+        "back",
+        "bezier",
+        "by",
+        "can",
+        "check",
+        "circles",
+        "client"
+      ],
+      "preview": "\"use client\";\n\n/**\n * Live SVG path editor for the /sharelocalhost hero animation.\n *\n * Activate by appending `?editPath=1` to the URL. Replaces the normal\n * animated hero demo with this editor so you can drag waypoints, watch\n * a live plane preview, and co..."
+    },
+    {
+      "id": "cb_000043",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "VB_W",
+      "line_start": 20,
+      "line_end": 20,
+      "keywords": [
+        "const",
+        "vb",
+        "vb_w"
+      ],
+      "preview": "const VB_W = 800;"
+    },
+    {
+      "id": "cb_000044",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "VB_H",
+      "line_start": 21,
+      "line_end": 23,
+      "keywords": [
+        "animation",
+        "const",
+        "exactly",
+        "herodemo",
+        "look",
+        "match",
+        "preview",
+        "production",
+        "real",
+        "reflects",
+        "so",
+        "vb",
+        "vb_h"
+      ],
+      "preview": "const VB_H = 400;\n// Match production's HeroDemo exactly so the preview reflects what the\n// real animation will look like."
+    },
+    {
+      "id": "cb_000045",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "FLIGHT_MS",
+      "line_start": 24,
+      "line_end": 24,
+      "keywords": [
+        "4100",
+        "const",
+        "flight",
+        "flight_ms",
+        "ms"
+      ],
+      "preview": "const FLIGHT_MS = 4100;"
+    },
+    {
+      "id": "cb_000046",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "DOT_SPACING",
+      "line_start": 25,
+      "line_end": 27,
+      "keywords": [
+        "anatomy",
+        "const",
+        "dot",
+        "dot_spacing",
+        "exactly",
+        "geometry",
+        "herodemo",
+        "match",
+        "must",
+        "plane",
+        "spacing",
+        "vertex"
+      ],
+      "preview": "const DOT_SPACING = 11;\n\n// Plane geometry \u2014 must match HeroDemo's vertex anatomy exactly."
+    },
+    {
+      "id": "cb_000047",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PLANE_OUTLINE_D",
+      "line_start": 28,
+      "line_end": 28,
+      "keywords": [
+        "const",
+        "l-12",
+        "l-3",
+        "l-9",
+        "m15",
+        "outline",
+        "plane",
+        "plane_outline_d"
+      ],
+      "preview": "const PLANE_OUTLINE_D = \"M15 0 L-12 -10 L-3 0 L-9 7 Z\";"
+    },
+    {
+      "id": "cb_000048",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PLANE_TOP_WING_D",
+      "line_start": 29,
+      "line_end": 29,
+      "keywords": [
+        "const",
+        "l-12",
+        "l-3",
+        "m15",
+        "plane",
+        "plane_top_wing_d",
+        "top",
+        "wing"
+      ],
+      "preview": "const PLANE_TOP_WING_D = \"M15 0 L-12 -10 L-3 0 Z\";"
+    },
+    {
+      "id": "cb_000049",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PLANE_BOTTOM_FLAP_D",
+      "line_start": 30,
+      "line_end": 30,
+      "keywords": [
+        "bottom",
+        "const",
+        "flap",
+        "l-3",
+        "l-9",
+        "m15",
+        "plane",
+        "plane_bottom_flap_d"
+      ],
+      "preview": "const PLANE_BOTTOM_FLAP_D = \"M15 0 L-3 0 L-9 7 Z\";"
+    },
+    {
+      "id": "cb_000050",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PLANE_SPINE_D",
+      "line_start": 31,
+      "line_end": 32,
+      "keywords": [
+        "const",
+        "l-3",
+        "m15",
+        "plane",
+        "plane_spine_d",
+        "spine"
+      ],
+      "preview": "const PLANE_SPINE_D = \"M15 0 L-3 0\";"
+    },
+    {
+      "id": "cb_000051",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "Kind",
+      "line_start": 33,
+      "line_end": 33,
+      "keywords": [
+        "anchor",
+        "control",
+        "kind",
+        "type"
+      ],
+      "preview": "type Kind = \"anchor\" | \"control\";"
+    },
+    {
+      "id": "cb_000052",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "Pt",
+      "line_start": 34,
+      "line_end": 37,
+      "keywords": [
+        "kind",
+        "number",
+        "default",
+        "hero",
+        "kind:",
+        "matches",
+        "path",
+        "production",
+        "pt",
+        "type",
+        "x:",
+        "y:"
+      ],
+      "preview": "type Pt = { x: number; y: number; kind: Kind };\n\n/* \u2500\u2500\u2500 Default path (matches the production hero) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */"
+    },
+    {
+      "id": "cb_000053",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "makeDefaultRaw",
+      "line_start": 38,
+      "line_end": 81,
+      "keywords": [
+        "kind",
+        "kind:",
+        "x:",
+        "y:",
+        "apexx",
+        "const",
+        "control",
+        "apexy",
+        "sy",
+        "anchor",
+        "sx",
+        "endx",
+        "endy",
+        "entryx",
+        "entryy",
+        "exitx",
+        "exity",
+        "loop",
+        "button",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "preview": "function makeDefaultRaw(): Pt[] {\n  // Spawn coords mirror the in-button plane's typical center.\n  const sx = 685;\n  const sy = 94;\n  const apexX = 360;\n  const apexY = -240;\n  const r = 44;\n  const k = (4 * r) / 3;\n  const entryX = apexX;\n  const entryY = ape..."
+    },
+    {
+      "id": "cb_000054",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "makeDefault",
+      "line_start": 82,
+      "line_end": 89,
+      "keywords": [
+        "anchor",
+        "control",
+        "at",
+        "boundaries",
+        "cause",
+        "collinear",
+        "direction",
+        "distance",
+        "eliminates",
+        "every",
+        "function",
+        "internal",
+        "it",
+        "kinks",
+        "makedefault",
+        "makedefaultraw",
+        "original",
+        "plane",
+        "points",
+        "preserving",
+        "pt",
+        "return",
+        "segment",
+        "smooth",
+        "smoothallanchors"
+      ],
+      "preview": "function makeDefault(): Pt[] {\n  return smoothAllAnchors(makeDefaultRaw());\n}\n\n/** Make every internal anchor's two control points collinear through it\n *  (smooth tangent) while preserving each control's original distance from\n *  the anchor. Eliminates direc..."
+    },
+    {
+      "id": "cb_000055",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "smoothAllAnchors",
+      "line_start": 90,
+      "line_end": 136,
+      "keywords": [
+        "const",
+        "next",
+        "math",
+        "cin",
+        "cout",
+        "inlen",
+        "outlen",
+        "control",
+        "a.x",
+        "a.y",
+        "anchor",
+        "if",
+        "math.round",
+        "round",
+        "ulen",
+        "0.001",
+        "continue",
+        "dx",
+        "dy",
+        "hypot",
+        "inx",
+        "iny",
+        "kind",
+        "math.hypot",
+        "of"
+      ],
+      "preview": "function smoothAllAnchors(pts: Pt[]): Pt[] {\n  const next = pts.slice();\n  for (let i = 3; i + 2 < next.length; i += 3) {\n    const a = next[i];\n    const cIn = next[i - 1];\n    const cOut = next[i + 1];\n    if (\n      cIn.kind !== \"control\" ||\n      cOut.kind..."
+    },
+    {
+      "id": "cb_000056",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "controlNeighbors",
+      "line_start": 137,
+      "line_end": 167,
+      "keywords": [
+        "idx",
+        "3k",
+        "at",
+        "control",
+        "pts",
+        "partneridx",
+        "anchor",
+        "anchoridx",
+        "anchoridx:",
+        "if",
+        "kind",
+        "return",
+        "a_",
+        "const",
+        "is",
+        "of",
+        "partner",
+        "partneridx:",
+        "incoming",
+        "index",
+        "length",
+        "number",
+        "outgoing",
+        "pts.length",
+        "cubic"
+      ],
+      "preview": "function controlNeighbors(\n  pts: Pt[],\n  idx: number,\n): { anchorIdx: number; partnerIdx: number } {\n  // Layout: A0 c c A1 c c A2 c c A3 ...\n  // Within a cubic at segment k (anchor at index 3k, controls at 3k+1, 3k+2, end anchor at 3k+3):\n  //   - A control..."
+    },
+    {
+      "id": "cb_000057",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "pointsToD",
+      "line_start": 168,
+      "line_end": 181,
+      "keywords": [
+        "fmt",
+        "pts",
+        "const",
+        "c1",
+        "c2",
+        "parts",
+        "length",
+        "pts.length",
+        "return",
+        "a.x",
+        "a.y",
+        "c1.x",
+        "c1.y",
+        "c2.x",
+        "c2.y",
+        "function",
+        "if",
+        "join",
+        "let",
+        "parts.join",
+        "parts.push",
+        "pointstod",
+        "pt",
+        "pts:",
+        "push"
+      ],
+      "preview": "function pointsToD(pts: Pt[]): string {\n  if (pts.length === 0) return \"\";\n  const parts = [`M ${fmt(pts[0].x)} ${fmt(pts[0].y)}`];\n  for (let i = 1; i + 2 < pts.length; i += 3) {\n    const c1 = pts[i];\n    const c2 = pts[i + 1];\n    const a = pts[i + 2];\n    ..."
+    },
+    {
+      "id": "cb_000058",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "fmt",
+      "line_start": 182,
+      "line_end": 187,
+      "keywords": [
+        "number",
+        "string",
+        "absolute",
+        "bezier",
+        "commands",
+        "cubic",
+        "cubic-bezier",
+        "don",
+        "editor",
+        "fmt",
+        "function",
+        "has",
+        "if",
+        "input",
+        "isinteger",
+        "n.tofixed",
+        "n:",
+        "null",
+        "number.isinteger",
+        "parse",
+        "paths",
+        "produces",
+        "return",
+        "returns",
+        "support"
+      ],
+      "preview": "function fmt(n: number): string {\n  return Number.isInteger(n) ? String(n) : n.toFixed(1);\n}\n\n/** Parse only the absolute cubic-Bezier paths this editor produces.\n *  Returns null if the input has commands we don't support. */"
+    },
+    {
+      "id": "cb_000059",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "parseD",
+      "line_start": 188,
+      "line_end": 221,
+      "keywords": [
+        "tokens",
+        "const",
+        "if",
+        "null",
+        "return",
+        "cmd",
+        "isnan",
+        "number",
+        "number.isnan",
+        "parsefloat",
+        "pts",
+        "else",
+        "anchor",
+        "kind",
+        "kind:",
+        "let",
+        "pt",
+        "pts.push",
+        "push",
+        "bare",
+        "between",
+        "command",
+        "commands",
+        "control",
+        "d.match"
+      ],
+      "preview": "function parseD(d: string): Pt[] | null {\n  const tokens = d.match(/[MmCc]|-?\\d+(?:\\.\\d+)?/g);\n  if (!tokens) return null;\n  const pts: Pt[] = [];\n  let i = 0;\n  while (i < tokens.length) {\n    const cmd = tokens[i];\n    if (cmd === \"M\") {\n      i++;\n      con..."
+    },
+    {
+      "id": "cb_000060",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PathEditor",
+      "line_start": 222,
+      "line_end": 381,
+      "keywords": [
+        "const",
+        "next",
+        "anchor",
+        "if",
+        "null",
+        "return",
+        "dragidx",
+        "path",
+        "math",
+        "len",
+        "number",
+        "x:",
+        "y:",
+        "document",
+        "old",
+        "total",
+        "useref",
+        "current",
+        "partner",
+        "usestate",
+        "cb",
+        "control",
+        "up",
+        "vbx",
+        "vby"
+      ],
+      "preview": "export default function PathEditor() {\n  const [points, setPoints] = useState<Pt[]>(makeDefault);\n  const [dragIdx, setDragIdx] = useState<number | null>(null);\n  const [copied, setCopied] = useState(false);\n  const [importText, setImportText] = useState(\"\");\n..."
+    },
+    {
+      "id": "cb_000061",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PathEditor",
+      "line_start": 382,
+      "line_end": 541,
+      "keywords": [
+        "const",
+        "math",
+        "bank",
+        "currentlen",
+        "current",
+        "if",
+        "let",
+        "min",
+        "math.min",
+        "path",
+        "pitch",
+        "dtheta",
+        "el",
+        "lastdotidx",
+        "now",
+        "pitchvalue",
+        "speedfactor",
+        "stability",
+        "back",
+        "bankangle",
+        "dt",
+        "fwd",
+        "getpointatlength",
+        "max",
+        "parsed"
+      ],
+      "preview": "const BANK_RESPONSE = 4.2;\n    const BANK_WINDOW = 12;\n    const PITCH_TOP_AMT = 0.2;\n    const PITCH_BOTTOM_AMT = 0.32;\n    const PITCH_RESPONSE = 3.5;\n\n    let lastFrameTime = performance.now();\n    let loopStart = lastFrameTime;\n    let currentLen = 0;\n    ..."
+    },
+    {
+      "id": "cb_000062",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PathEditor",
+      "line_start": 542,
+      "line_end": 701,
+      "keywords": [
+        "classname",
+        "div",
+        "full",
+        "border",
+        "last",
+        "to",
+        "bg",
+        "key",
+        "length",
+        "rounded",
+        "const",
+        "none",
+        "offset",
+        "path",
+        "points",
+        "stop",
+        "stopcolor",
+        "bg-",
+        "dot",
+        "e3dfd9",
+        "p.length",
+        "style",
+        "tangents",
+        "text",
+        "vb"
+      ],
+      "preview": "};\n\n  const addSegment = () => {\n    setPoints((p) => {\n      if (p.length === 0) return p;\n      const last = p[p.length - 1];\n      return [\n        ...p,\n        { x: last.x - 60, y: last.y + 30, kind: \"control\" },\n        { x: last.x - 120, y: last.y + 70,..."
+    },
+    {
+      "id": "cb_000063",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PathEditor",
+      "line_start": 702,
+      "line_end": 861,
+      "keywords": [
+        "button",
+        "border",
+        "classname",
+        "div",
+        "text",
+        "bg",
+        "flex",
+        "center",
+        "gap",
+        "items",
+        "items-center",
+        "rgba",
+        "border-",
+        "plane",
+        "rounded",
+        "fill",
+        "hover",
+        "path",
+        "size",
+        "text-xs",
+        "type",
+        "xs",
+        "e3dfd9",
+        "gap-1",
+        "hover:bg-"
+      ],
+      "preview": "{/* Plane preview \u2014 same layered structure as production. The\n              editor loops continuously, so there's no flat-icon \u2192 rich\n              cross-fade; the plane stays in its rich state. Bank and\n              pitch dynamics are driven from the RAF and..."
+    },
+    {
+      "id": "cb_000064",
+      "path": "code/PathEditor.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "PathEditor",
+      "line_start": 862,
+      "line_end": 930,
+      "keywords": [
+        "div",
+        "text",
+        "classname",
+        "border",
+        "strong",
+        "foreground",
+        "text-foreground",
+        "text-",
+        "border-",
+        "anchor",
+        "11px",
+        "bg",
+        "e3dfd9",
+        "font",
+        "path",
+        "rounded",
+        "to",
+        "an",
+        "bg-",
+        "button",
+        "control",
+        "faf9f7",
+        "flex",
+        "font-mono",
+        "mono"
+      ],
+      "preview": "<textarea\n          readOnly\n          value={d}\n          onClick={(e) => (e.target as HTMLTextAreaElement).select()}\n          className=\"w-full h-28 p-2.5 text-[11px] font-mono bg-[#faf9f7] border border-[#e3dfd9] rounded resize-none text-foreground\"\n      ..."
+    },
+    {
+      "id": "cb_000065",
+      "path": "code/page.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "<module>",
+      "line_start": 1,
+      "line_end": 7,
+      "keywords": [
+        "import",
+        "copycommand",
+        "herodemo",
+        "installglow",
+        "link",
+        "next",
+        "arrowright",
+        "check",
+        "lucide",
+        "lucide-react",
+        "metadata",
+        "minus",
+        "next/link",
+        "react",
+        "type"
+      ],
+      "preview": "import type { Metadata } from \"next\";\nimport Link from \"next/link\";\nimport { ArrowRight, Check, Minus } from \"lucide-react\";\nimport CopyCommand from \"./CopyCommand\";\nimport HeroDemo from \"./HeroDemo\";\nimport InstallGlow from \"./InstallGlow\";"
+    },
+    {
+      "id": "cb_000066",
+      "path": "code/page.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "metadata",
+      "line_start": 8,
+      "line_end": 26,
+      "keywords": [
+        "audio",
+        "back",
+        "description",
+        "description:",
+        "dev",
+        "feedback",
+        "get",
+        "in",
+        "instantly",
+        "leave",
+        "live",
+        "localhost",
+        "memo",
+        "on",
+        "page",
+        "public",
+        "right",
+        "seconds",
+        "server",
+        "share",
+        "stoa",
+        "stream",
+        "terminal",
+        "title",
+        "title:"
+      ],
+      "preview": "export const metadata: Metadata = {\n  title: \"Share localhost. Get live feedback, instantly. | Stoa\",\n  description:\n    \"ShareLocalhost gives you a public URL for your dev server in seconds. Viewers leave a voice memo right on the page. Audio and transcript s..."
+    },
+    {
+      "id": "cb_000067",
+      "path": "code/page.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "Cell",
+      "line_start": 27,
+      "line_end": 28,
+      "keywords": [
+        "kind",
+        "kind:",
+        "text",
+        "cell",
+        "no",
+        "string",
+        "text:",
+        "type",
+        "yes"
+      ],
+      "preview": "type Cell = { kind: \"yes\" } | { kind: \"no\" } | { kind: \"text\"; text: string };"
+    },
+    {
+      "id": "cb_000068",
+      "path": "code/page.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "compareRows",
+      "line_start": 29,
+      "line_end": 72,
+      "keywords": [
+        "kind",
+        "kind:",
+        "no",
+        "yes",
+        "cloudflare",
+        "cloudflare:",
+        "label",
+        "label:",
+        "ngrok",
+        "ngrok:",
+        "stoa",
+        "stoa:",
+        "cell",
+        "account",
+        "agent",
+        "agent-ready",
+        "auto",
+        "auto-transcription",
+        "capture",
+        "comparerows",
+        "comparerows:",
+        "const",
+        "feedback",
+        "file",
+        "free"
+      ],
+      "preview": "const compareRows: {\n  label: string;\n  stoa: Cell;\n  ngrok: Cell;\n  cloudflare: Cell;\n}[] = [\n  {\n    label: \"Free account to share\",\n    stoa: { kind: \"yes\" },\n    ngrok: { kind: \"yes\" },\n    cloudflare: { kind: \"no\" },\n  },\n  {\n    label: \"Voice memo captur..."
+    },
+    {
+      "id": "cb_000069",
+      "path": "code/page.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "CompareCell",
+      "line_start": 73,
+      "line_end": 92,
+      "keywords": [
+        "cell",
+        "text",
+        "classname",
+        "return",
+        "text-",
+        "aria",
+        "aria-label",
+        "auto",
+        "cell.kind",
+        "if",
+        "kind",
+        "label",
+        "mx",
+        "mx-auto",
+        "no",
+        "size",
+        "span",
+        "var",
+        "yes",
+        "accent",
+        "c4bfb9",
+        "cell.text",
+        "cell:",
+        "check",
+        "comparecell"
+      ],
+      "preview": "function CompareCell({ cell }: { cell: Cell }) {\n  if (cell.kind === \"yes\") {\n    return (\n      <Check\n        size={16}\n        className=\"text-[var(--accent)] mx-auto\"\n        aria-label=\"Yes\"\n      />\n    );\n  }\n  if (cell.kind === \"no\") {\n    return (\n   ..."
+    },
+    {
+      "id": "cb_000070",
+      "path": "code/page.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "ShareLocalhostPage",
+      "line_start": 93,
+      "line_end": 252,
+      "keywords": [
+        "text",
+        "classname",
+        "div",
+        "span",
+        "font",
+        "md",
+        "border",
+        "center",
+        "var",
+        "accent",
+        "bg",
+        "text-",
+        "foreground",
+        "relative",
+        "rounded",
+        "white",
+        "mt",
+        "text-foreground",
+        "backdrop",
+        "bg-",
+        "flex",
+        "flight",
+        "font-medium",
+        "full",
+        "hidden"
+      ],
+      "preview": "export default function ShareLocalhostPage() {\n  return (\n    <div className=\"bg-elevated\">\n      {/* \u2500\u2500 Hero \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */}\n      <section className=\"relative pt-20 md:pt-28 pb-24 md:pb-32 overflow-hidden\">\n        <di..."
+    },
+    {
+      "id": "cb_000071",
+      "path": "code/page.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "ShareLocalhostPage",
+      "line_start": 253,
+      "line_end": 412,
+      "keywords": [
+        "text",
+        "div",
+        "classname",
+        "font",
+        "sm",
+        "border",
+        "center",
+        "md",
+        "var",
+        "text-",
+        "accent",
+        "font-sans",
+        "sans",
+        "gap",
+        "text-center",
+        "mb",
+        "span",
+        "foreground",
+        "muted",
+        "text-foreground",
+        "bg",
+        "border-border-muted",
+        "flex",
+        "h3",
+        "leading"
+      ],
+      "preview": "<div className=\"space-y-6 text-lg font-sans text-[#6b6560] leading-relaxed\">\n            <p>\n              You built something worth showing. A demo, a half-finished\n              feature, a Saturday side project. You want eyes on it now, on\n              some..."
+    },
+    {
+      "id": "cb_000072",
+      "path": "code/page.tsx",
+      "kind": "code",
+      "language": "typescript",
+      "symbol": "ShareLocalhostPage",
+      "line_start": 413,
+      "line_end": 473,
+      "keywords": [
+        "text",
+        "font",
+        "classname",
+        "div",
+        "flex",
+        "md",
+        "border",
+        "font-sans",
+        "mb",
+        "sans",
+        "bg",
+        "you",
+        "accent",
+        "center",
+        "font-medium",
+        "h2",
+        "leading",
+        "link",
+        "mb-4",
+        "medium",
+        "px",
+        "sm",
+        "text-",
+        "tracking",
+        "var"
+      ],
+      "preview": "<section className=\"pt-20 md:pt-28 pb-24 md:pb-32\">\n        <div className=\"max-w-5xl mx-auto px-6\">\n          <div className=\"grid md:grid-cols-2 gap-px bg-border-muted rounded-md overflow-hidden border border-border-muted\">\n            {/* Left: Ship the dem..."
+    },
+    {
+      "id": "cb_000073",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": null,
+      "line_start": 1,
+      "line_end": 4,
+      "keywords": [
+        "specstory",
+        "19t20",
+        "2026",
+        "2026-05-19t20:48:04.864z",
+        "4161",
+        "5db4",
+        "864z",
+        "9c51",
+        "9f547894",
+        "9f547894-5db4-4161-9c51-fcba42f270d8",
+        "by",
+        "cli",
+        "fcba42f270d8",
+        "generated",
+        "markdown",
+        "specstory-cli",
+        "v2",
+        "v2.1.0"
+      ],
+      "preview": "<!-- Generated by SpecStory, Markdown v2.1.0 -->\n\n<!-- specstory-cli 9f547894-5db4-4161-9c51-fcba42f270d8 (2026-05-19T20:48:04.864Z) -->"
+    },
+    {
+      "id": "cb_000074",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "2026-05-05_16-08-36Z-im-wokring-on-the 2026-05-05T16:08:36.860Z",
+      "line_start": 5,
+      "line_end": 18,
+      "keywords": [
+        "2026",
+        "2026-05-05",
+        "agent",
+        "claude",
+        "claude-opus-4-7",
+        "good",
+        "is",
+        "opus",
+        "out",
+        "path",
+        "05t16",
+        "10z",
+        "16:46:47z",
+        "16:47:10z",
+        "16:47:22z",
+        "2026-05-05_16-08-36z-im-wokring-on-the",
+        "2026-05-05t16:08:36.860z",
+        "22z",
+        "36z",
+        "47z",
+        "860z",
+        "answer",
+        "are",
+        "be",
+        "be:"
+      ],
+      "preview": "# 2026-05-05_16-08-36Z-im-wokring-on-the 2026-05-05T16:08:36.860Z\n\n_**User (2026-05-05 16:46:47Z)**_\n\nthe plane path is so rough. whats a better way to help draw a path out for you?\n\n---\n\n_**Agent (claude-opus-4-7 2026-05-05 16:47:10Z)**_\n\n_**Agent (claude-opu..."
+    },
+    {
+      "id": "cb_000075",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "1. Best: draw it in a vector editor and send me the SVG `d` string",
+      "line_start": 19,
+      "line_end": 26,
+      "keywords": [
+        "it",
+        "in",
+        "you",
+        "me",
+        "at",
+        "path",
+        "re",
+        "svg",
+        "button",
+        "curve",
+        "demo",
+        "editor",
+        "ll",
+        "to",
+        "aligned",
+        "an",
+        "anchor",
+        "any",
+        "around",
+        "artboard",
+        "attribute",
+        "below",
+        "best",
+        "best:",
+        "browser"
+      ],
+      "preview": "### 1. Best: draw it in a vector editor and send me the SVG `d` string\n- Open Figma (or Illustrator / Inkscape / [SvgPathEditor](https://yqnn.github.io/svg-path-editor/) \u2014 free in browser)\n- Make an artboard at **800 \u00d7 400** (matches the demo's viewBox)\n- Pen-..."
+    },
+    {
+      "id": "cb_000076",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "2. Fast: annotate a screenshot",
+      "line_start": 27,
+      "line_end": 29,
+      "keywords": [
+        "or",
+        "screenshot",
+        "an",
+        "annotate",
+        "arrow",
+        "back",
+        "be",
+        "beziers",
+        "circle",
+        "current",
+        "demo",
+        "draw",
+        "fast",
+        "fast:",
+        "fewer",
+        "finger",
+        "in",
+        "it",
+        "loop",
+        "midpoints",
+        "of",
+        "one",
+        "option",
+        "path",
+        "pen"
+      ],
+      "preview": "### 2. Fast: annotate a screenshot\nTake a screenshot of the demo, draw the path with a pen/finger in Preview or Skitch (just an arrow with one or two midpoints + a circle for where the loop should be), send it back. I translate the sketch into Beziers. Fewer r..."
+    },
+    {
+      "id": "cb_000077",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "3. Iterate live: I add a debug overlay",
+      "line_start": 30,
+      "line_end": 707,
+      "keywords": [
+        "const",
+        "kind",
+        "kind:",
+        "x:",
+        "y:",
+        "path",
+        "return",
+        "control",
+        "classname",
+        "null",
+        "anchor",
+        "div",
+        "if",
+        "pt",
+        "apexx",
+        "to",
+        "border",
+        "number",
+        "pts",
+        "points",
+        "apexy",
+        "full",
+        "string",
+        "sy",
+        "vb"
+      ],
+      "preview": "### 3. Iterate live: I add a debug overlay\nI can ship a `?debugPath=1` mode right now that renders the current path as a visible stroke over the demo with numbered waypoint dots. You'd see exactly what curve I built and could say \"waypoint 3 is too far left, d..."
+    },
+    {
+      "id": "cb_000078",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "Open the editor",
+      "line_start": 708,
+      "line_end": 710,
+      "keywords": [
+        "editor",
+        "animated",
+        "by",
+        "demo",
+        "editpath",
+        "is",
+        "navigate",
+        "open",
+        "replaced",
+        "sharelocalhost",
+        "to"
+      ],
+      "preview": "### Open the editor\nNavigate to **`/sharelocalhost?editPath=1`**. The animated demo is replaced by the editor."
+    },
+    {
+      "id": "cb_000079",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "What you'll see",
+      "line_start": 711,
+      "line_end": 717,
+      "keywords": [
+        "path",
+        "you",
+        "anchor",
+        "dashed",
+        "handles",
+        "indigo",
+        "plane",
+        "real",
+        "see",
+        "white",
+        "animation",
+        "as",
+        "at",
+        "bar",
+        "border",
+        "by",
+        "can",
+        "chrome",
+        "chrome/url",
+        "circles",
+        "connected",
+        "continuously",
+        "control",
+        "current",
+        "curvature"
+      ],
+      "preview": "### What you'll see\n- A faint dashed outline of where the chrome/URL bar sits (for spatial reference \u2014 same position as the real demo)\n- The current flight path drawn in indigo\n- A live plane preview that loops the path continuously at the real animation speed..."
+    },
+    {
+      "id": "cb_000080",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "Edit",
+      "line_start": 718,
+      "line_end": 722,
+      "keywords": [
+        "add",
+        "any",
+        "anywhere",
+        "at",
+        "bottom",
+        "bounds",
+        "buttons",
+        "can",
+        "cubic",
+        "current",
+        "default",
+        "demo",
+        "down",
+        "drag",
+        "drags",
+        "edit",
+        "end",
+        "go",
+        "handle",
+        "headline",
+        "on",
+        "or",
+        "outside",
+        "page",
+        "past"
+      ],
+      "preview": "### Edit\n- **Drag any handle** anywhere on the page (drags work outside the demo bounds \u2014 the path can go up into the headline space, down past the bottom)\n- **+/- Segment** buttons add or remove a cubic at the end\n- **Reset** restores the current production d..."
+    },
+    {
+      "id": "cb_000081",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "Output",
+      "line_start": 723,
+      "line_end": 727,
+      "keywords": [
+        "to",
+        "all",
+        "back",
+        "below",
+        "button",
+        "chat",
+        "click",
+        "copy",
+        "editor",
+        "editor:",
+        "in",
+        "it",
+        "live",
+        "me",
+        "output",
+        "paste",
+        "select",
+        "string",
+        "textarea"
+      ],
+      "preview": "### Output\nBelow the editor:\n- A textarea with the live `d` string \u2014 click to select all\n- A **Copy** button \u2014 paste it back to me in chat"
+    },
+    {
+      "id": "cb_000082",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "Round-trip",
+      "line_start": 728,
+      "line_end": 1063,
+      "keywords": [
+        "tool",
+        "use",
+        "div",
+        "classname",
+        "data",
+        "summary",
+        "details",
+        "tool-use",
+        "2026",
+        "2026-05-05",
+        "claude",
+        "agent",
+        "claude-opus-4-7",
+        "opus",
+        "app",
+        "border",
+        "sharelocalhost",
+        "src",
+        "text",
+        "tsx",
+        "button",
+        "type",
+        "patheditor",
+        "edit",
+        "bg"
+      ],
+      "preview": "### Round-trip\nThere's also an **Import** field \u2014 if I send you a new path, paste the `d` string in there and hit Load to start tweaking from my version.\n\nOnce you paste me a path back, I'll wire it into the production hero (auto-anchored to the live button po..."
+    },
+    {
+      "id": "cb_000083",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "Editor behavior",
+      "line_start": 1064,
+      "line_end": 1070,
+      "keywords": [
+        "anchor",
+        "control",
+        "dragging",
+        "through",
+        "alt",
+        "curve",
+        "drag",
+        "editor",
+        "of",
+        "on",
+        "partner",
+        "path",
+        "runs",
+        "smooth",
+        "to",
+        "across",
+        "all",
+        "alt-dragging",
+        "an",
+        "any",
+        "behavior",
+        "bends",
+        "break",
+        "button",
+        "by"
+      ],
+      "preview": "### Editor behavior\n- **Anchor drag** now translates both flanking control points by the same delta \u2014 moving an anchor preserves the curve's local shape instead of stretching it.\n- **Control drag** keeps its partner across the shared anchor **collinear** (smoo..."
+    },
+    {
+      "id": "cb_000084",
+      "path": "transcript.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "Production flight (and editor preview)",
+      "line_start": 1071,
+      "line_end": 1499,
+      "keywords": [
+        "tool",
+        "use",
+        "const",
+        "data",
+        "details",
+        "summary",
+        "tool-use",
+        "sharelocalhost",
+        "app",
+        "src",
+        "tsx",
+        "2026",
+        "2026-05-05",
+        "agent",
+        "claude",
+        "claude-opus-4-7",
+        "opus",
+        "herodemo",
+        "math",
+        "of",
+        "type",
+        "read",
+        "path",
+        "data-tool-name",
+        "data-tool-type"
+      ],
+      "preview": "### Production flight (and editor preview)\n- **Centered-difference tangent estimation** \u2014 the plane's rotation is computed from a small window on either side of its current position rather than just one frame ahead. Any small kinks that remain get visually smo..."
+    }
+  ],
+  "indices": {
+    "keyword_index": {
+      "https": [
+        "cb_000001"
+      ],
+      "back": [
+        "cb_000001",
+        "cb_000004",
+        "cb_000021",
+        "cb_000035",
+        "cb_000042",
+        "cb_000061",
+        "cb_000066",
+        "cb_000076",
+        "cb_000081"
+      ],
+      "com": [
+        "cb_000001",
+        "cb_000011"
+      ],
+      "is": [
+        "cb_000001",
+        "cb_000003",
+        "cb_000004",
+        "cb_000013",
+        "cb_000018",
+        "cb_000021",
+        "cb_000029",
+        "cb_000030",
+        "cb_000035",
+        "cb_000037",
+        "cb_000056",
+        "cb_000074",
+        "cb_000078"
+      ],
+      "jig": [
+        "cb_000001",
+        "cb_000003",
+        "cb_000004"
+      ],
+      "blog": [
+        "cb_000001",
+        "cb_000002"
+      ],
+      "chat": [
+        "cb_000001",
+        "cb_000002",
+        "cb_000081"
+      ],
+      "history": [
+        "cb_000001"
+      ],
+      "md": [
+        "cb_000001",
+        "cb_000003",
+        "cb_000004",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "sharelocalhost": [
+        "cb_000001",
+        "cb_000008",
+        "cb_000014",
+        "cb_000078",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "specstory": [
+        "cb_000001",
+        "cb_000073"
+      ],
+      "transcript": [
+        "cb_000001"
+      ],
+      "transcript.md": [
+        "cb_000001"
+      ],
+      "withstoa": [
+        "cb_000001"
+      ],
+      "ai": [
+        "cb_000001",
+        "cb_000004"
+      ],
+      "animation": [
+        "cb_000001",
+        "cb_000040",
+        "cb_000042",
+        "cb_000044",
+        "cb_000079"
+      ],
+      "awqovbrassq": [
+        "cb_000001"
+      ],
+      "be": [
+        "cb_000001",
+        "cb_000074",
+        "cb_000076"
+      ],
+      "behind": [
+        "cb_000001",
+        "cb_000040"
+      ],
+      "button": [
+        "cb_000001",
+        "cb_000002",
+        "cb_000007",
+        "cb_000008",
+        "cb_000014",
+        "cb_000018",
+        "cb_000029",
+        "cb_000030",
+        "cb_000031",
+        "cb_000053",
+        "cb_000063",
+        "cb_000064",
+        "cb_000075",
+        "cb_000081",
+        "cb_000082",
+        "cb_000083"
+      ],
+      "captured": [
+        "cb_000001"
+      ],
+      "code": [
+        "cb_000001",
+        "cb_000002",
+        "cb_000004"
+      ],
+      "down": [
+        "cb_000001",
+        "cb_000018",
+        "cb_000040",
+        "cb_000080"
+      ],
+      "flies": [
+        "cb_000001"
+      ],
+      "hero": [
+        "cb_000001",
+        "cb_000040",
+        "cb_000042",
+        "cb_000052"
+      ],
+      "built": [
+        "cb_000002"
+      ],
+      "hand": [
+        "cb_000002",
+        "cb_000014"
+      ],
+      "path": [
+        "cb_000002",
+        "cb_000008",
+        "cb_000014",
+        "cb_000015",
+        "cb_000016",
+        "cb_000017",
+        "cb_000025",
+        "cb_000030",
+        "cb_000034",
+        "cb_000035",
+        "cb_000037",
+        "cb_000038",
+        "cb_000042",
+        "cb_000052",
+        "cb_000060",
+        "cb_000061",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064",
+        "cb_000074",
+        "cb_000075",
+        "cb_000076",
+        "cb_000077",
+        "cb_000079",
+        "cb_000083",
+        "cb_000084"
+      ],
+      "plane": [
+        "cb_000002",
+        "cb_000008",
+        "cb_000011",
+        "cb_000018",
+        "cb_000021",
+        "cb_000022",
+        "cb_000023",
+        "cb_000024",
+        "cb_000025",
+        "cb_000027",
+        "cb_000028",
+        "cb_000029",
+        "cb_000030",
+        "cb_000034",
+        "cb_000035",
+        "cb_000036",
+        "cb_000037",
+        "cb_000038",
+        "cb_000046",
+        "cb_000047",
+        "cb_000048",
+        "cb_000049",
+        "cb_000050",
+        "cb_000054",
+        "cb_000063",
+        "cb_000079"
+      ],
+      "production": [
+        "cb_000002",
+        "cb_000044",
+        "cb_000052"
+      ],
+      "we": [
+        "cb_000002"
+      ],
+      "an": [
+        "cb_000002",
+        "cb_000003",
+        "cb_000064",
+        "cb_000075",
+        "cb_000076",
+        "cb_000083"
+      ],
+      "animated": [
+        "cb_000002",
+        "cb_000008",
+        "cb_000042",
+        "cb_000078"
+      ],
+      "as": [
+        "cb_000002",
+        "cb_000003",
+        "cb_000021",
+        "cb_000029",
+        "cb_000041",
+        "cb_000042",
+        "cb_000079"
+      ],
+      "at": [
+        "cb_000002",
+        "cb_000003",
+        "cb_000008",
+        "cb_000014",
+        "cb_000021",
+        "cb_000027",
+        "cb_000029",
+        "cb_000031",
+        "cb_000035",
+        "cb_000036",
+        "cb_000041",
+        "cb_000054",
+        "cb_000056",
+        "cb_000075",
+        "cb_000079",
+        "cb_000080"
+      ],
+      "authored": [
+        "cb_000002",
+        "cb_000008",
+        "cb_000014"
+      ],
+      "bezier": [
+        "cb_000002",
+        "cb_000042",
+        "cb_000058"
+      ],
+      "building": [
+        "cb_000002"
+      ],
+      "code/": [
+        "cb_000002",
+        "cb_000004"
+      ],
+      "coding": [
+        "cb_000002"
+      ],
+      "control": [
+        "cb_000002",
+        "cb_000003",
+        "cb_000051",
+        "cb_000053",
+        "cb_000054",
+        "cb_000055",
+        "cb_000056",
+        "cb_000059",
+        "cb_000060",
+        "cb_000064",
+        "cb_000077",
+        "cb_000079",
+        "cb_000083"
+      ],
+      "converge": [
+        "cb_000002"
+      ],
+      "copy": [
+        "cb_000002",
+        "cb_000005",
+        "cb_000007",
+        "cb_000042",
+        "cb_000081"
+      ],
+      "cubic": [
+        "cb_000002",
+        "cb_000042",
+        "cb_000056",
+        "cb_000058",
+        "cb_000080"
+      ],
+      "cubic-bezier": [
+        "cb_000002",
+        "cb_000058"
+      ],
+      "curve": [
+        "cb_000002",
+        "cb_000075",
+        "cb_000083"
+      ],
+      "anchor": [
+        "cb_000003",
+        "cb_000014",
+        "cb_000042",
+        "cb_000051",
+        "cb_000053",
+        "cb_000054",
+        "cb_000055",
+        "cb_000056",
+        "cb_000059",
+        "cb_000060",
+        "cb_000064",
+        "cb_000075",
+        "cb_000077",
+        "cb_000079",
+        "cb_000083"
+      ],
+      "based": [
+        "cb_000003"
+      ],
+      "in": [
+        "cb_000003",
+        "cb_000014",
+        "cb_000021",
+        "cb_000027",
+        "cb_000029",
+        "cb_000030",
+        "cb_000036",
+        "cb_000066",
+        "cb_000075",
+        "cb_000076",
+        "cb_000081"
+      ],
+      "of": [
+        "cb_000003",
+        "cb_000004",
+        "cb_000021",
+        "cb_000029",
+        "cb_000035",
+        "cb_000055",
+        "cb_000056",
+        "cb_000076",
+        "cb_000083",
+        "cb_000084"
+      ],
+      "reveal": [
+        "cb_000003"
+      ],
+      "to": [
+        "cb_000003",
+        "cb_000008",
+        "cb_000027",
+        "cb_000034",
+        "cb_000035",
+        "cb_000036",
+        "cb_000038",
+        "cb_000042",
+        "cb_000062",
+        "cb_000064",
+        "cb_000075",
+        "cb_000077",
+        "cb_000078",
+        "cb_000081",
+        "cb_000083"
+      ],
+      "trail": [
+        "cb_000003",
+        "cb_000017"
+      ],
+      "anchors": [
+        "cb_000003",
+        "cb_000042"
+      ],
+      "are": [
+        "cb_000003",
+        "cb_000074"
+      ],
+      "current": [
+        "cb_000003",
+        "cb_000034",
+        "cb_000035",
+        "cb_000036",
+        "cb_000060",
+        "cb_000061",
+        "cb_000076",
+        "cb_000079",
+        "cb_000080"
+      ],
+      "dragging": [
+        "cb_000003",
+        "cb_000083"
+      ],
+      "editor": [
+        "cb_000003",
+        "cb_000014",
+        "cb_000033",
+        "cb_000042",
+        "cb_000058",
+        "cb_000075",
+        "cb_000078",
+        "cb_000081",
+        "cb_000083"
+      ],
+      "editpath": [
+        "cb_000003",
+        "cb_000014",
+        "cb_000033",
+        "cb_000078"
+      ],
+      "handles": [
+        "cb_000003",
+        "cb_000079"
+      ],
+      "its": [
+        "cb_000003"
+      ],
+      "live": [
+        "cb_000003",
+        "cb_000009",
+        "cb_000042",
+        "cb_000066",
+        "cb_000081"
+      ],
+      "mask": [
+        "cb_000003",
+        "cb_000037"
+      ],
+      "mask-based": [
+        "cb_000003"
+      ],
+      "tsx": [
+        "cb_000004",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "capture": [
+        "cb_000004",
+        "cb_000068"
+      ],
+      "copycommand": [
+        "cb_000004",
+        "cb_000065"
+      ],
+      "copycommand.tsx": [
+        "cb_000004"
+      ],
+      "herodemo": [
+        "cb_000004",
+        "cb_000033",
+        "cb_000044",
+        "cb_000046",
+        "cb_000065",
+        "cb_000084"
+      ],
+      "herodemo.tsx": [
+        "cb_000004"
+      ],
+      "installglow": [
+        "cb_000004",
+        "cb_000065"
+      ],
+      "installglow.tsx": [
+        "cb_000004"
+      ],
+      "layout": [
+        "cb_000004"
+      ],
+      "page": [
+        "cb_000004",
+        "cb_000066",
+        "cb_000080"
+      ],
+      "page.tsx": [
+        "cb_000004"
+      ],
+      "patheditor": [
+        "cb_000004",
+        "cb_000008",
+        "cb_000082"
+      ],
+      "patheditor.tsx": [
+        "cb_000004"
+      ],
+      "readme": [
+        "cb_000004"
+      ],
+      "readme.md": [
+        "cb_000004"
+      ],
+      "repo": [
+        "cb_000004"
+      ],
+      "session": [
+        "cb_000004"
+      ],
+      "import": [
+        "cb_000005",
+        "cb_000008",
+        "cb_000040",
+        "cb_000042",
+        "cb_000065"
+      ],
+      "react": [
+        "cb_000005",
+        "cb_000008",
+        "cb_000042",
+        "cb_000065"
+      ],
+      "check": [
+        "cb_000005",
+        "cb_000042",
+        "cb_000065",
+        "cb_000069"
+      ],
+      "client": [
+        "cb_000005",
+        "cb_000008",
+        "cb_000040",
+        "cb_000042"
+      ],
+      "lucide": [
+        "cb_000005",
+        "cb_000065"
+      ],
+      "lucide-react": [
+        "cb_000005",
+        "cb_000065"
+      ],
+      "use": [
+        "cb_000005",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "usestate": [
+        "cb_000005",
+        "cb_000034",
+        "cb_000060"
+      ],
+      "copycommandprops": [
+        "cb_000006"
+      ],
+      "interface": [
+        "cb_000006"
+      ],
+      "lines": [
+        "cb_000006",
+        "cb_000007",
+        "cb_000014"
+      ],
+      "lines:": [
+        "cb_000006"
+      ],
+      "string": [
+        "cb_000006",
+        "cb_000058",
+        "cb_000067",
+        "cb_000077",
+        "cb_000081"
+      ],
+      "text": [
+        "cb_000007",
+        "cb_000039",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064",
+        "cb_000067",
+        "cb_000069",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072",
+        "cb_000082"
+      ],
+      "classname": [
+        "cb_000007",
+        "cb_000032",
+        "cb_000038",
+        "cb_000039",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064",
+        "cb_000069",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072",
+        "cb_000077",
+        "cb_000082"
+      ],
+      "div": [
+        "cb_000007",
+        "cb_000038",
+        "cb_000039",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072",
+        "cb_000077",
+        "cb_000082"
+      ],
+      "border": [
+        "cb_000007",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072",
+        "cb_000077",
+        "cb_000079",
+        "cb_000082"
+      ],
+      "copied": [
+        "cb_000007"
+      ],
+      "var": [
+        "cb_000007",
+        "cb_000069",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "accent": [
+        "cb_000007",
+        "cb_000069",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "line": [
+        "cb_000007"
+      ],
+      "setcopied": [
+        "cb_000007"
+      ],
+      "sm": [
+        "cb_000007",
+        "cb_000038",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "text-": [
+        "cb_000007",
+        "cb_000064",
+        "cb_000069",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "bg": [
+        "cb_000007",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072",
+        "cb_000082"
+      ],
+      "center": [
+        "cb_000007",
+        "cb_000039",
+        "cb_000063",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "clipboard": [
+        "cb_000007"
+      ],
+      "const": [
+        "cb_000007",
+        "cb_000010",
+        "cb_000011",
+        "cb_000012",
+        "cb_000013",
+        "cb_000014",
+        "cb_000015",
+        "cb_000016",
+        "cb_000017",
+        "cb_000018",
+        "cb_000019",
+        "cb_000020",
+        "cb_000022",
+        "cb_000023",
+        "cb_000024",
+        "cb_000025",
+        "cb_000026",
+        "cb_000027",
+        "cb_000028",
+        "cb_000029",
+        "cb_000031",
+        "cb_000033",
+        "cb_000034",
+        "cb_000035",
+        "cb_000036",
+        "cb_000037",
+        "cb_000041",
+        "cb_000043",
+        "cb_000044",
+        "cb_000045",
+        "cb_000046",
+        "cb_000047",
+        "cb_000048",
+        "cb_000049",
+        "cb_000050",
+        "cb_000053",
+        "cb_000055",
+        "cb_000056",
+        "cb_000057",
+        "cb_000059",
+        "cb_000060",
+        "cb_000061",
+        "cb_000062",
+        "cb_000068",
+        "cb_000077",
+        "cb_000084"
+      ],
+      "false": [
+        "cb_000007",
+        "cb_000033"
+      ],
+      "hover": [
+        "cb_000007",
+        "cb_000063"
+      ],
+      "oncopy": [
+        "cb_000007"
+      ],
+      "rounded": [
+        "cb_000007",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064",
+        "cb_000070"
+      ],
+      "shadow": [
+        "cb_000007",
+        "cb_000037"
+      ],
+      "size": [
+        "cb_000007",
+        "cb_000027",
+        "cb_000031",
+        "cb_000063",
+        "cb_000069"
+      ],
+      "span": [
+        "cb_000007",
+        "cb_000038",
+        "cb_000039",
+        "cb_000069",
+        "cb_000070",
+        "cb_000071"
+      ],
+      "motion": [
+        "cb_000008",
+        "cb_000038",
+        "cb_000039",
+        "cb_000040",
+        "cb_000041"
+      ],
+      "localhost": [
+        "cb_000008",
+        "cb_000010",
+        "cb_000066"
+      ],
+      "public": [
+        "cb_000008",
+        "cb_000011",
+        "cb_000066"
+      ],
+      "share": [
+        "cb_000008",
+        "cb_000011",
+        "cb_000018",
+        "cb_000066"
+      ],
+      "url": [
+        "cb_000008",
+        "cb_000010",
+        "cb_000011",
+        "cb_000020",
+        "cb_000021",
+        "cb_000035",
+        "cb_000037"
+      ],
+      "3000": [
+        "cb_000008",
+        "cb_000010"
+      ],
+      "address": [
+        "cb_000008"
+      ],
+      "animatepresence": [
+        "cb_000008",
+        "cb_000032"
+      ],
+      "bottom": [
+        "cb_000008",
+        "cb_000021",
+        "cb_000024",
+        "cb_000049",
+        "cb_000080"
+      ],
+      "browser": [
+        "cb_000008",
+        "cb_000075"
+      ],
+      "browser-chrome": [
+        "cb_000008"
+      ],
+      "chrome": [
+        "cb_000008",
+        "cb_000079"
+      ],
+      "clean": [
+        "cb_000008"
+      ],
+      "framein": [
+        "cb_000009"
+      ],
+      "idle": [
+        "cb_000009"
+      ],
+      "init": [
+        "cb_000009"
+      ],
+      "shareclicked": [
+        "cb_000009"
+      ],
+      "stage": [
+        "cb_000009",
+        "cb_000035",
+        "cb_000037"
+      ],
+      "type": [
+        "cb_000009",
+        "cb_000018",
+        "cb_000020",
+        "cb_000021",
+        "cb_000051",
+        "cb_000052",
+        "cb_000063",
+        "cb_000065",
+        "cb_000067",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "localhost:3000": [
+        "cb_000010"
+      ],
+      "private": [
+        "cb_000010"
+      ],
+      "private_url": [
+        "cb_000010"
+      ],
+      "abc123": [
+        "cb_000011"
+      ],
+      "abc123.share.withstoa.com": [
+        "cb_000011"
+      ],
+      "above": [
+        "cb_000011",
+        "cb_000021"
+      ],
+      "below": [
+        "cb_000011",
+        "cb_000075",
+        "cb_000081"
+      ],
+      "beneath": [
+        "cb_000011"
+      ],
+      "can": [
+        "cb_000011",
+        "cb_000042",
+        "cb_000079",
+        "cb_000080"
+      ],
+      "container": [
+        "cb_000011",
+        "cb_000034"
+      ],
+      "fly": [
+        "cb_000011"
+      ],
+      "headline": [
+        "cb_000011",
+        "cb_000080"
+      ],
+      "overflow": [
+        "cb_000011",
+        "cb_000031"
+      ],
+      "overflow:visible": [
+        "cb_000011"
+      ],
+      "public_url": [
+        "cb_000011"
+      ],
+      "renders": [
+        "cb_000011"
+      ],
+      "section": [
+        "cb_000011"
+      ],
+      "so": [
+        "cb_000011",
+        "cb_000014",
+        "cb_000021",
+        "cb_000034",
+        "cb_000035",
+        "cb_000036",
+        "cb_000037",
+        "cb_000044"
+      ],
+      "space": [
+        "cb_000011"
+      ],
+      "svg": [
+        "cb_000011",
+        "cb_000031",
+        "cb_000075"
+      ],
+      "viewbox": [
+        "cb_000011",
+        "cb_000025",
+        "cb_000026",
+        "cb_000027",
+        "cb_000031"
+      ],
+      "visible": [
+        "cb_000011"
+      ],
+      "vb": [
+        "cb_000012",
+        "cb_000013",
+        "cb_000037",
+        "cb_000043",
+        "cb_000044",
+        "cb_000062",
+        "cb_000077"
+      ],
+      "vb_w": [
+        "cb_000012",
+        "cb_000043"
+      ],
+      "deliberate": [
+        "cb_000013"
+      ],
+      "flight": [
+        "cb_000013",
+        "cb_000014",
+        "cb_000015",
+        "cb_000016",
+        "cb_000017",
+        "cb_000029",
+        "cb_000030",
+        "cb_000034",
+        "cb_000035",
+        "cb_000040",
+        "cb_000045",
+        "cb_000070"
+      ],
+      "pacing": [
+        "cb_000013",
+        "cb_000018"
+      ],
+      "showpiece": [
+        "cb_000013"
+      ],
+      "slow": [
+        "cb_000013"
+      ],
+      "vb_h": [
+        "cb_000013",
+        "cb_000037",
+        "cb_000044"
+      ],
+      "origin": [
+        "cb_000014",
+        "cb_000016",
+        "cb_000017"
+      ],
+      "4100": [
+        "cb_000014",
+        "cb_000045"
+      ],
+      "drawn": [
+        "cb_000014"
+      ],
+      "first": [
+        "cb_000014"
+      ],
+      "flight_ms": [
+        "cb_000014",
+        "cb_000045"
+      ],
+      "hand-authored": [
+        "cb_000014"
+      ],
+      "measured": [
+        "cb_000014"
+      ],
+      "ms": [
+        "cb_000014",
+        "cb_000019",
+        "cb_000020",
+        "cb_000021",
+        "cb_000035",
+        "cb_000045"
+      ],
+      "position": [
+        "cb_000014"
+      ],
+      "runtime": [
+        "cb_000014"
+      ],
+      "translate": [
+        "cb_000014"
+      ],
+      "1030": [
+        "cb_000015"
+      ],
+      "1081": [
+        "cb_000015"
+      ],
+      "1114": [
+        "cb_000015"
+      ],
+      "1158": [
+        "cb_000015"
+      ],
+      "1160": [
+        "cb_000015"
+      ],
+      "flight_path": [
+        "cb_000015"
+      ],
+      "flight_path_origin_x": [
+        "cb_000016"
+      ],
+      "along": [
+        "cb_000017"
+      ],
+      "arc": [
+        "cb_000017"
+      ],
+      "between": [
+        "cb_000017",
+        "cb_000029",
+        "cb_000059"
+      ],
+      "denser": [
+        "cb_000017"
+      ],
+      "dots": [
+        "cb_000017"
+      ],
+      "flight_path_origin_y": [
+        "cb_000017"
+      ],
+      "length": [
+        "cb_000017",
+        "cb_000056",
+        "cb_000057",
+        "cb_000062"
+      ],
+      "smaller": [
+        "cb_000017"
+      ],
+      "spacing": [
+        "cb_000017",
+        "cb_000018",
+        "cb_000046"
+      ],
+      "click": [
+        "cb_000018",
+        "cb_000031",
+        "cb_000081"
+      ],
+      "long": [
+        "cb_000018"
+      ],
+      "too": [
+        "cb_000018"
+      ],
+      "begins": [
+        "cb_000018"
+      ],
+      "dot": [
+        "cb_000018",
+        "cb_000037",
+        "cb_000046",
+        "cb_000062"
+      ],
+      "dot_spacing": [
+        "cb_000018",
+        "cb_000046"
+      ],
+      "drags": [
+        "cb_000018",
+        "cb_000080"
+      ],
+      "held": [
+        "cb_000018"
+      ],
+      "how": [
+        "cb_000018"
+      ],
+      "imperceptible": [
+        "cb_000018"
+      ],
+      "it": [
+        "cb_000018",
+        "cb_000054",
+        "cb_000075",
+        "cb_000076",
+        "cb_000081"
+      ],
+      "matters": [
+        "cb_000018"
+      ],
+      "morph": [
+        "cb_000018"
+      ],
+      "response": [
+        "cb_000018"
+      ],
+      "short": [
+        "cb_000018"
+      ],
+      "takeoff": [
+        "cb_000018",
+        "cb_000027"
+      ],
+      "hold": [
+        "cb_000019"
+      ],
+      "press": [
+        "cb_000019"
+      ],
+      "press_hold_ms": [
+        "cb_000019"
+      ],
+      "url_type_ms": [
+        "cb_000020"
+      ],
+      "flap": [
+        "cb_000021",
+        "cb_000024",
+        "cb_000049"
+      ],
+      "spine": [
+        "cb_000021",
+        "cb_000025",
+        "cb_000050"
+      ],
+      "top": [
+        "cb_000021",
+        "cb_000023",
+        "cb_000034",
+        "cb_000048"
+      ],
+      "wing": [
+        "cb_000021",
+        "cb_000023",
+        "cb_000048"
+      ],
+      "math": [
+        "cb_000021",
+        "cb_000035",
+        "cb_000036",
+        "cb_000055",
+        "cb_000060",
+        "cb_000061",
+        "cb_000084"
+      ],
+      "on": [
+        "cb_000021",
+        "cb_000066",
+        "cb_000080",
+        "cb_000083"
+      ],
+      "paper": [
+        "cb_000021"
+      ],
+      "shape": [
+        "cb_000021"
+      ],
+      "1.6:1": [
+        "cb_000021"
+      ],
+      "3/4": [
+        "cb_000021"
+      ],
+      "above-side": [
+        "cb_000021"
+      ],
+      "anatomy": [
+        "cb_000021",
+        "cb_000046"
+      ],
+      "l-12": [
+        "cb_000022",
+        "cb_000023",
+        "cb_000047",
+        "cb_000048"
+      ],
+      "l-3": [
+        "cb_000022",
+        "cb_000023",
+        "cb_000024",
+        "cb_000025",
+        "cb_000047",
+        "cb_000048",
+        "cb_000049",
+        "cb_000050"
+      ],
+      "l-9": [
+        "cb_000022",
+        "cb_000024",
+        "cb_000047",
+        "cb_000049"
+      ],
+      "m15": [
+        "cb_000022",
+        "cb_000023",
+        "cb_000024",
+        "cb_000025",
+        "cb_000047",
+        "cb_000048",
+        "cb_000049",
+        "cb_000050"
+      ],
+      "outline": [
+        "cb_000022",
+        "cb_000030",
+        "cb_000047"
+      ],
+      "plane_outline_d": [
+        "cb_000022",
+        "cb_000030",
+        "cb_000047"
+      ],
+      "plane_top_wing_d": [
+        "cb_000023",
+        "cb_000048"
+      ],
+      "plane_bottom_flap_d": [
+        "cb_000024",
+        "cb_000049"
+      ],
+      "1-unit": [
+        "cb_000025"
+      ],
+      "bounds": [
+        "cb_000025",
+        "cb_000080"
+      ],
+      "encompasses": [
+        "cb_000025"
+      ],
+      "height": [
+        "cb_000025",
+        "cb_000031",
+        "cb_000037"
+      ],
+      "icon": [
+        "cb_000025",
+        "cb_000026",
+        "cb_000027",
+        "cb_000029",
+        "cb_000030",
+        "cb_000031",
+        "cb_000035"
+      ],
+      "icon:": [
+        "cb_000025"
+      ],
+      "inline": [
+        "cb_000025",
+        "cb_000030"
+      ],
+      "margins": [
+        "cb_000025"
+      ],
+      "plane_spine_d": [
+        "cb_000025",
+        "cb_000030",
+        "cb_000050"
+      ],
+      "unit": [
+        "cb_000025"
+      ],
+      "width": [
+        "cb_000025",
+        "cb_000027",
+        "cb_000037"
+      ],
+      "icon_viewbox_w": [
+        "cb_000026",
+        "cb_000031"
+      ],
+      "compute": [
+        "cb_000027"
+      ],
+      "icon_viewbox_h": [
+        "cb_000027",
+        "cb_000031"
+      ],
+      "launch": [
+        "cb_000027",
+        "cb_000035",
+        "cb_000036"
+      ],
+      "matches": [
+        "cb_000027",
+        "cb_000052"
+      ],
+      "native": [
+        "cb_000027",
+        "cb_000028"
+      ],
+      "pixel": [
+        "cb_000027"
+      ],
+      "pixel-for-pixel": [
+        "cb_000027"
+      ],
+      "rendered": [
+        "cb_000027"
+      ],
+      "scale": [
+        "cb_000027",
+        "cb_000032",
+        "cb_000036",
+        "cb_000038",
+        "cb_000041"
+      ],
+      "units": [
+        "cb_000027"
+      ],
+      "plane_native_w": [
+        "cb_000028"
+      ],
+      "bare": [
+        "cb_000029",
+        "cb_000059"
+      ],
+      "cross": [
+        "cb_000029"
+      ],
+      "cross-fade": [
+        "cb_000029"
+      ],
+      "default": [
+        "cb_000029",
+        "cb_000031",
+        "cb_000033",
+        "cb_000052",
+        "cb_000080"
+      ],
+      "dom": [
+        "cb_000029"
+      ],
+      "fade": [
+        "cb_000029",
+        "cb_000036"
+      ],
+      "fading": [
+        "cb_000029"
+      ],
+      "flat": [
+        "cb_000029",
+        "cb_000030"
+      ],
+      "icon_default_px": [
+        "cb_000029",
+        "cb_000031"
+      ],
+      "in-button": [
+        "cb_000029"
+      ],
+      "layer": [
+        "cb_000029",
+        "cb_000030"
+      ],
+      "literally": [
+        "cb_000029"
+      ],
+      "look": [
+        "cb_000029",
+        "cb_000044"
+      ],
+      "no": [
+        "cb_000029",
+        "cb_000067",
+        "cb_000068",
+        "cb_000069"
+      ],
+      "fill": [
+        "cb_000030",
+        "cb_000037",
+        "cb_000038",
+        "cb_000063"
+      ],
+      "paperplaneflatshape": [
+        "cb_000030",
+        "cb_000031"
+      ],
+      "0.18": [
+        "cb_000030"
+      ],
+      "0.5": [
+        "cb_000030",
+        "cb_000032"
+      ],
+      "ensuring": [
+        "cb_000030"
+      ],
+      "function": [
+        "cb_000030",
+        "cb_000031",
+        "cb_000033",
+        "cb_000054",
+        "cb_000057",
+        "cb_000058"
+      ],
+      "handoff": [
+        "cb_000030"
+      ],
+      "identical": [
+        "cb_000030"
+      ],
+      "inside": [
+        "cb_000030"
+      ],
+      "itself": [
+        "cb_000030"
+      ],
+      "none": [
+        "cb_000030",
+        "cb_000062"
+      ],
+      "return": [
+        "cb_000030",
+        "cb_000033",
+        "cb_000034",
+        "cb_000035",
+        "cb_000037",
+        "cb_000054",
+        "cb_000056",
+        "cb_000057",
+        "cb_000058",
+        "cb_000059",
+        "cb_000060",
+        "cb_000069",
+        "cb_000077"
+      ],
+      "ratio": [
+        "cb_000031"
+      ],
+      "aria": [
+        "cb_000031",
+        "cb_000032",
+        "cb_000041",
+        "cb_000069"
+      ],
+      "aria-hidden": [
+        "cb_000031",
+        "cb_000032",
+        "cb_000041"
+      ],
+      "block": [
+        "cb_000031"
+      ],
+      "display": [
+        "cb_000031"
+      ],
+      "display:": [
+        "cb_000031"
+      ],
+      "hidden": [
+        "cb_000031",
+        "cb_000070"
+      ],
+      "number": [
+        "cb_000031",
+        "cb_000034",
+        "cb_000052",
+        "cb_000056",
+        "cb_000058",
+        "cb_000059",
+        "cb_000060",
+        "cb_000077"
+      ],
+      "overflow:": [
+        "cb_000031"
+      ],
+      "active": [
+        "cb_000032"
+      ],
+      "opacity": [
+        "cb_000032",
+        "cb_000036",
+        "cb_000038",
+        "cb_000039",
+        "cb_000041"
+      ],
+      "opacity:": [
+        "cb_000032",
+        "cb_000038",
+        "cb_000039",
+        "cb_000041"
+      ],
+      "0.7": [
+        "cb_000032"
+      ],
+      "scale:": [
+        "cb_000032",
+        "cb_000038",
+        "cb_000041"
+      ],
+      "0.2": [
+        "cb_000032"
+      ],
+      "0.3": [
+        "cb_000032"
+      ],
+      "0.6": [
+        "cb_000032",
+        "cb_000038",
+        "cb_000041"
+      ],
+      "absolute": [
+        "cb_000032",
+        "cb_000041",
+        "cb_000058"
+      ],
+      "active:": [
+        "cb_000032"
+      ],
+      "animate": [
+        "cb_000032",
+        "cb_000038",
+        "cb_000039",
+        "cb_000041"
+      ],
+      "background": [
+        "cb_000032",
+        "cb_000041"
+      ],
+      "background:": [
+        "cb_000032",
+        "cb_000041"
+      ],
+      "boolean": [
+        "cb_000032"
+      ],
+      "clickripple": [
+        "cb_000032"
+      ],
+      "demo": [
+        "cb_000032",
+        "cb_000075",
+        "cb_000076",
+        "cb_000078",
+        "cb_000080"
+      ],
+      "duration": [
+        "cb_000032",
+        "cb_000038",
+        "cb_000039"
+      ],
+      "duration:": [
+        "cb_000032",
+        "cb_000038",
+        "cb_000039"
+      ],
+      "ease": [
+        "cb_000032",
+        "cb_000038",
+        "cb_000039"
+      ],
+      "if": [
+        "cb_000033",
+        "cb_000034",
+        "cb_000035",
+        "cb_000036",
+        "cb_000055",
+        "cb_000056",
+        "cb_000057",
+        "cb_000058",
+        "cb_000059",
+        "cb_000060",
+        "cb_000061",
+        "cb_000069",
+        "cb_000077"
+      ],
+      "mount": [
+        "cb_000033"
+      ],
+      "seteditpath": [
+        "cb_000033"
+      ],
+      "window": [
+        "cb_000033",
+        "cb_000036"
+      ],
+      "acceptable": [
+        "cb_000033"
+      ],
+      "brief": [
+        "cb_000033"
+      ],
+      "dev": [
+        "cb_000033",
+        "cb_000066"
+      ],
+      "dev-only": [
+        "cb_000033"
+      ],
+      "disable": [
+        "cb_000033"
+      ],
+      "effect": [
+        "cb_000033"
+      ],
+      "eslint": [
+        "cb_000033"
+      ],
+      "eslint-disable-next-line": [
+        "cb_000033"
+      ],
+      "export": [
+        "cb_000033"
+      ],
+      "flash": [
+        "cb_000033"
+      ],
+      "has": [
+        "cb_000033",
+        "cb_000058"
+      ],
+      "herodemoinner": [
+        "cb_000033"
+      ],
+      "hooks": [
+        "cb_000033"
+      ],
+      "null": [
+        "cb_000034",
+        "cb_000058",
+        "cb_000059",
+        "cb_000060",
+        "cb_000077"
+      ],
+      "len": [
+        "cb_000034",
+        "cb_000060"
+      ],
+      "target": [
+        "cb_000034"
+      ],
+      "useref": [
+        "cb_000034",
+        "cb_000060"
+      ],
+      "total": [
+        "cb_000034",
+        "cb_000035",
+        "cb_000060"
+      ],
+      "cb": [
+        "cb_000034",
+        "cb_000060"
+      ],
+      "planestart": [
+        "cb_000034"
+      ],
+      "pt": [
+        "cb_000034",
+        "cb_000052",
+        "cb_000054",
+        "cb_000057",
+        "cb_000059",
+        "cb_000077"
+      ],
+      "ro": [
+        "cb_000034"
+      ],
+      "card": [
+        "cb_000034",
+        "cb_000041"
+      ],
+      "containerref": [
+        "cb_000034"
+      ],
+      "svggelement": [
+        "cb_000034"
+      ],
+      "bank": [
+        "cb_000035",
+        "cb_000036",
+        "cb_000061"
+      ],
+      "let": [
+        "cb_000035",
+        "cb_000057",
+        "cb_000059",
+        "cb_000061"
+      ],
+      "pitch": [
+        "cb_000035",
+        "cb_000036",
+        "cb_000061"
+      ],
+      "speed": [
+        "cb_000035"
+      ],
+      "fwd": [
+        "cb_000035",
+        "cb_000061"
+      ],
+      "currentlen": [
+        "cb_000036",
+        "cb_000061"
+      ],
+      "min": [
+        "cb_000036",
+        "cb_000061"
+      ],
+      "kick": [
+        "cb_000036"
+      ],
+      "math.min": [
+        "cb_000036",
+        "cb_000061"
+      ],
+      "stability": [
+        "cb_000036",
+        "cb_000061"
+      ],
+      "dtheta": [
+        "cb_000036",
+        "cb_000061"
+      ],
+      "style": [
+        "cb_000036",
+        "cb_000037",
+        "cb_000062"
+      ],
+      "by": [
+        "cb_000036",
+        "cb_000040",
+        "cb_000042",
+        "cb_000073",
+        "cb_000078",
+        "cb_000079",
+        "cb_000083"
+      ],
+      "dt": [
+        "cb_000036",
+        "cb_000061"
+      ],
+      "offset": [
+        "cb_000037",
+        "cb_000062"
+      ],
+      "stop": [
+        "cb_000037",
+        "cb_000062"
+      ],
+      "stopcolor": [
+        "cb_000037",
+        "cb_000062"
+      ],
+      "2000": [
+        "cb_000037"
+      ],
+      "4000": [
+        "cb_000037"
+      ],
+      "gradient": [
+        "cb_000037"
+      ],
+      "id": [
+        "cb_000037"
+      ],
+      "ispublic": [
+        "cb_000037"
+      ],
+      "rgba": [
+        "cb_000038",
+        "cb_000039",
+        "cb_000041",
+        "cb_000063"
+      ],
+      "ref": [
+        "cb_000038"
+      ],
+      "rotate": [
+        "cb_000038"
+      ],
+      "rotate:": [
+        "cb_000038"
+      ],
+      "ease:": [
+        "cb_000038",
+        "cb_000039"
+      ],
+      "flex": [
+        "cb_000038",
+        "cb_000039",
+        "cb_000063",
+        "cb_000064",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "motion.span": [
+        "cb_000038",
+        "cb_000039"
+      ],
+      "showsharelive": [
+        "cb_000039"
+      ],
+      "0.36": [
+        "cb_000039"
+      ],
+      "y:": [
+        "cb_000039",
+        "cb_000052",
+        "cb_000053",
+        "cb_000060",
+        "cb_000077"
+      ],
+      "4px": [
+        "cb_000039"
+      ],
+      "transition": [
+        "cb_000039",
+        "cb_000041"
+      ],
+      "white": [
+        "cb_000039",
+        "cb_000070",
+        "cb_000079"
+      ],
+      "0.22": [
+        "cb_000039",
+        "cb_000041"
+      ],
+      "0.4": [
+        "cb_000039"
+      ],
+      "inset": [
+        "cb_000039"
+      ],
+      "area": [
+        "cb_000040"
+      ],
+      "install": [
+        "cb_000040"
+      ],
+      "soft": [
+        "cb_000040"
+      ],
+      "ambient": [
+        "cb_000040"
+      ],
+      "attention": [
+        "cb_000040"
+      ],
+      "blooms": [
+        "cb_000040"
+      ],
+      "blur": [
+        "cb_000040",
+        "cb_000041"
+      ],
+      "brand": [
+        "cb_000040"
+      ],
+      "brand-color": [
+        "cb_000040"
+      ],
+      "carries": [
+        "cb_000040"
+      ],
+      "color": [
+        "cb_000040"
+      ],
+      "complete": [
+        "cb_000040"
+      ],
+      "dispatched": [
+        "cb_000040"
+      ],
+      "end": [
+        "cb_000040",
+        "cb_000080"
+      ],
+      "event": [
+        "cb_000040"
+      ],
+      "framer": [
+        "cb_000040"
+      ],
+      "filter": [
+        "cb_000041"
+      ],
+      "handler": [
+        "cb_000041"
+      ],
+      "reducedmotion": [
+        "cb_000041"
+      ],
+      "0.55": [
+        "cb_000041"
+      ],
+      "bloom": [
+        "cb_000041"
+      ],
+      "points": [
+        "cb_000042",
+        "cb_000054",
+        "cb_000062",
+        "cb_000077"
+      ],
+      "activate": [
+        "cb_000042"
+      ],
+      "any": [
+        "cb_000042",
+        "cb_000075",
+        "cb_000080",
+        "cb_000083"
+      ],
+      "appending": [
+        "cb_000042"
+      ],
+      "circles": [
+        "cb_000042",
+        "cb_000079"
+      ],
+      "exactly": [
+        "cb_000044",
+        "cb_000046"
+      ],
+      "match": [
+        "cb_000044",
+        "cb_000046"
+      ],
+      "preview": [
+        "cb_000044"
+      ],
+      "real": [
+        "cb_000044",
+        "cb_000079"
+      ],
+      "reflects": [
+        "cb_000044"
+      ],
+      "geometry": [
+        "cb_000046"
+      ],
+      "must": [
+        "cb_000046"
+      ],
+      "vertex": [
+        "cb_000046"
+      ],
+      "kind": [
+        "cb_000051",
+        "cb_000052",
+        "cb_000053",
+        "cb_000055",
+        "cb_000056",
+        "cb_000059",
+        "cb_000067",
+        "cb_000068",
+        "cb_000069",
+        "cb_000077"
+      ],
+      "kind:": [
+        "cb_000052",
+        "cb_000053",
+        "cb_000059",
+        "cb_000067",
+        "cb_000068",
+        "cb_000077"
+      ],
+      "x:": [
+        "cb_000052",
+        "cb_000053",
+        "cb_000060",
+        "cb_000077"
+      ],
+      "apexx": [
+        "cb_000053",
+        "cb_000077"
+      ],
+      "apexy": [
+        "cb_000053",
+        "cb_000077"
+      ],
+      "sy": [
+        "cb_000053",
+        "cb_000077"
+      ],
+      "sx": [
+        "cb_000053"
+      ],
+      "endx": [
+        "cb_000053"
+      ],
+      "endy": [
+        "cb_000053"
+      ],
+      "entryx": [
+        "cb_000053"
+      ],
+      "entryy": [
+        "cb_000053"
+      ],
+      "exitx": [
+        "cb_000053"
+      ],
+      "exity": [
+        "cb_000053"
+      ],
+      "loop": [
+        "cb_000053",
+        "cb_000076"
+      ],
+      "c1": [
+        "cb_000053",
+        "cb_000057"
+      ],
+      "c2": [
+        "cb_000053",
+        "cb_000057"
+      ],
+      "c3": [
+        "cb_000053"
+      ],
+      "c4": [
+        "cb_000053"
+      ],
+      "c5": [
+        "cb_000053"
+      ],
+      "c6": [
+        "cb_000053"
+      ],
+      "boundaries": [
+        "cb_000054"
+      ],
+      "cause": [
+        "cb_000054"
+      ],
+      "collinear": [
+        "cb_000054"
+      ],
+      "direction": [
+        "cb_000054"
+      ],
+      "distance": [
+        "cb_000054"
+      ],
+      "eliminates": [
+        "cb_000054"
+      ],
+      "every": [
+        "cb_000054"
+      ],
+      "internal": [
+        "cb_000054"
+      ],
+      "kinks": [
+        "cb_000054"
+      ],
+      "makedefault": [
+        "cb_000054"
+      ],
+      "makedefaultraw": [
+        "cb_000054"
+      ],
+      "original": [
+        "cb_000054"
+      ],
+      "preserving": [
+        "cb_000054"
+      ],
+      "segment": [
+        "cb_000054"
+      ],
+      "smooth": [
+        "cb_000054",
+        "cb_000083"
+      ],
+      "smoothallanchors": [
+        "cb_000054"
+      ],
+      "next": [
+        "cb_000055",
+        "cb_000060",
+        "cb_000065"
+      ],
+      "cin": [
+        "cb_000055"
+      ],
+      "cout": [
+        "cb_000055"
+      ],
+      "inlen": [
+        "cb_000055"
+      ],
+      "outlen": [
+        "cb_000055"
+      ],
+      "a.x": [
+        "cb_000055",
+        "cb_000057"
+      ],
+      "a.y": [
+        "cb_000055",
+        "cb_000057"
+      ],
+      "math.round": [
+        "cb_000055"
+      ],
+      "round": [
+        "cb_000055"
+      ],
+      "ulen": [
+        "cb_000055"
+      ],
+      "0.001": [
+        "cb_000055"
+      ],
+      "continue": [
+        "cb_000055"
+      ],
+      "dx": [
+        "cb_000055"
+      ],
+      "dy": [
+        "cb_000055"
+      ],
+      "hypot": [
+        "cb_000055"
+      ],
+      "inx": [
+        "cb_000055"
+      ],
+      "iny": [
+        "cb_000055"
+      ],
+      "math.hypot": [
+        "cb_000055"
+      ],
+      "idx": [
+        "cb_000056"
+      ],
+      "3k": [
+        "cb_000056"
+      ],
+      "pts": [
+        "cb_000056",
+        "cb_000057",
+        "cb_000059",
+        "cb_000077"
+      ],
+      "partneridx": [
+        "cb_000056"
+      ],
+      "anchoridx": [
+        "cb_000056"
+      ],
+      "anchoridx:": [
+        "cb_000056"
+      ],
+      "a_": [
+        "cb_000056"
+      ],
+      "partner": [
+        "cb_000056",
+        "cb_000060",
+        "cb_000083"
+      ],
+      "partneridx:": [
+        "cb_000056"
+      ],
+      "incoming": [
+        "cb_000056"
+      ],
+      "index": [
+        "cb_000056"
+      ],
+      "outgoing": [
+        "cb_000056"
+      ],
+      "pts.length": [
+        "cb_000056",
+        "cb_000057"
+      ],
+      "fmt": [
+        "cb_000057",
+        "cb_000058"
+      ],
+      "parts": [
+        "cb_000057"
+      ],
+      "c1.x": [
+        "cb_000057"
+      ],
+      "c1.y": [
+        "cb_000057"
+      ],
+      "c2.x": [
+        "cb_000057"
+      ],
+      "c2.y": [
+        "cb_000057"
+      ],
+      "join": [
+        "cb_000057"
+      ],
+      "parts.join": [
+        "cb_000057"
+      ],
+      "parts.push": [
+        "cb_000057"
+      ],
+      "pointstod": [
+        "cb_000057"
+      ],
+      "pts:": [
+        "cb_000057"
+      ],
+      "push": [
+        "cb_000057",
+        "cb_000059"
+      ],
+      "commands": [
+        "cb_000058",
+        "cb_000059"
+      ],
+      "don": [
+        "cb_000058"
+      ],
+      "input": [
+        "cb_000058"
+      ],
+      "isinteger": [
+        "cb_000058"
+      ],
+      "n.tofixed": [
+        "cb_000058"
+      ],
+      "n:": [
+        "cb_000058"
+      ],
+      "number.isinteger": [
+        "cb_000058"
+      ],
+      "parse": [
+        "cb_000058"
+      ],
+      "paths": [
+        "cb_000058"
+      ],
+      "produces": [
+        "cb_000058"
+      ],
+      "returns": [
+        "cb_000058"
+      ],
+      "support": [
+        "cb_000058"
+      ],
+      "tokens": [
+        "cb_000059"
+      ],
+      "cmd": [
+        "cb_000059"
+      ],
+      "isnan": [
+        "cb_000059"
+      ],
+      "number.isnan": [
+        "cb_000059"
+      ],
+      "parsefloat": [
+        "cb_000059"
+      ],
+      "else": [
+        "cb_000059"
+      ],
+      "pts.push": [
+        "cb_000059"
+      ],
+      "command": [
+        "cb_000059"
+      ],
+      "d.match": [
+        "cb_000059"
+      ],
+      "dragidx": [
+        "cb_000060"
+      ],
+      "document": [
+        "cb_000060"
+      ],
+      "old": [
+        "cb_000060"
+      ],
+      "up": [
+        "cb_000060"
+      ],
+      "vbx": [
+        "cb_000060"
+      ],
+      "vby": [
+        "cb_000060"
+      ],
+      "el": [
+        "cb_000061"
+      ],
+      "lastdotidx": [
+        "cb_000061"
+      ],
+      "now": [
+        "cb_000061"
+      ],
+      "pitchvalue": [
+        "cb_000061"
+      ],
+      "speedfactor": [
+        "cb_000061"
+      ],
+      "bankangle": [
+        "cb_000061"
+      ],
+      "getpointatlength": [
+        "cb_000061"
+      ],
+      "max": [
+        "cb_000061"
+      ],
+      "parsed": [
+        "cb_000061"
+      ],
+      "full": [
+        "cb_000062",
+        "cb_000070",
+        "cb_000077"
+      ],
+      "last": [
+        "cb_000062"
+      ],
+      "key": [
+        "cb_000062"
+      ],
+      "bg-": [
+        "cb_000062",
+        "cb_000064",
+        "cb_000070"
+      ],
+      "e3dfd9": [
+        "cb_000062",
+        "cb_000063",
+        "cb_000064"
+      ],
+      "p.length": [
+        "cb_000062"
+      ],
+      "tangents": [
+        "cb_000062"
+      ],
+      "gap": [
+        "cb_000063",
+        "cb_000071"
+      ],
+      "items": [
+        "cb_000063"
+      ],
+      "items-center": [
+        "cb_000063"
+      ],
+      "border-": [
+        "cb_000063",
+        "cb_000064"
+      ],
+      "text-xs": [
+        "cb_000063"
+      ],
+      "xs": [
+        "cb_000063"
+      ],
+      "gap-1": [
+        "cb_000063"
+      ],
+      "hover:bg-": [
+        "cb_000063"
+      ],
+      "strong": [
+        "cb_000064"
+      ],
+      "foreground": [
+        "cb_000064",
+        "cb_000070",
+        "cb_000071"
+      ],
+      "text-foreground": [
+        "cb_000064",
+        "cb_000070",
+        "cb_000071"
+      ],
+      "11px": [
+        "cb_000064"
+      ],
+      "font": [
+        "cb_000064",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "faf9f7": [
+        "cb_000064"
+      ],
+      "font-mono": [
+        "cb_000064"
+      ],
+      "mono": [
+        "cb_000064"
+      ],
+      "link": [
+        "cb_000065",
+        "cb_000072"
+      ],
+      "arrowright": [
+        "cb_000065"
+      ],
+      "metadata": [
+        "cb_000065"
+      ],
+      "minus": [
+        "cb_000065"
+      ],
+      "next/link": [
+        "cb_000065"
+      ],
+      "audio": [
+        "cb_000066"
+      ],
+      "description": [
+        "cb_000066"
+      ],
+      "description:": [
+        "cb_000066"
+      ],
+      "feedback": [
+        "cb_000066",
+        "cb_000068"
+      ],
+      "get": [
+        "cb_000066"
+      ],
+      "instantly": [
+        "cb_000066"
+      ],
+      "leave": [
+        "cb_000066"
+      ],
+      "memo": [
+        "cb_000066"
+      ],
+      "right": [
+        "cb_000066"
+      ],
+      "seconds": [
+        "cb_000066"
+      ],
+      "server": [
+        "cb_000066"
+      ],
+      "stoa": [
+        "cb_000066",
+        "cb_000068"
+      ],
+      "stream": [
+        "cb_000066"
+      ],
+      "terminal": [
+        "cb_000066"
+      ],
+      "title": [
+        "cb_000066"
+      ],
+      "title:": [
+        "cb_000066"
+      ],
+      "cell": [
+        "cb_000067",
+        "cb_000068",
+        "cb_000069"
+      ],
+      "text:": [
+        "cb_000067"
+      ],
+      "yes": [
+        "cb_000067",
+        "cb_000068",
+        "cb_000069"
+      ],
+      "cloudflare": [
+        "cb_000068"
+      ],
+      "cloudflare:": [
+        "cb_000068"
+      ],
+      "label": [
+        "cb_000068",
+        "cb_000069"
+      ],
+      "label:": [
+        "cb_000068"
+      ],
+      "ngrok": [
+        "cb_000068"
+      ],
+      "ngrok:": [
+        "cb_000068"
+      ],
+      "stoa:": [
+        "cb_000068"
+      ],
+      "account": [
+        "cb_000068"
+      ],
+      "agent": [
+        "cb_000068",
+        "cb_000074",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "agent-ready": [
+        "cb_000068"
+      ],
+      "auto": [
+        "cb_000068",
+        "cb_000069"
+      ],
+      "auto-transcription": [
+        "cb_000068"
+      ],
+      "comparerows": [
+        "cb_000068"
+      ],
+      "comparerows:": [
+        "cb_000068"
+      ],
+      "file": [
+        "cb_000068"
+      ],
+      "free": [
+        "cb_000068"
+      ],
+      "aria-label": [
+        "cb_000069"
+      ],
+      "cell.kind": [
+        "cb_000069"
+      ],
+      "mx": [
+        "cb_000069"
+      ],
+      "mx-auto": [
+        "cb_000069"
+      ],
+      "c4bfb9": [
+        "cb_000069"
+      ],
+      "cell.text": [
+        "cb_000069"
+      ],
+      "cell:": [
+        "cb_000069"
+      ],
+      "comparecell": [
+        "cb_000069"
+      ],
+      "relative": [
+        "cb_000070"
+      ],
+      "mt": [
+        "cb_000070"
+      ],
+      "backdrop": [
+        "cb_000070"
+      ],
+      "font-medium": [
+        "cb_000070",
+        "cb_000072"
+      ],
+      "font-sans": [
+        "cb_000071",
+        "cb_000072"
+      ],
+      "sans": [
+        "cb_000071",
+        "cb_000072"
+      ],
+      "text-center": [
+        "cb_000071"
+      ],
+      "mb": [
+        "cb_000071",
+        "cb_000072"
+      ],
+      "muted": [
+        "cb_000071"
+      ],
+      "border-border-muted": [
+        "cb_000071"
+      ],
+      "h3": [
+        "cb_000071"
+      ],
+      "leading": [
+        "cb_000071",
+        "cb_000072"
+      ],
+      "you": [
+        "cb_000072",
+        "cb_000075",
+        "cb_000079"
+      ],
+      "h2": [
+        "cb_000072"
+      ],
+      "mb-4": [
+        "cb_000072"
+      ],
+      "medium": [
+        "cb_000072"
+      ],
+      "px": [
+        "cb_000072"
+      ],
+      "tracking": [
+        "cb_000072"
+      ],
+      "19t20": [
+        "cb_000073"
+      ],
+      "2026": [
+        "cb_000073",
+        "cb_000074",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "2026-05-19t20:48:04.864z": [
+        "cb_000073"
+      ],
+      "4161": [
+        "cb_000073"
+      ],
+      "5db4": [
+        "cb_000073"
+      ],
+      "864z": [
+        "cb_000073"
+      ],
+      "9c51": [
+        "cb_000073"
+      ],
+      "9f547894": [
+        "cb_000073"
+      ],
+      "9f547894-5db4-4161-9c51-fcba42f270d8": [
+        "cb_000073"
+      ],
+      "cli": [
+        "cb_000073"
+      ],
+      "fcba42f270d8": [
+        "cb_000073"
+      ],
+      "generated": [
+        "cb_000073"
+      ],
+      "markdown": [
+        "cb_000073"
+      ],
+      "specstory-cli": [
+        "cb_000073"
+      ],
+      "v2": [
+        "cb_000073"
+      ],
+      "v2.1.0": [
+        "cb_000073"
+      ],
+      "2026-05-05": [
+        "cb_000074",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "claude": [
+        "cb_000074",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "claude-opus-4-7": [
+        "cb_000074",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "good": [
+        "cb_000074"
+      ],
+      "opus": [
+        "cb_000074",
+        "cb_000082",
+        "cb_000084"
+      ],
+      "out": [
+        "cb_000074"
+      ],
+      "05t16": [
+        "cb_000074"
+      ],
+      "10z": [
+        "cb_000074"
+      ],
+      "16:46:47z": [
+        "cb_000074"
+      ],
+      "16:47:10z": [
+        "cb_000074"
+      ],
+      "16:47:22z": [
+        "cb_000074"
+      ],
+      "2026-05-05_16-08-36z-im-wokring-on-the": [
+        "cb_000074"
+      ],
+      "2026-05-05t16:08:36.860z": [
+        "cb_000074"
+      ],
+      "22z": [
+        "cb_000074"
+      ],
+      "36z": [
+        "cb_000074"
+      ],
+      "47z": [
+        "cb_000074"
+      ],
+      "860z": [
+        "cb_000074"
+      ],
+      "answer": [
+        "cb_000074"
+      ],
+      "be:": [
+        "cb_000074"
+      ],
+      "me": [
+        "cb_000075",
+        "cb_000081"
+      ],
+      "re": [
+        "cb_000075"
+      ],
+      "ll": [
+        "cb_000075"
+      ],
+      "aligned": [
+        "cb_000075"
+      ],
+      "around": [
+        "cb_000075"
+      ],
+      "artboard": [
+        "cb_000075"
+      ],
+      "attribute": [
+        "cb_000075"
+      ],
+      "best": [
+        "cb_000075"
+      ],
+      "best:": [
+        "cb_000075"
+      ],
+      "or": [
+        "cb_000076",
+        "cb_000080"
+      ],
+      "screenshot": [
+        "cb_000076"
+      ],
+      "annotate": [
+        "cb_000076"
+      ],
+      "arrow": [
+        "cb_000076"
+      ],
+      "beziers": [
+        "cb_000076"
+      ],
+      "circle": [
+        "cb_000076"
+      ],
+      "draw": [
+        "cb_000076"
+      ],
+      "fast": [
+        "cb_000076"
+      ],
+      "fast:": [
+        "cb_000076"
+      ],
+      "fewer": [
+        "cb_000076"
+      ],
+      "finger": [
+        "cb_000076"
+      ],
+      "midpoints": [
+        "cb_000076"
+      ],
+      "one": [
+        "cb_000076"
+      ],
+      "option": [
+        "cb_000076"
+      ],
+      "pen": [
+        "cb_000076"
+      ],
+      "navigate": [
+        "cb_000078"
+      ],
+      "open": [
+        "cb_000078"
+      ],
+      "replaced": [
+        "cb_000078"
+      ],
+      "dashed": [
+        "cb_000079"
+      ],
+      "indigo": [
+        "cb_000079"
+      ],
+      "see": [
+        "cb_000079"
+      ],
+      "bar": [
+        "cb_000079"
+      ],
+      "chrome/url": [
+        "cb_000079"
+      ],
+      "connected": [
+        "cb_000079"
+      ],
+      "continuously": [
+        "cb_000079"
+      ],
+      "curvature": [
+        "cb_000079"
+      ],
+      "add": [
+        "cb_000080"
+      ],
+      "anywhere": [
+        "cb_000080"
+      ],
+      "buttons": [
+        "cb_000080"
+      ],
+      "drag": [
+        "cb_000080",
+        "cb_000083"
+      ],
+      "edit": [
+        "cb_000080",
+        "cb_000082"
+      ],
+      "go": [
+        "cb_000080"
+      ],
+      "handle": [
+        "cb_000080"
+      ],
+      "outside": [
+        "cb_000080"
+      ],
+      "past": [
+        "cb_000080"
+      ],
+      "all": [
+        "cb_000081",
+        "cb_000083"
+      ],
+      "editor:": [
+        "cb_000081"
+      ],
+      "output": [
+        "cb_000081"
+      ],
+      "paste": [
+        "cb_000081"
+      ],
+      "select": [
+        "cb_000081"
+      ],
+      "textarea": [
+        "cb_000081"
+      ],
+      "tool": [
+        "cb_000082",
+        "cb_000084"
+      ],
+      "data": [
+        "cb_000082",
+        "cb_000084"
+      ],
+      "summary": [
+        "cb_000082",
+        "cb_000084"
+      ],
+      "details": [
+        "cb_000082",
+        "cb_000084"
+      ],
+      "tool-use": [
+        "cb_000082",
+        "cb_000084"
+      ],
+      "app": [
+        "cb_000082",
+        "cb_000084"
+      ],
+      "src": [
+        "cb_000082",
+        "cb_000084"
+      ],
+      "through": [
+        "cb_000083"
+      ],
+      "alt": [
+        "cb_000083"
+      ],
+      "runs": [
+        "cb_000083"
+      ],
+      "across": [
+        "cb_000083"
+      ],
+      "alt-dragging": [
+        "cb_000083"
+      ],
+      "behavior": [
+        "cb_000083"
+      ],
+      "bends": [
+        "cb_000083"
+      ],
+      "break": [
+        "cb_000083"
+      ],
+      "read": [
+        "cb_000084"
+      ],
+      "data-tool-name": [
+        "cb_000084"
+      ],
+      "data-tool-type": [
+        "cb_000084"
+      ]
+    },
+    "path_index": {
+      "README.md": [
+        "cb_000001",
+        "cb_000002",
+        "cb_000003",
+        "cb_000004"
+      ],
+      "code/CopyCommand.tsx": [
+        "cb_000005",
+        "cb_000006",
+        "cb_000007"
+      ],
+      "code/HeroDemo.tsx": [
+        "cb_000008",
+        "cb_000009",
+        "cb_000010",
+        "cb_000011",
+        "cb_000012",
+        "cb_000013",
+        "cb_000014",
+        "cb_000015",
+        "cb_000016",
+        "cb_000017",
+        "cb_000018",
+        "cb_000019",
+        "cb_000020",
+        "cb_000021",
+        "cb_000022",
+        "cb_000023",
+        "cb_000024",
+        "cb_000025",
+        "cb_000026",
+        "cb_000027",
+        "cb_000028",
+        "cb_000029",
+        "cb_000030",
+        "cb_000031",
+        "cb_000032",
+        "cb_000033",
+        "cb_000034",
+        "cb_000035",
+        "cb_000036",
+        "cb_000037",
+        "cb_000038",
+        "cb_000039"
+      ],
+      "code/InstallGlow.tsx": [
+        "cb_000040",
+        "cb_000041"
+      ],
+      "code/PathEditor.tsx": [
+        "cb_000042",
+        "cb_000043",
+        "cb_000044",
+        "cb_000045",
+        "cb_000046",
+        "cb_000047",
+        "cb_000048",
+        "cb_000049",
+        "cb_000050",
+        "cb_000051",
+        "cb_000052",
+        "cb_000053",
+        "cb_000054",
+        "cb_000055",
+        "cb_000056",
+        "cb_000057",
+        "cb_000058",
+        "cb_000059",
+        "cb_000060",
+        "cb_000061",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064"
+      ],
+      "code/page.tsx": [
+        "cb_000065",
+        "cb_000066",
+        "cb_000067",
+        "cb_000068",
+        "cb_000069",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "transcript.md": [
+        "cb_000073",
+        "cb_000074",
+        "cb_000075",
+        "cb_000076",
+        "cb_000077",
+        "cb_000078",
+        "cb_000079",
+        "cb_000080",
+        "cb_000081",
+        "cb_000082",
+        "cb_000083",
+        "cb_000084"
+      ]
+    },
+    "kind_index": {
+      "docs": [
+        "cb_000001",
+        "cb_000002",
+        "cb_000003",
+        "cb_000004",
+        "cb_000073",
+        "cb_000074",
+        "cb_000075",
+        "cb_000076",
+        "cb_000077",
+        "cb_000078",
+        "cb_000079",
+        "cb_000080",
+        "cb_000081",
+        "cb_000082",
+        "cb_000083",
+        "cb_000084"
+      ],
+      "code": [
+        "cb_000005",
+        "cb_000006",
+        "cb_000007",
+        "cb_000008",
+        "cb_000009",
+        "cb_000010",
+        "cb_000011",
+        "cb_000012",
+        "cb_000013",
+        "cb_000014",
+        "cb_000015",
+        "cb_000016",
+        "cb_000017",
+        "cb_000018",
+        "cb_000019",
+        "cb_000020",
+        "cb_000021",
+        "cb_000022",
+        "cb_000023",
+        "cb_000024",
+        "cb_000025",
+        "cb_000026",
+        "cb_000027",
+        "cb_000028",
+        "cb_000029",
+        "cb_000030",
+        "cb_000031",
+        "cb_000032",
+        "cb_000033",
+        "cb_000034",
+        "cb_000035",
+        "cb_000036",
+        "cb_000037",
+        "cb_000038",
+        "cb_000039",
+        "cb_000040",
+        "cb_000041",
+        "cb_000042",
+        "cb_000043",
+        "cb_000044",
+        "cb_000045",
+        "cb_000046",
+        "cb_000047",
+        "cb_000048",
+        "cb_000049",
+        "cb_000050",
+        "cb_000051",
+        "cb_000052",
+        "cb_000053",
+        "cb_000054",
+        "cb_000055",
+        "cb_000056",
+        "cb_000057",
+        "cb_000058",
+        "cb_000059",
+        "cb_000060",
+        "cb_000061",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064",
+        "cb_000065",
+        "cb_000066",
+        "cb_000067",
+        "cb_000068",
+        "cb_000069",
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ]
+    },
+    "symbol_index": {
+      "The Jig Is Back": [
+        "cb_000001"
+      ],
+      "Why this exists": [
+        "cb_000002"
+      ],
+      "The jig: how `?editPath=1` works": [
+        "cb_000003"
+      ],
+      "Repo layout": [
+        "cb_000004"
+      ],
+      "<module>": [
+        "cb_000005",
+        "cb_000008",
+        "cb_000040",
+        "cb_000042",
+        "cb_000065"
+      ],
+      "CopyCommandProps": [
+        "cb_000006"
+      ],
+      "CopyCommand": [
+        "cb_000007"
+      ],
+      "Stage": [
+        "cb_000009"
+      ],
+      "PRIVATE_URL": [
+        "cb_000010"
+      ],
+      "PUBLIC_URL": [
+        "cb_000011"
+      ],
+      "VB_W": [
+        "cb_000012",
+        "cb_000043"
+      ],
+      "VB_H": [
+        "cb_000013",
+        "cb_000044"
+      ],
+      "FLIGHT_MS": [
+        "cb_000014",
+        "cb_000045"
+      ],
+      "FLIGHT_PATH": [
+        "cb_000015"
+      ],
+      "FLIGHT_PATH_ORIGIN_X": [
+        "cb_000016"
+      ],
+      "FLIGHT_PATH_ORIGIN_Y": [
+        "cb_000017"
+      ],
+      "DOT_SPACING": [
+        "cb_000018",
+        "cb_000046"
+      ],
+      "PRESS_HOLD_MS": [
+        "cb_000019"
+      ],
+      "URL_TYPE_MS": [
+        "cb_000020"
+      ],
+      "URL_TYPE_INTERVAL_MS": [
+        "cb_000021"
+      ],
+      "PLANE_OUTLINE_D": [
+        "cb_000022",
+        "cb_000047"
+      ],
+      "PLANE_TOP_WING_D": [
+        "cb_000023",
+        "cb_000048"
+      ],
+      "PLANE_BOTTOM_FLAP_D": [
+        "cb_000024",
+        "cb_000049"
+      ],
+      "PLANE_SPINE_D": [
+        "cb_000025",
+        "cb_000050"
+      ],
+      "ICON_VIEWBOX_W": [
+        "cb_000026"
+      ],
+      "ICON_VIEWBOX_H": [
+        "cb_000027"
+      ],
+      "PLANE_NATIVE_W": [
+        "cb_000028"
+      ],
+      "ICON_DEFAULT_PX": [
+        "cb_000029"
+      ],
+      "PaperPlaneFlatShape": [
+        "cb_000030"
+      ],
+      "PaperPlaneIcon": [
+        "cb_000031"
+      ],
+      "ClickRipple": [
+        "cb_000032"
+      ],
+      "HeroDemo": [
+        "cb_000033"
+      ],
+      "HeroDemoInner": [
+        "cb_000034",
+        "cb_000035",
+        "cb_000036",
+        "cb_000037",
+        "cb_000038",
+        "cb_000039"
+      ],
+      "InstallGlow": [
+        "cb_000041"
+      ],
+      "Kind": [
+        "cb_000051"
+      ],
+      "Pt": [
+        "cb_000052"
+      ],
+      "makeDefaultRaw": [
+        "cb_000053"
+      ],
+      "makeDefault": [
+        "cb_000054"
+      ],
+      "smoothAllAnchors": [
+        "cb_000055"
+      ],
+      "controlNeighbors": [
+        "cb_000056"
+      ],
+      "pointsToD": [
+        "cb_000057"
+      ],
+      "fmt": [
+        "cb_000058"
+      ],
+      "parseD": [
+        "cb_000059"
+      ],
+      "PathEditor": [
+        "cb_000060",
+        "cb_000061",
+        "cb_000062",
+        "cb_000063",
+        "cb_000064"
+      ],
+      "metadata": [
+        "cb_000066"
+      ],
+      "Cell": [
+        "cb_000067"
+      ],
+      "compareRows": [
+        "cb_000068"
+      ],
+      "CompareCell": [
+        "cb_000069"
+      ],
+      "ShareLocalhostPage": [
+        "cb_000070",
+        "cb_000071",
+        "cb_000072"
+      ],
+      "2026-05-05_16-08-36Z-im-wokring-on-the 2026-05-05T16:08:36.860Z": [
+        "cb_000074"
+      ],
+      "1. Best: draw it in a vector editor and send me the SVG `d` string": [
+        "cb_000075"
+      ],
+      "2. Fast: annotate a screenshot": [
+        "cb_000076"
+      ],
+      "3. Iterate live: I add a debug overlay": [
+        "cb_000077"
+      ],
+      "Open the editor": [
+        "cb_000078"
+      ],
+      "What you'll see": [
+        "cb_000079"
+      ],
+      "Edit": [
+        "cb_000080"
+      ],
+      "Output": [
+        "cb_000081"
+      ],
+      "Round-trip": [
+        "cb_000082"
+      ],
+      "Editor behavior": [
+        "cb_000083"
+      ],
+      "Production flight (and editor preview)": [
+        "cb_000084"
+      ]
+    }
+  }
+}

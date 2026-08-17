@@ -109,6 +109,8 @@ def write_sidecar(stem, candidate, timestamp_confidence) -> None:
     with open(os.path.join(P["sources"], f"{stem}.meta.json"), "w", encoding="utf-8") as f:
         json.dump({
             "category": "ice-session",
+            "tier": "1",                     # an agent that could act; tool calls in record
+            "can_establish_expectation": True,
             "source_tool": candidate["tool"],
             "session_id": candidate["session_id"],
             "native_path": candidate["native_path"],

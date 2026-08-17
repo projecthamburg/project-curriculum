@@ -33,20 +33,21 @@ treating a result as this repository's own work.** Rebuild after real changes wi
 
 ## What exists, and what does not
 
-**Exists and runs:** `protocol/` (the six normative contracts) · `governance/` (search index,
+**Exists and runs:** `protocol/` (the eight normative contracts) · `governance/` (search index,
 session discovery, chat-log import, ICE chapter scaffolding, security scan, project intake) ·
 `templates/` · `docs/UNDERSTANDING.md`.
 
 **Does not exist yet — do not reference these as working, and do not invent them:**
 
-- `SPEC.md` — deliberately deferred until an end-to-end seeding run has actually executed.
-- The **CI validators** that enforce the protocol contracts: prerequisite DAG, traceability
-  completeness, the Part D meta-rubric, criterion lint, citation resolution.
-- The **seeding run** itself — translating an objective into a curriculum.
+- `SPEC.md` — deliberately deferred until more than one seeding run has executed.
 - A **CORE course catalog**. The catalog is empty, so the bootstrap exception in
   `protocol/MASTER_SYLLABUS.md` currently applies.
 - **Global-adjacent session discovery** — the method is documented in `governance/PROJECTS.md`;
   the code is not written. Capture is therefore not complete, and says so.
+- The **adversarial panel** (VALIDATION.md Layer 3) — designed, not implemented. Layers 1 and
+  2 exist; Layer 3 is run by hand today.
+- **A Pathway B worked example.** The pathway is specified and gate G9 enforces its
+  declaration, but no project has been seeded without conversation history yet.
 
 `docs/UNDERSTANDING.md` §7 is the current, accurate statement of what is decided and what is not.
 When a missing piece lands, this section gets updated as part of building it, not afterwards.
@@ -60,7 +61,20 @@ python3 governance/ice_chapter.py new --label <name>
 python3 governance/import_chat_logs.py <dir>    # exported ChatGPT/Gemini/Claude.ai logs
 python3 governance/security_scan.py             # read-only; proposes, never applies
 python3 governance/new_project.py --parent <path> --objective "..." --dry-run
+python3 governance/index_codebase.py             # the codebase + docs index
+python3 governance/query.py "x" --index codebase # what exists, symbol-chunked
+python3 governance/spheres.py propose            # candidate areas, written by you not it
+python3 governance/validate_curriculum.py        # the nine contract gates
 ```
+
+## Two pathways, three tiers
+
+**Pathway A** = ICE + codebase. **Pathway B** = codebase only, for a project with no
+conversation history — and a Pathway B curriculum must **declare that no intent record exists**
+rather than infer intent from code. Evidence is **Tier 1** (agent work sessions, can act),
+**Tier 2** (LLM chat logs, dialogue only), **Tier 3** (notes and screenshots — one voice, so
+they can carry Ideas and Concerns but **never an Expectation**). See
+`protocol/EVIDENCE_AND_PATHWAYS.md`.
 
 Every script defaults to a dry run and needs `--real` to write anything.
 

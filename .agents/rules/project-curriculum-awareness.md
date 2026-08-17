@@ -30,13 +30,20 @@ A keyword index — no embeddings, no live search. Results are tagged `origin: i
 
 ## What exists, and what does not
 
-**Exists and runs:** `protocol/` (six normative contracts) · `governance/` (index, session
+**Exists and runs:** `protocol/` (eight normative contracts) · `governance/` (index, session
 discovery, chat-log import, ICE scaffolding, security scan, project intake) · `templates/`.
 
-**Does not exist yet — do not reference as working, do not invent:** `SPEC.md` · the CI validators
-for the protocol contracts · the seeding run itself · a CORE course catalog (empty, so the
-bootstrap exception applies) · global-adjacent session discovery (documented, not implemented, so
-capture is incomplete).
+**Does not exist yet — do not reference as working, do not invent:** `SPEC.md` · a CORE course
+catalog (empty, so the bootstrap exception applies) · global-adjacent session discovery
+(documented, not implemented, so capture is incomplete) · the adversarial panel (VALIDATION.md
+Layer 3, designed but run by hand) · a Pathway B worked example.
+
+## Two pathways, three tiers
+
+**Pathway A** = ICE + codebase. **Pathway B** = codebase only, and must **declare that no intent
+record exists** rather than infer intent from code. Evidence tiers: **1** agent work sessions,
+**2** LLM chat logs, **3** notes and screenshots — one voice, so Tier 3 carries Ideas and
+Concerns but **never an Expectation**. See `protocol/EVIDENCE_AND_PATHWAYS.md`.
 
 ## Standing rules
 

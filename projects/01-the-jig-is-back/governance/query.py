@@ -89,28 +89,51 @@ def main() -> int:
     ap.add_argument("--speaker", choices=["user", "assistant", "system", "tool"],
                     help="Session chunks only — e.g. --speaker user to find what was asked, "
                          "not what was answered.")
+    ap.add_argument("--index", choices=["evidence", "codebase"], default="evidence",
+                    help="evidence = what was said (turn-chunked); codebase = what exists "
+                         "(symbol-chunked). Kept separate on purpose: merging them makes a "
+                         "query unable to tell a claim about the system from the system.")
+    ap.add_argument("--sphere", help="Named area from governance/spheres.yaml. "
+                                     "A query-time filter over the one index, not a partition.")
+    ap.add_argument("--kind", choices=["code", "docs", "config", "test"],
+                    help="codebase index only")
     ap.add_argument("--list-categories", action="store_true")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    if not os.path.exists(P["index"]):
-        print(f"No search index at {P['index']} — run "
-              f"'python3 governance/build_search_index.py' first.")
+    index_path = (P["index"] if args.index == "evidence"
+                  else os.path.join(P["gov"], "codebase_index.json"))
+    builder = ("build_search_index.py" if args.index == "evidence" else "index_codebase.py")
+    if not os.path.exists(index_path):
+        print(f"No {args.index} index at {index_path} — run "
+              f"'python3 governance/{builder}' first.")
         return 1
 
-    index = json.load(open(P["index"], encoding="utf-8"))
+    index = json.load(open(index_path, encoding="utf-8"))
     indices = index["indices"]
 
     if args.list_categories:
-        for cat, ids in sorted(indices["category_index"].items()):
+        key = "category_index" if args.index == "evidence" else "kind_index"
+        for cat, ids in sorted(indices[key].items()):
             print(f"  {cat:32s} {len(ids)} chunks")
         return 0
+
+    sphere_terms = None
+    if args.sphere:
+        from spheres import load_spheres
+        defined = load_spheres()
+        if args.sphere not in defined:
+            print(f"Unknown sphere '{args.sphere}'. Defined: "
+                  f"{', '.join(defined) or '(none — see spheres.py propose)'}")
+            return 1
+        sphere_terms = set(defined[args.sphere]["terms"])
 
     if not args.query:
         ap.error("a query is required unless --list-categories is given")
 
     chunks_by_id = {c["id"]: c for c in index["chunks"]}
-    roots = {s["path"]: s.get("root", P["content_root"]) for s in index["sources"]}
+    roots = {s["path"]: s.get("root", index.get("metadata", {}).get("root", P["content_root"]))
+             for s in index["sources"]}
     terms = normalize_query(args.query)
     lowered = args.query.lower()
 
@@ -140,11 +163,15 @@ def main() -> int:
     results = []
     for cid, score in sorted(scores.items(), key=lambda kv: (-kv[1], kv[0])):
         chunk = chunks_by_id[cid]
-        if args.origin and chunk["origin"] != args.origin:
+        if args.origin and chunk.get("origin") != args.origin:
             continue
-        if args.category and chunk["category"] != args.category:
+        if args.category and chunk.get("category") != args.category:
             continue
         if args.speaker and chunk.get("speaker") != args.speaker:
+            continue
+        if args.kind and chunk.get("kind") != args.kind:
+            continue
+        if sphere_terms and not (sphere_terms & set(chunk["keywords"])):
             continue
         results.append((cid, score, chunk))
         if len(results) >= args.limit:
@@ -161,8 +188,11 @@ def main() -> int:
         return 0
 
     for cid, score, chunk in results:
-        speaker = f" [{chunk['speaker']}]" if chunk.get("speaker") else ""
-        print(f"  [{score:.1f}]  {chunk['origin']}/{chunk['category']}{speaker}  "
+        tag = (f"{chunk.get('origin')}/{chunk.get('category')}" if args.index == "evidence"
+               else f"{chunk.get('kind')}/{chunk.get('language')}")
+        extra = (f" [{chunk['speaker']}]" if chunk.get("speaker")
+                 else f" [{chunk['symbol']}]" if chunk.get("symbol") else "")
+        print(f"  [{score:.1f}]  {tag}{extra}  "
               f"{chunk['path']}:L{chunk['line_start']}-{chunk['line_end']}")
         print(f"    {chunk['preview']}")
         print()

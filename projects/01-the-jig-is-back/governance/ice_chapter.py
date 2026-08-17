@@ -34,7 +34,7 @@ TEMPLATE = """# ch{num:02d} — {label}
 **Chapter:** ch{num:02d}
 **Authored:** {date}
 **Reviewer:** <who or what performed this review>
-
+{scope_hint}
 ## Scope
 
 <ONE sentence stating exactly which window or file set this chapter covers. Required.
@@ -133,12 +133,37 @@ def cmd_status() -> int:
     return 0
 
 
-def cmd_new(label, files) -> int:
+def _sphere_sources(name):
+    """Sources whose chunks carry any of the sphere's defining terms. A sphere is a
+    query-time view over the one index — nothing is partitioned or copied."""
+    from spheres import load_spheres
+    defined = load_spheres()
+    if name not in defined:
+        raise SystemExit(f"Unknown sphere '{name}'. Defined: "
+                         f"{', '.join(defined) or '(none — run spheres.py propose)'}")
+    if not os.path.exists(P["index"]):
+        raise SystemExit("No index — run build_search_index.py before scoping to a sphere.")
+    index = json.load(open(P["index"], encoding="utf-8"))
+    terms = set(defined[name]["terms"])
+    hits = {c["path"] for c in index["chunks"]
+            if c["path"].startswith("sources/") and terms & set(c["keywords"])}
+    return sorted(os.path.basename(p) for p in hits), defined[name].get("description", "")
+
+
+def cmd_new(label, files, sphere=None) -> int:
     wm = _load_watermark()
     captured = _captured_sources()
     reviewed = _reviewed_sources(wm)
 
-    sources = files or [s for s in captured if s not in reviewed]
+    if sphere:
+        in_sphere, sphere_desc = _sphere_sources(sphere)
+        sources = files or [s for s in in_sphere if s not in reviewed]
+        if not sources:
+            print(f"No unreviewed sources in sphere '{sphere}'.")
+            return 1
+    else:
+        sphere_desc = ""
+        sources = files or [s for s in captured if s not in reviewed]
     if not sources:
         print("No sources to review. Nothing captured, or everything is already in a chapter.")
         return 1
@@ -163,9 +188,14 @@ def cmd_new(label, files) -> int:
         f.write(TEMPLATE.format(
             num=num, label=label, domain=wm["domain"], date=date,
             n_sources=len(sources),
+            scope_hint=(f"\n**Sphere:** `{sphere}`"
+                        + (f" — {sphere_desc}" if sphere_desc else "")
+                        + "\n\nThis chapter is scoped to one area of the evidence, not to a "
+                          "time window. The Scope sentence below states which.\n"
+                        if sphere else ""),
             source_list="\n".join(f"- `sources/{s}`" for s in sources)))
 
-    wm["chapters"].append({"chapter": num, "file": fname, "label": label,
+    wm["chapters"].append({"chapter": num, "file": fname, "label": label, "sphere": sphere,
                            "authored": date, "sources": sources, "status": "scaffolded"})
     wm["next_chapter"] = num + 1
     _save_watermark(wm)
@@ -185,10 +215,13 @@ def main() -> int:
     sub.add_parser("status")
     new = sub.add_parser("new")
     new.add_argument("--label", required=True, help="short kebab-case name for this chapter")
+    new.add_argument("--sphere", default=None,
+                     help="scope this chapter to a named area from governance/spheres.yaml")
     new.add_argument("--files", nargs="*", default=None,
                      help="specific sources/*.md filenames; defaults to everything unreviewed")
     args = ap.parse_args()
-    return cmd_status() if args.cmd == "status" else cmd_new(args.label, args.files)
+    return cmd_status() if args.cmd == "status" else cmd_new(args.label, args.files,
+                                                             args.sphere)
 
 
 if __name__ == "__main__":

@@ -176,7 +176,10 @@ def render(turns, meta) -> str:
              f"- **Export format:** {meta['format']}",
              f"- **Date:** {meta['date']}  (confidence: {meta['timestamp_confidence']})",
              f"- **Turns:** {len(turns)}",
-             f"- **Association:** {meta['association']}", "", "---", ""]
+             f"- **Association:** {meta['association']}",
+             f"- **Evidence tier:** {meta['tier']}"
+             + ("  — monologue: can establish Ideas and Concerns, NOT Expectations"
+                if meta['tier'] == "3" else ""), "", "---", ""]
     if not turns:
         lines += ["### System", "",
                   "_This export's turn structure was not recognized by any known parser, so it "
@@ -209,6 +212,10 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("target", help="a .md/.txt export, or a directory to sweep recursively")
     ap.add_argument("--real", action="store_true", help="write the captures for real")
+    ap.add_argument("--tier", choices=["1", "2", "3"], default=None,
+                    help="Evidence tier (protocol/EVIDENCE_AND_PATHWAYS.md). Defaults to 2 "
+                         "for a detected LLM provider, 3 for an unrecognized monologue. "
+                         "Tier 3 cannot establish an Expectation - only Ideas and Concerns.")
     ap.add_argument("--association", choices=["explicit", "path", "candidate"],
                     default="explicit",
                     help="how confidently this evidence belongs to this project "
@@ -240,6 +247,14 @@ def main() -> int:
 
         provider = detect_provider(text, os.path.basename(path))
         turns, fmt = parse_turns(text)
+        # Tier is about what the source CAN establish, not what it is worth. A source
+        # with no counterparty is Tier 3 however important its content: a monologue
+        # cannot carry an Ask -> Response -> Lock-in chain.
+        has_both_voices = {t["speaker"] for t in turns} >= {"user", "assistant"}
+        tier = args.tier or ("2" if has_both_voices else "3")
+        assoc = args.association
+        if tier == "3" and assoc == "path":
+            assoc = "candidate"   # Tier 3 has no path in the record to match on
         date, ts_conf = file_date(path, text)
         base = re.sub(r"[^a-z0-9]+", "-",
                       os.path.splitext(os.path.basename(path))[0].lower()).strip("-")[:40]
@@ -247,13 +262,14 @@ def main() -> int:
 
         if fmt == "unparsed":
             unparsed += 1
-        print(f"  {'NEW ' if args.real else 'WOULD'} [{provider}/{fmt}] {os.path.basename(path)} "
-              f"-> {stem}.md  ({len(turns)} turns, date {date}/{ts_conf})")
+        print(f"  {'NEW ' if args.real else 'WOULD'} [T{tier} {provider}/{fmt}] "
+              f"{os.path.basename(path)} -> {stem}.md  "
+              f"({len(turns)} turns, date {date}/{ts_conf}, assoc {assoc})")
         if not args.real:
             continue
 
         meta = {"stem": stem, "provider": provider, "format": fmt, "date": date,
-                "timestamp_confidence": ts_conf, "association": args.association,
+                "timestamp_confidence": ts_conf, "association": assoc, "tier": tier,
                 "origin_file": os.path.abspath(path), "raw_text": text}
 
         md_text, md_counts = redact(render(turns, meta))
@@ -267,9 +283,11 @@ def main() -> int:
             f.write(json_text)
         with open(os.path.join(P["sources"], f"{stem}.meta.json"), "w", encoding="utf-8") as f:
             json.dump({"category": "chat-log", "source_tool": provider,
+                       "tier": tier,
+                       "can_establish_expectation": tier != "3",
                        "export_format": fmt, "session_id": cid,
                        "origin_file": os.path.abspath(path),
-                       "association": args.association, "timestamp": date,
+                       "association": assoc, "timestamp": date,
                        "timestamp_confidence": ts_conf, "turn_count": len(turns),
                        "captured_at": _now_iso(), "raw_is_immutable": True}, f, indent=2)
         if md_counts:

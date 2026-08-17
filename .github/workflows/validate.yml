@@ -1,0 +1,56 @@
+name: validate
+
+# Contract enforcement. No secrets, no model calls, no network — so it runs on pull
+# requests from forks exactly as it runs here. Anything needing an API key lives in
+# seed.yml instead, which is gated.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Curriculum contracts (G1–G9)
+        run: python3 governance/validate_curriculum.py
+
+      - name: Secret sweep of everything tracked
+        run: |
+          python3 governance/security_scan.py
+          # A secret-shaped finding fails the build. Injection-shaped findings are proposed
+          # `monitor` by design and do not fail it — the protocol documents that describe the
+          # data-not-directive rule will match those patterns.
+          if grep -q '^| .* | `remove` |' governance/security/findings/*.md; then
+            echo "::error::secret-shaped finding — see the scan report"; exit 1
+          fi
+
+      - name: No upstream evidence committed
+        run: |
+          # A seed declaring reference-only must not have vendored what it points at.
+          fail=0
+          for seed in projects/*/seed.yaml; do
+            [ -e "$seed" ] || continue
+            grep -q 'redistribution: reference-only' "$seed" || continue
+            proj=$(dirname "$seed")
+            if git ls-files "$proj/governance/sources" | grep -q .; then
+              echo "::error::$proj declares reference-only but has committed sources"; fail=1
+            fi
+          done
+          exit $fail
+
+      - name: Indexes are not committed
+        run: |
+          if git ls-files | grep -E '(search|codebase)_index\.json$'; then
+            echo "::error::a derived index is committed; it is rebuildable and rewrites whole"
+            exit 1
+          fi

@@ -12,6 +12,8 @@ particular model or language. An implementation in any of them is conformant if 
 | [`GENERATION_MACHINERY.md`](GENERATION_MACHINERY.md) | How a seeding objective becomes a curriculum: translation, composition, gap detection, and the meta-rubric that gates generated output. |
 | [`THESIS_AND_DEFENSE.md`](THESIS_AND_DEFENSE.md) | The capstone as a composition proof, and the adversarial audit that keeps it honest. |
 | [`ICE.md`](ICE.md) | The informed-consent review that turns raw conversation history into reviewed, citable chapters. |
+| [`EVIDENCE_AND_PATHWAYS.md`](EVIDENCE_AND_PATHWAYS.md) | The two pathways (with and without conversation history), the three evidence tiers, spheres, and why there are two indexes. |
+| [`VALIDATION.md`](VALIDATION.md) | Three validation layers — mechanical gates, an external validator, an adversarial panel — and what each structurally cannot catch. |
 
 ## Reading order
 
@@ -19,8 +21,9 @@ Building an implementation: `MASTER_RUBRIC` → `COURSE_TEMPLATE` → `MASTER_SY
 `GENERATION_MACHINERY` → `THESIS_AND_DEFENSE`. `ICE` is independent of the other five and can be
 read at any point; it produces the evidence the others consume.
 
-Running a seeding objective for the first time: `ICE` first, because a curriculum seeded without
-reviewed evidence is a curriculum about nothing.
+Running a seeding objective for the first time: `EVIDENCE_AND_PATHWAYS` first — it decides which
+pathway you are on, and a Pathway B project never reaches `ICE` at all. Then `ICE`, because a
+Pathway A curriculum seeded from unreviewed transcripts is a curriculum seeded from noise.
 
 ## The layer that changes, and the layers that don't
 

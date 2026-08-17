@@ -1,0 +1,73 @@
+name: index
+
+# Rebuilds both indexes and publishes them as artifacts. Nothing is committed: an index is
+# derived, fully rebuildable, and rewrites end to end on every build, so committing it would
+# grow the repository by its full size on every run.
+#
+# Only the evidence a seed pack ships can be indexed here. A runner has no ~/.claude,
+# ~/.codex or ~/.kimi-code, so native session discovery is a local-machine capability and
+# this job does not pretend otherwise.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  build-indexes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Workspace evidence index
+        run: python3 governance/build_search_index.py
+
+      - name: Workspace codebase index
+        run: python3 governance/index_codebase.py
+
+      - name: Per-project indexes
+        run: |
+          for gov in projects/*/governance; do
+            [ -d "$gov" ] || continue
+            echo "=== $gov ==="
+            # A project pointing at an upstream clone cannot index it here — the clone is
+            # gitignored and re-fetchable from its seed. Report that rather than fail.
+            ext=$(python3 -c "import json,sys;print(json.load(open('$gov/config.json')).get('external_root') or '')")
+            if [ -n "$ext" ] && [ ! -d "$ext" ]; then
+              echo "  upstream clone absent — evidence index only, codebase index skipped"
+            fi
+            (cd "$gov" && python3 build_search_index.py) || true
+          done
+
+      - name: Coverage report
+        run: |
+          {
+            echo "### Index coverage"
+            echo
+            echo '| index | sources | chunks |'
+            echo '|---|---:|---:|'
+            for f in governance/search_index.json governance/codebase_index.json; do
+              [ -e "$f" ] || continue
+              python3 -c "
+import json,sys
+m=json.load(open('$f'))['metadata']
+print('| $f | %s | %s |' % (m.get('source_count') or m.get('file_count'), m['chunk_count']))"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: indexes
+          path: |
+            governance/search_index.json
+            governance/codebase_index.json
+            projects/*/governance/search_index.json
+          retention-days: 14
+          if-no-files-found: warn

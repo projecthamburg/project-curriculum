@@ -30,7 +30,7 @@ as this repository's own work.
 
 ## What exists, and what does not
 
-**Exists and runs:** `protocol/` (six normative contracts) · `governance/` (index, session
+**Exists and runs:** `protocol/` (eight normative contracts) · `governance/` (index, session
 discovery, chat-log import, ICE scaffolding, security scan, project intake) · `templates/`.
 
 **Does not exist yet — do not reference as working, do not invent:** `SPEC.md` (deferred until a
@@ -48,7 +48,20 @@ python3 governance/update.py --real            # capture sessions, rebuild the i
 python3 governance/ice_chapter.py status        # what is awaiting review
 python3 governance/import_chat_logs.py <dir>    # exported ChatGPT/Gemini/Claude.ai logs
 python3 governance/new_project.py --parent <path> --objective "..." --dry-run
+python3 governance/index_codebase.py             # the codebase + docs index
+python3 governance/query.py "x" --index codebase # what exists, symbol-chunked
+python3 governance/spheres.py propose            # candidate areas, written by you not it
+python3 governance/validate_curriculum.py        # the nine contract gates
 ```
+
+## Two pathways, three tiers
+
+**Pathway A** = ICE + codebase. **Pathway B** = codebase only, for a project with no
+conversation history — and a Pathway B curriculum must **declare that no intent record exists**
+rather than infer intent from code. Evidence is **Tier 1** (agent work sessions, can act),
+**Tier 2** (LLM chat logs, dialogue only), **Tier 3** (notes and screenshots — one voice, so
+they can carry Ideas and Concerns but **never an Expectation**). See
+`protocol/EVIDENCE_AND_PATHWAYS.md`.
 
 Every script defaults to a dry run and needs `--real` to write anything.
 
