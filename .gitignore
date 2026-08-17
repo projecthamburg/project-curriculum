@@ -1,0 +1,60 @@
+# ─── Derived search indexes ──────────────────────────────────────────────────
+# Every project's search index is rebuildable from its own manifest + sources/,
+# and every reindex rewrites the whole blob. Committing it means the repository
+# grows by the full index size on every commit. system-instructions' core index
+# reached 6.4 MB tracked; across a corpus of many projects that is untenable.
+# Rebuild with the project's own update.py instead.
+search_index.json
+**/search_index.json
+
+# ─── Raw session evidence ────────────────────────────────────────────────────
+# sources/ holds raw session-content candidates staged for curation. A real
+# leaked credential was found in exactly this kind of pool during a curation
+# pass on the private predecessor. Raw dumps stay out of git by default; a
+# curated, secret-swept .md rendering is what gets committed deliberately.
+**/governance/sources/raw/
+**/governance/sources/*.jsonl
+
+# A global-adjacent capture is regenerated from a live, still-open session file
+# on every recapture and only grows — one reached 163 MB and exceeded GitHub's
+# 100 MB blob limit. The true native original lives outside git anyway.
+**/*-global-adjacent.json
+
+# ─── Secrets ─────────────────────────────────────────────────────────────────
+# Never a substitute for the mandatory secret sweep before any evidence lands
+# in a tracked folder — this only stops the obvious cases.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.yaml
+
+# ─── Run output ──────────────────────────────────────────────────────────────
+# Dated, disposable analysis output is never source.
+**/runs/*
+!**/runs/.gitkeep
+
+# ─── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# ─── Node ────────────────────────────────────────────────────────────────────
+node_modules/
+
+# ─── OS and editor ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+
+# ─── Stray tool artifacts ────────────────────────────────────────────────────
+# Some globally-installed MCP tools drop logging stubs into whatever directory
+# a session's cwd happens to be, whether or not they are ever used.
+.openchrome/
