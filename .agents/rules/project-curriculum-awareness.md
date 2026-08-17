@@ -30,7 +30,7 @@ A keyword index — no embeddings, no live search. Results are tagged `origin: i
 
 ## What exists, and what does not
 
-**Exists and runs:** `protocol/` (eight normative contracts) · `governance/` (index, session
+**Exists and runs:** `protocol/` (nine normative contracts) · `governance/` (index, session
 discovery, chat-log import, ICE scaffolding, security scan, project intake) · `templates/`.
 
 **Does not exist yet — do not reference as working, do not invent:** `SPEC.md` · a CORE course
@@ -39,6 +39,9 @@ catalog (empty, so the bootstrap exception applies) · global-adjacent session d
 Layer 3, designed but run by hand) · a Pathway B worked example.
 
 ## Two pathways, three tiers
+
+An **Expectation** is asked, committed, or **encoded in the artifact** — the third needs no
+conversation and is judged by conformance, not lock-in.
 
 **Pathway A** = ICE + codebase. **Pathway B** = codebase only, and must **declare that no intent
 record exists** rather than infer intent from code. Evidence tiers: **1** agent work sessions,

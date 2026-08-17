@@ -15,7 +15,7 @@ assumed it was a found project would overrate what this demonstrates.
 | 3 | `import_chat_logs.py` | 1 file → **Tier 3**, `can_establish_expectation: false` |
 | 4 | `build_search_index.py` | 2 sources, 3 chunks (evidence — deliberately thin) |
 | 5 | `index_codebase.py` | 5 files, 75 lines, 14 chunks (**the load-bearing index here**) |
-| 6 | `ice_chapter.py` + authoring | ch01: 3 Concerns, 1 Idea, **0 Expectations** |
+| 6 | `ice_chapter.py` + authoring | ch01: 3 Concerns, 1 Idea, 0 negotiated Expectations, **3 encoded** |
 | 7 | Part A → courses | `INH-101`–`104` + thesis |
 | 8 | `validate_curriculum.py` | **9 of 9 gates pass**, 28 criteria, 29 citations resolved |
 
@@ -56,8 +56,15 @@ The run did not. The finding rests on executing the round trip; the note is reco
 as a Concern the human stated. That ordering is the point — Tier 3 material is admissible as a
 Concern and inadmissible as proof, and a run that accepted it would have been **right by luck**.
 
-The chapter's Expectations section is empty **by rule**: a monologue has an Ask and no Response,
-so writing a lock-in chain from it would invent the counterparty.
+The chapter's *negotiated* Expectations section is empty **by rule**: a monologue has an Ask and
+no Response, so writing a lock-in chain from it would invent the counterparty.
+
+**Correction, 2026-08-17.** The chapter as first authored said it had no Expectations at all,
+and the run record repeated it. Both were wrong. The artifact carries three encoded
+Expectations — the two format contracts ⚡ contradicting each other, the README's round-trip
+claim ❌ violated, the quoting behaviour ⚠️ untested — and the first of those is the run's
+central finding, which had been filed as a Concern. The error was in the protocol before it was
+in the chapter. Corrected in place with dated notes; nothing deleted.
 
 ## A gate bug this run exposed before it ran
 
@@ -66,11 +73,16 @@ chapter — carrying Concerns and an Idea — and **no Expectations**. Under the
 have read as Pathway A and skipped the absent-intent declaration check entirely: precisely the
 hole G9 exists to close, in the gate itself.
 
-Fixed before the run: G9 now tests whether any chapter establishes an Expectation, evidenced by
-a lock-in marker. Seed 01 still passes as Pathway A; this one correctly reports
-*"Pathway B — 1 chapter(s), none establishing an Expectation"*.
+Fixed before the run: G9 tests whether any chapter establishes an Expectation, evidenced by a
+lock-in marker.
 
-Found by constructing the case the design implied, rather than by re-reading the gate.
+**Superseded the same day**, by the Expectation correction above. A lock-in marker evidences a
+*negotiated* Expectation specifically — encoded ones carry conformance markers instead, and a
+Pathway B chapter is full of them. G9 now tests for the negotiated markers only, and reports the
+encoded count separately: *"Pathway B — 1 chapter(s), 1 carrying encoded Expectations, none
+negotiated"*. The first fix was right about the mechanism and wrong about the vocabulary.
+
+Both found by constructing the case the design implied, rather than by re-reading the gate.
 
 ## Honest gaps
 

@@ -254,9 +254,13 @@ def g9_pathway(project_root, syl, rep):
     ice = os.path.join(project_root, "governance", "ice-outputs")
     chapters = ([os.path.join(ice, f) for f in os.listdir(ice) if f.endswith("_ICE.md")]
                 if os.path.isdir(ice) else [])
-    LOCKIN = ("🔒", "🔓", "➡️")
+    # A lock-in marker evidences a NEGOTIATED Expectation, which is what needs conversation
+    # evidence. Conformance markers (encoded Expectations) do not: a Pathway B chapter carries
+    # them in quantity and is still Pathway B. Testing for the wrong marker set would classify
+    # every artifact-conformance chapter as Pathway A.
+    NEGOTIATED = ("🔒", "🔓", "➡️")
     with_expectations = [c for c in chapters
-                         if any(m in read(c) for m in LOCKIN)]
+                         if any(m in read(c) for m in NEGOTIATED)]
     corpus = " ".join(read(os.path.join(syl, f)) for f in os.listdir(syl)
                       if f.endswith(".md"))
     declares = bool(re.search(r"no intent record exists", corpus, re.I))
@@ -264,12 +268,16 @@ def g9_pathway(project_root, syl, rep):
     if with_expectations:
         return rep.add("G9", True,
                        f"Pathway A — {len(with_expectations)} chapter(s) establish Expectations")
-    detail = (f"Pathway B — {len(chapters)} chapter(s), none establishing an Expectation"
+    CONFORMANCE = ("✅", "❌", "⚠️", "⚡")
+    encoded = [c for c in chapters if any(m in read(c) for m in CONFORMANCE)]
+    detail = (f"Pathway B — {len(chapters)} chapter(s), "
+              f"{len(encoded)} carrying encoded Expectations, none negotiated"
               if chapters else "Pathway B — no ICE chapters")
     rep.add("G9", declares, detail,
             [] if declares else ["Pathway B curriculum does not declare that no intent record "
-                                 "exists (protocol/EVIDENCE_AND_PATHWAYS.md). Chapters carrying "
-                                 "only Ideas and Concerns do not make this Pathway A."])
+                                 "exists (protocol/EVIDENCE_AND_PATHWAYS.md). Encoded "
+                                 "Expectations and Concerns do not make this Pathway A — only a "
+                                 "negotiated Expectation does."])
 
 
 def validate(project_root, as_json):

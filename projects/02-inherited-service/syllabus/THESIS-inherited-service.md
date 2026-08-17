@@ -10,6 +10,12 @@ executed output). No published-literature claim is made, so no DOI applies.
 > results. **No intent record exists for this project**, so the second half is not a gap in the
 > work — it is the finding.
 
+> **Revision 2026-08-17.** As first authored this thesis described the project as having no
+> Expectations at all. That was wrong: Expectations also arise from the artifact, and this
+> project has three — one ⚡ contradicted, one ❌ violated, one ⚠️ untested — now recorded in
+> `ch01`. What it lacks is *negotiated* Expectations. The findings below are unchanged; their
+> classification is corrected. See `protocol/ICE.md` §"What an Expectation is".
+
 ## Thesis Statement
 
 The four courses compose into a complete account of what this artifact can demonstrate about
@@ -51,8 +57,9 @@ of it is unrecoverable.
 ### Chapter 4 — Pathway
 - **Stands on:** INH-104, and all three prior chapters
 - **Already real:** Pathway B, determined by probe before any file was written. One Tier 3 note
-  is the whole human-side record; it carries three Concerns and one Idea and **no Expectation**,
-  because a monologue has an Ask and no Response.
+  is the whole human-side record; it carries three Concerns and one Idea and **no negotiated
+  Expectation**, because a monologue has an Ask and no Response. The artifact itself carries
+  three **encoded** Expectations, judged by conformance in `ch01`.
 - **OPEN, and permanently:** which contract was sanctioned. Both are coherent alone. Nothing in
   the artifact ranks them.
 
@@ -81,7 +88,8 @@ delimiter-containing class and true otherwise. Both halves reported.
 | Quote characters in returned values | present — `'"hello'`, `'world"'` |
 | Round trip on a delimiter-free record | unchanged |
 | Existing test suite covers the failing class | **no** — no test input has a delimiter in a field |
-| Tier 3 note establishes an Expectation | **no** — no counterparty exists |
+| Tier 3 note establishes a negotiated Expectation | **no** — no counterparty exists |
+| Artifact carries encoded Expectations | **yes** — 3: one contradicted, one violated, one untested |
 | Secret sweep of captured evidence | 0 patterns fired |
 
 ### Honest gaps

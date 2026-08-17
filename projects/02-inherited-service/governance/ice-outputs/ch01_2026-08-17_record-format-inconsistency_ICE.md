@@ -14,16 +14,24 @@ human-side record available for this project.
 - `sources/2026-08-17_unknown_thoughts.md` — Tier 3, one voice, no recognized turn structure,
   date `file-derived` (the note carries none of its own)
 
-## This chapter has no Expectations, and that is structural
+## This chapter has no NEGOTIATED Expectations
 
-**Tier 3 material cannot establish an Expectation.** An Expectation is an Ask *and* a Response
-*and* a lock-in judgment. This source has only the first: it is a monologue, with no
-counterparty and no reply. Writing an Ask → Response → Lock-in chain from it would require
-inventing the other half, which fabricates a party to a conversation that never happened.
+**Tier 3 material cannot establish a negotiated Expectation.** That needs an Ask *and* a
+Response *and* a lock-in judgment. This source has only the first: it is a monologue, with no
+counterparty and no reply. Writing an Ask → Response → Lock-in chain from it would invent a
+party to a conversation that never happened.
 
-So the Expectations section below is empty **by rule, not by oversight**, and its emptiness is
-itself the finding: this project has no intent record. See
-`protocol/EVIDENCE_AND_PATHWAYS.md`.
+It has **encoded** Expectations, recorded below. See `protocol/ICE.md` §"What an Expectation is".
+
+> **Correction, 2026-08-17.** As first authored, this chapter stated it had *no Expectations at
+> all* and that the emptiness was structural. That was wrong, and the error was in the protocol
+> before it was in this chapter: Expectations were defined as arising only from dialogue.
+>
+> They also arise from the artifact. This project has at least three, and two of them contradict
+> each other — which is the central finding of the whole run and was recorded here as a Concern
+> instead. The original Concerns are left in place below rather than moved, because they are
+> genuinely also the human's own stated worries; the encoded Expectations are added as their own
+> section with conformance judgments. Nothing has been deleted.
 
 ## Security status
 
@@ -31,9 +39,43 @@ Checked, nothing found. The note was swept at capture time by `import_chat_logs.
 redaction patterns fired. The parent's own files were scanned by `security_scan.py`; no
 secret-shaped findings.
 
-## Expectations
+## Expectations — negotiated
 
 **None, and none can exist from this evidence.** See the section above.
+
+## Expectations — encoded
+
+Judged by conformance against the artifact, not by lock-in. Each states where the Expectation
+is stated, what it claims, what the artifact does, and how that was established.
+
+### E1 ⚡ contradicted — the wire format has two incompatible definitions
+- **Stated at** `src/app.py:6-8`: the v1 wire format is comma-separated **with no escaping**.
+- **Stated at** `src/export.py:8`: a field containing the delimiter is quoted **so the row stays
+  unambiguous**.
+- **Artifact does:** both, in the same pipeline. Each contract is internally coherent; together
+  they are incompatible on exactly the input class quoting was added for.
+- **Established by:** execution. `format_record(["hello,world","active"])` writes two fields;
+  `parse` reads that back as three.
+- **Marked ⚡ contradicted, not ❌ violated, deliberately.** Neither side is individually wrong.
+  Recording this as a violation of one of them would silently pick a winner, and choosing which
+  contract the format *has* is the owner's decision, not a finding.
+
+### E2 ❌ violated — the documented round trip does not hold
+- **Stated at** `README.md:8-9`: the format round-trips cleanly, so an exported file can be fed
+  straight back in.
+- **Artifact does:** round-trips every record whose fields contain no comma, and corrupts any
+  record whose field contains one.
+- **Established by:** execution, as above. The claim is unqualified, so one counterexample
+  falsifies it as written.
+
+### E3 ⚠️ untested — the quoting behaviour has no test
+- **Stated at** `src/export.py:8`: quoting exists so a row stays unambiguous. That is a claim
+  about a behaviour, and a behaviour claim is testable.
+- **Artifact does:** nothing exercises it. `tests/test_app.py` asserts on `"a,b,active"` and a
+  filter case; no input in the suite contains a delimiter inside a field.
+- **Established by:** reading `tests/test_app.py` in full.
+- **Consequence:** the suite passes while E1 and E2 both hold. A green suite is evidence about
+  what was tested, not about what works.
 
 ## Concerns
 

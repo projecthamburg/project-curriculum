@@ -56,6 +56,9 @@ codebase + documentation + git history
 > No intent record exists for this project. Every statement about *why* something is the way it
 > is, is inference from the artifact, not evidence of a decision.
 
+That declaration bounds *why*, and only *why*. It does not bound *what the artifact promised* —
+that is readable directly, and reading it is most of the work here.
+
 ### The hard rule for Pathway B
 
 **Absent intent is stated as absent. It is never inferred and presented as recovered.**
@@ -70,9 +73,17 @@ Concretely, a Pathway B curriculum:
 | May contain | May not contain |
 |---|---|
 | Structural and behavioural courses | Ask → Response → Lock-in chains |
-| Courses grounded in code, tests, docs, git history | Intent-fidelity criteria |
-| A thesis proving the courses compose | A thesis claiming the implementation satisfies its intent |
-| Findings about internal inconsistency | Findings about drift from what was wanted |
+| **Encoded Expectations, and their conformance judgments** | **Negotiated** Expectations |
+| Courses grounded in code, tests, docs, git history | Courses grounded in what someone asked for |
+| A thesis proving the courses compose | A thesis claiming the implementation satisfies its *negotiated* intent |
+| Findings about internal inconsistency and self-contradiction | Findings about drift from what was wanted |
+
+> **Pathway B is not a pathway without Expectations.** It is a pathway without *negotiated* ones.
+> The artifact states what it holds itself to — in docstrings, config documentation, tests,
+> schemas, validation, defaults and error messages — and every one of those is an Expectation that
+> can be checked. See `ICE.md` §"What an Expectation is". Pathway B projects routinely produce
+> **more** Expectation findings than Pathway A ones, because nobody has been reconciling the
+> artifact's promises against its behaviour.
 
 Git history is the strongest evidence Pathway B has, and it is still evidence of *change*, not
 of *intent*. A curriculum that quietly upgrades it is doing the thing this protocol exists to
@@ -135,11 +146,15 @@ emails to oneself, design sketches.
 - **Distinguishing property:** **one voice.** There is no response and no counterparty.
 - **Carries:** frequently no date, no structure, no ordering.
 - **Association:** `candidate` by default, always.
-- **Can establish:** Ideas, and Concerns. **Cannot establish an Expectation** — an Expectation
+- **Can establish:** Ideas, and Concerns. **Cannot establish a *negotiated* Expectation** — that
   requires an Ask *and* a Response *and* a lock-in judgment, and a note has only the first.
 
 > **This is the tier rule that matters most.** A monologue cannot produce an Ask → Response →
 > Lock-in chain. A chapter that manufactures one from a note has fabricated the other party.
+>
+> It says nothing about **encoded** Expectations, which come from the artifact rather than from
+> any source tier. A project whose only human-side evidence is a Tier 3 note still has every
+> Expectation its code, config, tests and docs state about themselves.
 
 Tier 3 material is often the earliest and most candid record of what someone actually wanted.
 It is admissible, valuable, and constrained.

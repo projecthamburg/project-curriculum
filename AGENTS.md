@@ -33,7 +33,7 @@ treating a result as this repository's own work.** Rebuild after real changes wi
 
 ## What exists, and what does not
 
-**Exists and runs:** `protocol/` (the eight normative contracts) · `governance/` (search index,
+**Exists and runs:** `protocol/` (the nine normative contracts) · `governance/` (search index,
 session discovery, chat-log import, ICE chapter scaffolding, security scan, project intake) ·
 `templates/` · `docs/UNDERSTANDING.md`.
 
@@ -70,6 +70,11 @@ python3 governance/validate_curriculum.py        # the nine contract gates
 ```
 
 ## Two pathways, three tiers
+
+An **Expectation** has three provenances: **asked** (the human), **committed** (the agent), and
+**encoded** — what the code, config, tests and docs state about themselves. The first two are
+negotiated and carry a lock-in judgment; the third is judged by conformance (honoured · violated ·
+untested · contradicted) and needs no conversation at all.
 
 **Pathway A** = ICE + codebase. **Pathway B** = codebase only, for a project with no
 conversation history — and a Pathway B curriculum must **declare that no intent record exists**

@@ -1,6 +1,13 @@
 # ICE — Ideas, Concerns, Expectations
 
 **Status:** v0.1-draft · Project Curriculum Protocol
+
+> **Revision 2026-08-17 — Expectations were defined too narrowly.** The first draft treated an
+> Expectation as arising only from dialogue: something the human asked for, or something the
+> agent committed to. That omitted the third and often largest source — **Expectations encoded in
+> the artifact itself**. The correction is in §"What an Expectation is" below. The earlier
+> framing is not deleted; it turns out to describe one of three provenances accurately, and is
+> retained as the *negotiated* case.
 **Produces:** the reviewed evidence that `GENERATION_MACHINERY.md` seeds a curriculum from.
 **Independent of** the other protocol documents — this one can be read and implemented first.
 
@@ -8,10 +15,18 @@
 
 ## What ICE is
 
-> **ICE is a record of informed consent between the human and the LLM** — what the human asked and
-> expected, what the model formally responded, and whether the human agreed to it.
+> **ICE is the record of what this project holds itself to, and whether it does.**
 
-**It is not a general quality review of the model's output**, even though the two are extremely easy
+Two halves, and both are required:
+
+- **Informed consent between the human and the LLM** — what the human asked and expected, what the
+  model formally responded, and whether the human agreed to it. This half needs conversation
+  evidence and is unavailable on Pathway B.
+- **Conformance of the artifact to what it states about itself** — what the code, config, tests and
+  documentation claim, and whether they hold. This half needs no conversation at all, and is the
+  whole of ICE on Pathway B.
+
+**Neither half is a general quality review of the model's output**, even though the two are extremely easy
 to conflate. The predecessor system conflated them once before this model was written down as
 binding, which is why the distinction is stated first rather than assumed.
 
@@ -20,6 +35,7 @@ The two things and where each goes:
 | Finding | Belongs in |
 |---|---|
 | What the human asked, expected, proposed, worried about | **An ICE chapter** |
+| What the artifact states about itself, and whether it holds | **An ICE chapter** — an encoded Expectation |
 | A reviewer's assessment of how well the model behaved | **`CONCERNS.md`**, never the chapter |
 
 That routing rule is load-bearing. A chapter that has drifted into grading the model has stopped
@@ -47,9 +63,46 @@ statement is indistinguishable from the absence of a check.
 
 ---
 
-## Extracting an Expectation — the Ask → Response → Lock-in chain
+## What an Expectation is
 
-Each Expectation item states three things:
+> **An Expectation is a statement of what must be true for the work to count as satisfied.**
+
+It has **three provenances**, and a chapter that recognizes only the first two will miss most of
+them on most projects.
+
+| Provenance | Where it lives | Example |
+|---|---|---|
+| **Asked** | the human said it | "don't modify existing records unless the user chooses overwrite" |
+| **Committed** | the agent said it would do it | "I'll bump the duration from 4500 to 7000ms" |
+| **Encoded** | **the artifact asserts it** | a config documenting `"beam" = Faster`; a docstring saying `Dynamic programming based wave search`; a test asserting an output; a schema, a type constraint, a validation check, an error message, a default |
+
+**Asked and Committed are negotiated.** They need two voices and they carry a lock-in judgment,
+because someone either agreed or did not.
+
+**Encoded is not negotiated.** The artifact states, alone, what it holds itself to. Nobody has to
+have agreed to it, and usually nobody discussed it at all. It is still an Expectation, because it
+is still a claim about what counts as working — and because the artifact can be checked against it.
+
+### Why this matters more than it looks
+
+A config file documenting three search strategies — `dp = Dynamic Programming (Optimal)`,
+`csp`, `beam = Faster` — where all three dispatch to the same function is a **violated encoded
+Expectation.** No conversation is needed to find it. The artifact promised three behaviours and
+delivers one. A function whose docstring says it performs a search, whose body performs no
+search, has broken a promise it made to itself.
+
+This is the class of finding a Pathway B project produces in quantity, and the reason **Pathway B
+is not a pathway without Expectations.** It is a pathway without *negotiated* ones.
+
+---
+
+## Judging an Expectation
+
+Two provenances, two kinds of judgment. Using the wrong one is the common error.
+
+### Negotiated — the Ask → Response → Lock-in chain
+
+Each negotiated Expectation states three things:
 
 1. **The ask** — what the human asked, quoted, with a line number.
 2. **The response** — the model's formal reply, quoted, with a line number.
@@ -65,11 +118,34 @@ Each Expectation item states three things:
 
 When execution diverges from the original ask, that divergence becomes a **new, separately-dated
 item** documenting where things went differently — not a retroactive edit of the original. The
-original stays 🔒 locked if it was locked, because it *was* locked at the time, and the record of what
-was agreed is distinct from the record of what happened.
+original stays 🔒 locked if it was locked, because it *was* locked at the time, and the record of
+what was agreed is distinct from the record of what happened.
 
-This is what makes ICE evidence rather than narrative. A smoothed history that reads as though the
+This is what makes ICE evidence rather than narrative. A smoothed history reading as though the
 right decision was made all along has destroyed the exact information a future agent needs.
+
+### Encoded — the conformance judgment
+
+An encoded Expectation has no lock-in, because nothing was agreed. It is judged against the
+artifact itself:
+
+| Marker | Meaning |
+|---|---|
+| ✅ **honoured** | the artifact does what it states |
+| ❌ **violated** | the artifact contradicts its own statement |
+| ⚠️ **untested** | stated, and nothing exercises it |
+| ⚡ **contradicted** | two encoded Expectations disagree with each other |
+
+**⚡ contradicted is its own marker and not a variant of violated.** When a reader and a writer
+each hold a coherent format contract and the two contracts are incompatible, neither one is
+individually wrong. Recording it as a violation of one of them silently picks a winner — which
+is a decision the evidence does not support and the owner has not made.
+
+Each encoded item states: **where the Expectation is stated** (file and line), **what it claims**,
+**what the artifact actually does**, and **how that was established** — read, or executed. An
+encoded Expectation demonstrated by execution outranks one argued from source, for the same
+reason a real run outranks "the tests pass".
+
 
 ---
 
