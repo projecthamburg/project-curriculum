@@ -12,8 +12,24 @@ project has no such prefix on its own directory, so the registry is what actuall
 
 ## How to create a new project — the intake checklist
 
-When asked to create a project, **ask for whatever of the following is missing rather than
-guess.**
+**Step 0: probe before you ask.** `governance/intake.py` determines by looking everything that
+can be determined by looking, asks only for what cannot be, and reports the pathway and the
+capability declaration before a single file is written.
+
+```bash
+python3 governance/intake.py --parent ../my-app --exports ~/Downloads/chat-exports
+```
+
+Asking a human to report what the filesystem already knows produces wrong answers, so the
+questionnaire deliberately asks as little as possible. What it cannot probe — the objective
+above all — it asks for, and refuses to continue without.
+
+Its most important output is the list of what the curriculum **will not** be able to claim.
+That list is never empty: even a project with Tier 1 sessions and full git history lacks
+pre-repository conversation and human-side material, and both are stated.
+
+The five items below are what that probe resolves, kept here because an agent working without
+the script still needs them.
 
 | # | What | Default? |
 |---|---|---|

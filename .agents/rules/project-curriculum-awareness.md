@@ -43,7 +43,8 @@ Layer 3, designed but run by hand) · a Pathway B worked example.
 **Pathway A** = ICE + codebase. **Pathway B** = codebase only, and must **declare that no intent
 record exists** rather than infer intent from code. Evidence tiers: **1** agent work sessions,
 **2** LLM chat logs, **3** notes and screenshots — one voice, so Tier 3 carries Ideas and
-Concerns but **never an Expectation**. See `protocol/EVIDENCE_AND_PATHWAYS.md`.
+Concerns but **never an Expectation**. **Do not decide the pathway by hand — run
+`governance/intake.py`.** See `protocol/EVIDENCE_AND_PATHWAYS.md`.
 
 ## Standing rules
 

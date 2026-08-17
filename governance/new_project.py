@@ -50,7 +50,7 @@ REGISTRY = os.path.join(P["gov"], "registry.json")
 PORTABLE_SCRIPTS = [
     "pc_config.py", "redact_util.py", "build_search_index.py", "index_codebase.py",
     "query.py", "spheres.py", "discover_sessions.py", "import_chat_logs.py",
-    "ice_chapter.py", "security_scan.py", "update.py",
+    "ice_chapter.py", "intake.py", "security_scan.py", "update.py",
 ]
 
 AGENTS_MD = """# {number:02d}-{slug} — project context for agents
