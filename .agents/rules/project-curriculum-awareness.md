@@ -18,10 +18,25 @@ the student, the project is the subject, the implementation is the laboratory.
 `README.md` has the idea; `docs/UNDERSTANDING.md` has the derived architecture and the open
 decisions.
 
-## This repository is at the beginning
+## Search before reading files by hand
 
-There is no search index, no `governance/`, no CLI, no ICE pipeline and no `SPEC.md` yet. Do not
-reference them as working, and do not invent them in documentation.
+```bash
+python3 governance/query.py "your question"
+python3 governance/query.py "what did I ask about X" --speaker user
+```
+
+A keyword index — no embeddings, no live search. Results are tagged `origin: internal` or
+`origin: external`; check which before treating one as this repository's own work.
+
+## What exists, and what does not
+
+**Exists and runs:** `protocol/` (six normative contracts) · `governance/` (index, session
+discovery, chat-log import, ICE scaffolding, security scan, project intake) · `templates/`.
+
+**Does not exist yet — do not reference as working, do not invent:** `SPEC.md` · the CI validators
+for the protocol contracts · the seeding run itself · a CORE course catalog (empty, so the
+bootstrap exception applies) · global-adjacent session discovery (documented, not implemented, so
+capture is incomplete).
 
 ## Standing rules
 

@@ -36,6 +36,13 @@ secrets.yaml
 **/runs/*
 !**/runs/.gitkeep
 
+# Update reports are one-per-invocation operational churn, fully regenerable from the
+# same inputs. Security findings are NOT ignored: a dated finding carries a proposed
+# disposition awaiting human approval, which makes it an auditable record rather than
+# output.
+**/governance/reports/*
+!**/governance/reports/.gitkeep
+
 # ─── Python ──────────────────────────────────────────────────────────────────
 __pycache__/
 *.pyc

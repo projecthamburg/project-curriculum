@@ -1,0 +1,7 @@
+{
+  "project_id": "project-curriculum",
+  "ice_domain": "project-curriculum",
+  "content_root": "..",
+  "external_root": null,
+  "manifest": "sources/project-files-manifest.yaml"
+}

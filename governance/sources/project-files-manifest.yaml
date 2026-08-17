@@ -1,0 +1,79 @@
+# project-curriculum — file manifest for this repository's own search index
+#
+# Lightweight pointers only. Files are read from their real location and never copied
+# here, so the manifest and the original can never disagree.
+#
+#   path      relative to the content root (this repository)
+#   enabled   true to include in the search index
+#   category  free-form; used by query.py --category
+#   origin    internal = this repository's own authored material
+#             external = borrowed or third-party reference material
+#
+# Always label origin honestly. A borrowed document indexed as internal will eventually be
+# cited as this repository's own work.
+
+files:
+  - path: README.md
+    enabled: true
+    category: repo-context
+    origin: internal
+
+  - path: AGENTS.md
+    enabled: true
+    category: repo-context
+    origin: internal
+
+  - path: CLAUDE.md
+    enabled: true
+    category: repo-context
+    origin: internal
+
+  - path: docs/UNDERSTANDING.md
+    enabled: true
+    category: design-note
+    origin: internal
+
+  - path: protocol/README.md
+    enabled: true
+    category: protocol
+    origin: internal
+
+  - path: protocol/MASTER_RUBRIC.md
+    enabled: true
+    category: protocol
+    origin: internal
+
+  - path: protocol/COURSE_TEMPLATE.md
+    enabled: true
+    category: protocol
+    origin: internal
+
+  - path: protocol/MASTER_SYLLABUS.md
+    enabled: true
+    category: protocol
+    origin: internal
+
+  - path: protocol/GENERATION_MACHINERY.md
+    enabled: true
+    category: protocol
+    origin: internal
+
+  - path: protocol/THESIS_AND_DEFENSE.md
+    enabled: true
+    category: protocol
+    origin: internal
+
+  - path: protocol/ICE.md
+    enabled: true
+    category: protocol
+    origin: internal
+
+  - path: governance/README.md
+    enabled: true
+    category: governance
+    origin: internal
+
+  - path: governance/PROJECTS.md
+    enabled: true
+    category: governance
+    origin: internal
