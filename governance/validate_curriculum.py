@@ -244,20 +244,32 @@ def g8_citations(project_root, syl, rep, all_files):
 
 
 def g9_pathway(project_root, syl, rep):
-    """A Pathway B curriculum must declare that no intent record exists. A Pathway A one must
-    have at least one ICE chapter to justify its intent claims."""
+    """Pathway A means an intent RECORD exists — not merely that chapter files exist.
+
+    A Tier 3 corpus produces real ICE chapters carrying Ideas and Concerns while carrying no
+    Expectations at all, because a monologue has an Ask and no Response. Classifying by the
+    presence of a chapter file would read such a project as Pathway A and skip the declaration
+    check entirely, which is the exact hole this gate exists to close. So the test is whether
+    any chapter establishes an Expectation, evidenced by a lock-in marker."""
     ice = os.path.join(project_root, "governance", "ice-outputs")
-    chapters = [f for f in os.listdir(ice)] if os.path.isdir(ice) else []
-    has_ice = any(f.endswith("_ICE.md") for f in chapters)
+    chapters = ([os.path.join(ice, f) for f in os.listdir(ice) if f.endswith("_ICE.md")]
+                if os.path.isdir(ice) else [])
+    LOCKIN = ("🔒", "🔓", "➡️")
+    with_expectations = [c for c in chapters
+                         if any(m in read(c) for m in LOCKIN)]
     corpus = " ".join(read(os.path.join(syl, f)) for f in os.listdir(syl)
                       if f.endswith(".md"))
-    declares = re.search(r"no intent record exists", corpus, re.I)
-    if has_ice:
-        return rep.add("G9", True, "Pathway A — ICE chapters present")
-    ok = bool(declares)
-    rep.add("G9", ok, "Pathway B — no ICE chapters",
-            [] if ok else ["Pathway B curriculum does not declare that no intent record "
-                           "exists (protocol/EVIDENCE_AND_PATHWAYS.md)"])
+    declares = bool(re.search(r"no intent record exists", corpus, re.I))
+
+    if with_expectations:
+        return rep.add("G9", True,
+                       f"Pathway A — {len(with_expectations)} chapter(s) establish Expectations")
+    detail = (f"Pathway B — {len(chapters)} chapter(s), none establishing an Expectation"
+              if chapters else "Pathway B — no ICE chapters")
+    rep.add("G9", declares, detail,
+            [] if declares else ["Pathway B curriculum does not declare that no intent record "
+                                 "exists (protocol/EVIDENCE_AND_PATHWAYS.md). Chapters carrying "
+                                 "only Ideas and Concerns do not make this Pathway A."])
 
 
 def validate(project_root, as_json):

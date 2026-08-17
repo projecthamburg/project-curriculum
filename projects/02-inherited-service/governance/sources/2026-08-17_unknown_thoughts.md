@@ -1,0 +1,34 @@
+<!-- Imported chat log — /home/user/project-curriculum/examples/inherited-service/notes/thoughts.txt -->
+# 2026-08-17_unknown_thoughts
+
+- **Provider:** unknown
+- **Export format:** unparsed
+- **Date:** 2026-08-17  (confidence: file-derived)
+- **Turns:** 0
+- **Association:** explicit
+- **Evidence tier:** 3  — monologue: can establish Ideas and Concerns, NOT Expectations
+
+---
+
+### System
+
+_This export's turn structure was not recognized by any known parser, so it is captured whole and unsplit rather than force-fitted into a turn shape it does not have. Speaker attribution below is unavailable._
+
+---
+
+### User
+
+Been staring at the record format again.
+
+The reader splits on every comma. The writer wraps a field in quotes when the field
+contains a comma. Those two do not agree with each other. If a field ever contains a
+comma, we write it quoted and then read it back as two fields, one of which starts with
+a quote character.
+
+Nobody remembers whether the quoting was added later or whether the reader was supposed
+to be updated at the same time. There is no ticket and no discussion I can find.
+
+Should probably move to a real CSV reader. Worried about what depends on the current
+behaviour though.
+
+

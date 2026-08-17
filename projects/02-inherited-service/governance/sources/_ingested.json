@@ -1,0 +1,15 @@
+{
+  "ingested": [
+    {
+      "session_id": "4c199cdfd26b3b17",
+      "content_id": "4c199cdfd26b3b17",
+      "tool": "chat-log:unknown",
+      "native_path": "/home/user/project-curriculum/examples/inherited-service/notes/thoughts.txt",
+      "sources_files": [
+        "2026-08-17_unknown_thoughts.md",
+        "2026-08-17_unknown_thoughts.json"
+      ],
+      "captured_at": "2026-08-17T16:55:58Z"
+    }
+  ]
+}

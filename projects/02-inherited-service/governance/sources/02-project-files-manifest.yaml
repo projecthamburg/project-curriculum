@@ -1,0 +1,11 @@
+# 02-inherited-service — file manifest
+#
+# Pathway B: the only evidence index families are this project's own authored material and
+# the Tier 3 note. Everything about the parent comes from the CODEBASE index instead.
+
+files:
+  - path: AGENTS.md
+    enabled: true
+    category: project-context
+    origin: internal
+    root: content

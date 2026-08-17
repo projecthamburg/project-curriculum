@@ -1,0 +1,940 @@
+{
+  "metadata": {
+    "generated_at": "2026-08-17T16:55:58+00:00",
+    "root": "/home/user/project-curriculum/examples/inherited-service",
+    "project_id": "02-inherited-service",
+    "index_kind": "keyword-lexical",
+    "embeddings": false,
+    "analysis_depth": "lexical only \u2014 no AST, no call graph, no complexity analysis",
+    "file_count": 5,
+    "chunk_count": 14,
+    "total_lines": 75,
+    "by_kind": {
+      "docs": 2,
+      "code": 2,
+      "test": 1
+    },
+    "languages": {
+      "markdown": 1,
+      "text": 1,
+      "python": 3
+    }
+  },
+  "sources": [
+    {
+      "path": "README.md",
+      "kind": "docs",
+      "language": "markdown",
+      "lines": 14,
+      "sha256": "86b57fee28052e9abecd72f1ce615264aaee8bd913f8a3d29c58424884f086cc",
+      "chunk_count": 2
+    },
+    {
+      "path": "notes/thoughts.txt",
+      "kind": "docs",
+      "language": "text",
+      "lines": 12,
+      "sha256": "4c199cdfd26b3b179f948e12ff02321daffd69f0ee599f31c575042b517e45f5",
+      "chunk_count": 1
+    },
+    {
+      "path": "src/app.py",
+      "kind": "code",
+      "language": "python",
+      "lines": 19,
+      "sha256": "258843662e980ef5dd4e3752a282a83fadbf764d1af59f43cc6cf22db76cc99c",
+      "chunk_count": 4
+    },
+    {
+      "path": "src/export.py",
+      "kind": "code",
+      "language": "python",
+      "lines": 21,
+      "sha256": "2098f1b931a030d3a7ad71d92403a203223c634ff8645bcc28c00b280d3257f7",
+      "chunk_count": 4
+    },
+    {
+      "path": "tests/test_app.py",
+      "kind": "test",
+      "language": "python",
+      "lines": 9,
+      "sha256": "94977808c8f5b816f4aadfcbcc23ff624c8fe99a0f3a1e0fb213ea29423df8ee",
+      "chunk_count": 3
+    }
+  ],
+  "chunks": [
+    {
+      "id": "cb_000001",
+      "path": "README.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "inherited-service",
+      "line_start": 1,
+      "line_end": 8,
+      "keywords": [
+        "are",
+        "back",
+        "file",
+        "inherited",
+        "service",
+        "an",
+        "authors",
+        "be",
+        "can",
+        "cleanly",
+        "design",
+        "discussion",
+        "exported",
+        "fed",
+        "filtered",
+        "flat",
+        "format",
+        "gone",
+        "in",
+        "inherited-service",
+        "it",
+        "no",
+        "original",
+        "out",
+        "processing"
+      ],
+      "preview": "# inherited-service\n\nA small record-processing service. We inherited it; the original authors are gone and no\ndesign discussion survives.\n\nRecords are read from a flat file, filtered, and written back out. The format round-trips\ncleanly, so an exported file ca..."
+    },
+    {
+      "id": "cb_000002",
+      "path": "README.md",
+      "kind": "docs",
+      "language": "markdown",
+      "symbol": "Usage",
+      "line_start": 9,
+      "line_end": 14,
+      "keywords": [
+        "python3",
+        "src",
+        "txt",
+        "app",
+        "export",
+        "out",
+        "out.txt",
+        "records",
+        "records.txt",
+        "src.app",
+        "src.export",
+        "usage"
+      ],
+      "preview": "## Usage\n\n```\npython3 -m src.app records.txt\npython3 -m src.export out.txt\n```"
+    },
+    {
+      "id": "cb_000003",
+      "path": "notes/thoughts.txt",
+      "kind": "docs",
+      "language": "text",
+      "symbol": null,
+      "line_start": 1,
+      "line_end": 12,
+      "keywords": [
+        "comma",
+        "field",
+        "reader",
+        "at",
+        "contains",
+        "it",
+        "no",
+        "on",
+        "to",
+        "two",
+        "was",
+        "whether",
+        "added",
+        "again",
+        "agree",
+        "as",
+        "back",
+        "be",
+        "behaviour",
+        "can",
+        "character",
+        "csv",
+        "current",
+        "depends",
+        "discussion"
+      ],
+      "preview": "Been staring at the record format again.\n\nThe reader splits on every comma. The writer wraps a field in quotes when the field\ncontains a comma. Those two do not agree with each other. If a field ever contains a\ncomma, we write it quoted and then read it back a..."
+    },
+    {
+      "id": "cb_000004",
+      "path": "src/app.py",
+      "kind": "code",
+      "language": "python",
+      "symbol": "<module>",
+      "line_start": 1,
+      "line_end": 3,
+      "keywords": [
+        "format",
+        "legacy",
+        "reader",
+        "record",
+        "v1",
+        "wire"
+      ],
+      "preview": "\"\"\"Record reader. Legacy v1 wire format.\"\"\""
+    },
+    {
+      "id": "cb_000005",
+      "path": "src/app.py",
+      "kind": "code",
+      "language": "python",
+      "symbol": "parse",
+      "line_start": 4,
+      "line_end": 11,
+      "keywords": [
+        "raw",
+        "split",
+        "comma",
+        "comma-separated",
+        "def",
+        "escaping",
+        "fields",
+        "format",
+        "is",
+        "line",
+        "no",
+        "parse",
+        "raw.split",
+        "record",
+        "return",
+        "separated",
+        "v1",
+        "wire"
+      ],
+      "preview": "def parse(raw):\n    \"\"\"Split a record line into fields.\n\n    The v1 wire format is comma-separated with no escaping.\n    \"\"\"\n    return raw.split(\",\")"
+    },
+    {
+      "id": "cb_000006",
+      "path": "src/app.py",
+      "kind": "code",
+      "language": "python",
+      "symbol": "load",
+      "line_start": 12,
+      "line_end": 16,
+      "keywords": [
+        "line",
+        "fh",
+        "path",
+        "as",
+        "def",
+        "encoding",
+        "fh:",
+        "if",
+        "in",
+        "line.rstrip",
+        "line.strip",
+        "load",
+        "open",
+        "parse",
+        "return",
+        "rstrip",
+        "strip",
+        "utf",
+        "utf-8"
+      ],
+      "preview": "def load(path):\n    with open(path, encoding=\"utf-8\") as fh:\n        return [parse(line.rstrip(\"\\n\")) for line in fh if line.strip()]"
+    },
+    {
+      "id": "cb_000007",
+      "path": "src/app.py",
+      "kind": "code",
+      "language": "python",
+      "symbol": "active_only",
+      "line_start": 17,
+      "line_end": 19,
+      "keywords": [
+        "active",
+        "records",
+        "active_only",
+        "def",
+        "field",
+        "final",
+        "if",
+        "in",
+        "is",
+        "literal",
+        "return",
+        "whose"
+      ],
+      "preview": "def active_only(records):\n    \"\"\"Records whose final field is the literal 'active'.\"\"\"\n    return [r for r in records if r and r[-1] == \"active\"]"
+    },
+    {
+      "id": "cb_000008",
+      "path": "src/export.py",
+      "kind": "code",
+      "language": "python",
+      "symbol": "<module>",
+      "line_start": 1,
+      "line_end": 6,
+      "keywords": [
+        "delim",
+        "quote",
+        "record",
+        "writer"
+      ],
+      "preview": "\"\"\"Record writer.\"\"\"\n\nDELIM = \",\"\nQUOTE = '\"'"
+    },
+    {
+      "id": "cb_000009",
+      "path": "src/export.py",
+      "kind": "code",
+      "language": "python",
+      "symbol": "format_field",
+      "line_start": 7,
+      "line_end": 13,
+      "keywords": [
+        "value",
+        "quote",
+        "field",
+        "return",
+        "contains",
+        "def",
+        "delim",
+        "delimiter",
+        "format",
+        "format_field",
+        "if",
+        "in",
+        "it",
+        "row",
+        "so",
+        "stays",
+        "unambiguous",
+        "value:"
+      ],
+      "preview": "def format_field(value):\n    \"\"\"Quote a field when it contains the delimiter, so the row stays unambiguous.\"\"\"\n    if DELIM in value:\n        return f\"{QUOTE}{value}{QUOTE}\"\n    return value"
+    },
+    {
+      "id": "cb_000010",
+      "path": "src/export.py",
+      "kind": "code",
+      "language": "python",
+      "symbol": "format_record",
+      "line_start": 14,
+      "line_end": 17,
+      "keywords": [
+        "fields",
+        "format",
+        "def",
+        "delim",
+        "delim.join",
+        "field",
+        "format_field",
+        "format_record",
+        "in",
+        "join",
+        "record",
+        "return"
+      ],
+      "preview": "def format_record(fields):\n    return DELIM.join(format_field(f) for f in fields)"
+    },
+    {
+      "id": "cb_000011",
+      "path": "src/export.py",
+      "kind": "code",
+      "language": "python",
+      "symbol": "dump",
+      "line_start": 18,
+      "line_end": 21,
+      "keywords": [
+        "fh",
+        "path",
+        "records",
+        "as",
+        "def",
+        "dump",
+        "encoding",
+        "fh.write",
+        "fh:",
+        "format",
+        "format_record",
+        "in",
+        "open",
+        "record",
+        "records:",
+        "utf",
+        "utf-8",
+        "write"
+      ],
+      "preview": "def dump(records, path):\n    with open(path, \"w\", encoding=\"utf-8\") as fh:\n        for r in records:\n            fh.write(format_record(r) + \"\\n\")"
+    },
+    {
+      "id": "cb_000012",
+      "path": "tests/test_app.py",
+      "kind": "test",
+      "language": "python",
+      "symbol": "<module>",
+      "line_start": 1,
+      "line_end": 3,
+      "keywords": [
+        "active",
+        "active_only",
+        "app",
+        "import",
+        "parse",
+        "src",
+        "src.app"
+      ],
+      "preview": "from src.app import parse, active_only"
+    },
+    {
+      "id": "cb_000013",
+      "path": "tests/test_app.py",
+      "kind": "test",
+      "language": "python",
+      "symbol": "test_parse_splits_on_comma",
+      "line_start": 4,
+      "line_end": 7,
+      "keywords": [
+        "active",
+        "parse",
+        "assert",
+        "comma",
+        "def",
+        "on",
+        "splits",
+        "test",
+        "test_parse_splits_on_comma"
+      ],
+      "preview": "def test_parse_splits_on_comma():\n    assert parse(\"a,b,active\") == [\"a\", \"b\", \"active\"]"
+    },
+    {
+      "id": "cb_000014",
+      "path": "tests/test_app.py",
+      "kind": "test",
+      "language": "python",
+      "symbol": "test_active_only_filters",
+      "line_start": 8,
+      "line_end": 9,
+      "keywords": [
+        "active",
+        "active_only",
+        "assert",
+        "def",
+        "filters",
+        "retired",
+        "test",
+        "test_active_only_filters"
+      ],
+      "preview": "def test_active_only_filters():\n    assert active_only([[\"a\", \"active\"], [\"b\", \"retired\"]]) == [[\"a\", \"active\"]]"
+    }
+  ],
+  "indices": {
+    "keyword_index": {
+      "are": [
+        "cb_000001"
+      ],
+      "back": [
+        "cb_000001",
+        "cb_000003"
+      ],
+      "file": [
+        "cb_000001"
+      ],
+      "inherited": [
+        "cb_000001"
+      ],
+      "service": [
+        "cb_000001"
+      ],
+      "an": [
+        "cb_000001"
+      ],
+      "authors": [
+        "cb_000001"
+      ],
+      "be": [
+        "cb_000001",
+        "cb_000003"
+      ],
+      "can": [
+        "cb_000001",
+        "cb_000003"
+      ],
+      "cleanly": [
+        "cb_000001"
+      ],
+      "design": [
+        "cb_000001"
+      ],
+      "discussion": [
+        "cb_000001",
+        "cb_000003"
+      ],
+      "exported": [
+        "cb_000001"
+      ],
+      "fed": [
+        "cb_000001"
+      ],
+      "filtered": [
+        "cb_000001"
+      ],
+      "flat": [
+        "cb_000001"
+      ],
+      "format": [
+        "cb_000001",
+        "cb_000004",
+        "cb_000005",
+        "cb_000009",
+        "cb_000010",
+        "cb_000011"
+      ],
+      "gone": [
+        "cb_000001"
+      ],
+      "in": [
+        "cb_000001",
+        "cb_000006",
+        "cb_000007",
+        "cb_000009",
+        "cb_000010",
+        "cb_000011"
+      ],
+      "inherited-service": [
+        "cb_000001"
+      ],
+      "it": [
+        "cb_000001",
+        "cb_000003",
+        "cb_000009"
+      ],
+      "no": [
+        "cb_000001",
+        "cb_000003",
+        "cb_000005"
+      ],
+      "original": [
+        "cb_000001"
+      ],
+      "out": [
+        "cb_000001",
+        "cb_000002"
+      ],
+      "processing": [
+        "cb_000001"
+      ],
+      "python3": [
+        "cb_000002"
+      ],
+      "src": [
+        "cb_000002",
+        "cb_000012"
+      ],
+      "txt": [
+        "cb_000002"
+      ],
+      "app": [
+        "cb_000002",
+        "cb_000012"
+      ],
+      "export": [
+        "cb_000002"
+      ],
+      "out.txt": [
+        "cb_000002"
+      ],
+      "records": [
+        "cb_000002",
+        "cb_000007",
+        "cb_000011"
+      ],
+      "records.txt": [
+        "cb_000002"
+      ],
+      "src.app": [
+        "cb_000002",
+        "cb_000012"
+      ],
+      "src.export": [
+        "cb_000002"
+      ],
+      "usage": [
+        "cb_000002"
+      ],
+      "comma": [
+        "cb_000003",
+        "cb_000005",
+        "cb_000013"
+      ],
+      "field": [
+        "cb_000003",
+        "cb_000007",
+        "cb_000009",
+        "cb_000010"
+      ],
+      "reader": [
+        "cb_000003",
+        "cb_000004"
+      ],
+      "at": [
+        "cb_000003"
+      ],
+      "contains": [
+        "cb_000003",
+        "cb_000009"
+      ],
+      "on": [
+        "cb_000003",
+        "cb_000013"
+      ],
+      "to": [
+        "cb_000003"
+      ],
+      "two": [
+        "cb_000003"
+      ],
+      "was": [
+        "cb_000003"
+      ],
+      "whether": [
+        "cb_000003"
+      ],
+      "added": [
+        "cb_000003"
+      ],
+      "again": [
+        "cb_000003"
+      ],
+      "agree": [
+        "cb_000003"
+      ],
+      "as": [
+        "cb_000003",
+        "cb_000006",
+        "cb_000011"
+      ],
+      "behaviour": [
+        "cb_000003"
+      ],
+      "character": [
+        "cb_000003"
+      ],
+      "csv": [
+        "cb_000003"
+      ],
+      "current": [
+        "cb_000003"
+      ],
+      "depends": [
+        "cb_000003"
+      ],
+      "legacy": [
+        "cb_000004"
+      ],
+      "record": [
+        "cb_000004",
+        "cb_000005",
+        "cb_000008",
+        "cb_000010",
+        "cb_000011"
+      ],
+      "v1": [
+        "cb_000004",
+        "cb_000005"
+      ],
+      "wire": [
+        "cb_000004",
+        "cb_000005"
+      ],
+      "raw": [
+        "cb_000005"
+      ],
+      "split": [
+        "cb_000005"
+      ],
+      "comma-separated": [
+        "cb_000005"
+      ],
+      "def": [
+        "cb_000005",
+        "cb_000006",
+        "cb_000007",
+        "cb_000009",
+        "cb_000010",
+        "cb_000011",
+        "cb_000013",
+        "cb_000014"
+      ],
+      "escaping": [
+        "cb_000005"
+      ],
+      "fields": [
+        "cb_000005",
+        "cb_000010"
+      ],
+      "is": [
+        "cb_000005",
+        "cb_000007"
+      ],
+      "line": [
+        "cb_000005",
+        "cb_000006"
+      ],
+      "parse": [
+        "cb_000005",
+        "cb_000006",
+        "cb_000012",
+        "cb_000013"
+      ],
+      "raw.split": [
+        "cb_000005"
+      ],
+      "return": [
+        "cb_000005",
+        "cb_000006",
+        "cb_000007",
+        "cb_000009",
+        "cb_000010"
+      ],
+      "separated": [
+        "cb_000005"
+      ],
+      "fh": [
+        "cb_000006",
+        "cb_000011"
+      ],
+      "path": [
+        "cb_000006",
+        "cb_000011"
+      ],
+      "encoding": [
+        "cb_000006",
+        "cb_000011"
+      ],
+      "fh:": [
+        "cb_000006",
+        "cb_000011"
+      ],
+      "if": [
+        "cb_000006",
+        "cb_000007",
+        "cb_000009"
+      ],
+      "line.rstrip": [
+        "cb_000006"
+      ],
+      "line.strip": [
+        "cb_000006"
+      ],
+      "load": [
+        "cb_000006"
+      ],
+      "open": [
+        "cb_000006",
+        "cb_000011"
+      ],
+      "rstrip": [
+        "cb_000006"
+      ],
+      "strip": [
+        "cb_000006"
+      ],
+      "utf": [
+        "cb_000006",
+        "cb_000011"
+      ],
+      "utf-8": [
+        "cb_000006",
+        "cb_000011"
+      ],
+      "active": [
+        "cb_000007",
+        "cb_000012",
+        "cb_000013",
+        "cb_000014"
+      ],
+      "active_only": [
+        "cb_000007",
+        "cb_000012",
+        "cb_000014"
+      ],
+      "final": [
+        "cb_000007"
+      ],
+      "literal": [
+        "cb_000007"
+      ],
+      "whose": [
+        "cb_000007"
+      ],
+      "delim": [
+        "cb_000008",
+        "cb_000009",
+        "cb_000010"
+      ],
+      "quote": [
+        "cb_000008",
+        "cb_000009"
+      ],
+      "writer": [
+        "cb_000008"
+      ],
+      "value": [
+        "cb_000009"
+      ],
+      "delimiter": [
+        "cb_000009"
+      ],
+      "format_field": [
+        "cb_000009",
+        "cb_000010"
+      ],
+      "row": [
+        "cb_000009"
+      ],
+      "so": [
+        "cb_000009"
+      ],
+      "stays": [
+        "cb_000009"
+      ],
+      "unambiguous": [
+        "cb_000009"
+      ],
+      "value:": [
+        "cb_000009"
+      ],
+      "delim.join": [
+        "cb_000010"
+      ],
+      "format_record": [
+        "cb_000010",
+        "cb_000011"
+      ],
+      "join": [
+        "cb_000010"
+      ],
+      "dump": [
+        "cb_000011"
+      ],
+      "fh.write": [
+        "cb_000011"
+      ],
+      "records:": [
+        "cb_000011"
+      ],
+      "write": [
+        "cb_000011"
+      ],
+      "import": [
+        "cb_000012"
+      ],
+      "assert": [
+        "cb_000013",
+        "cb_000014"
+      ],
+      "splits": [
+        "cb_000013"
+      ],
+      "test": [
+        "cb_000013",
+        "cb_000014"
+      ],
+      "test_parse_splits_on_comma": [
+        "cb_000013"
+      ],
+      "filters": [
+        "cb_000014"
+      ],
+      "retired": [
+        "cb_000014"
+      ],
+      "test_active_only_filters": [
+        "cb_000014"
+      ]
+    },
+    "path_index": {
+      "README.md": [
+        "cb_000001",
+        "cb_000002"
+      ],
+      "notes/thoughts.txt": [
+        "cb_000003"
+      ],
+      "src/app.py": [
+        "cb_000004",
+        "cb_000005",
+        "cb_000006",
+        "cb_000007"
+      ],
+      "src/export.py": [
+        "cb_000008",
+        "cb_000009",
+        "cb_000010",
+        "cb_000011"
+      ],
+      "tests/test_app.py": [
+        "cb_000012",
+        "cb_000013",
+        "cb_000014"
+      ]
+    },
+    "kind_index": {
+      "docs": [
+        "cb_000001",
+        "cb_000002",
+        "cb_000003"
+      ],
+      "code": [
+        "cb_000004",
+        "cb_000005",
+        "cb_000006",
+        "cb_000007",
+        "cb_000008",
+        "cb_000009",
+        "cb_000010",
+        "cb_000011"
+      ],
+      "test": [
+        "cb_000012",
+        "cb_000013",
+        "cb_000014"
+      ]
+    },
+    "symbol_index": {
+      "inherited-service": [
+        "cb_000001"
+      ],
+      "Usage": [
+        "cb_000002"
+      ],
+      "<module>": [
+        "cb_000004",
+        "cb_000008",
+        "cb_000012"
+      ],
+      "parse": [
+        "cb_000005"
+      ],
+      "load": [
+        "cb_000006"
+      ],
+      "active_only": [
+        "cb_000007"
+      ],
+      "format_field": [
+        "cb_000009"
+      ],
+      "format_record": [
+        "cb_000010"
+      ],
+      "dump": [
+        "cb_000011"
+      ],
+      "test_parse_splits_on_comma": [
+        "cb_000013"
+      ],
+      "test_active_only_filters": [
+        "cb_000014"
+      ]
+    }
+  }
+}

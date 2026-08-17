@@ -1,0 +1,17 @@
+{
+  "domain": "inherited-service",
+  "next_chapter": 2,
+  "chapters": [
+    {
+      "chapter": 1,
+      "file": "ch01_2026-08-17_record-format-inconsistency_ICE.md",
+      "label": "record-format-inconsistency",
+      "sphere": null,
+      "authored": "2026-08-17",
+      "sources": [
+        "2026-08-17_unknown_thoughts.md"
+      ],
+      "status": "scaffolded"
+    }
+  ]
+}

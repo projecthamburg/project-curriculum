@@ -1,0 +1,35 @@
+{
+  "courses": [
+    {
+      "file": "INH-101-the-two-format-contracts.md",
+      "prerequisites": []
+    },
+    {
+      "file": "INH-102-the-disagreement-demonstrated.md",
+      "prerequisites": [
+        "INH-101"
+      ]
+    },
+    {
+      "file": "INH-103-documentation-against-behaviour.md",
+      "prerequisites": [
+        "INH-101"
+      ]
+    },
+    {
+      "file": "INH-104-working-without-an-intent-record.md",
+      "prerequisites": [
+        "INH-101"
+      ]
+    },
+    {
+      "file": "THESIS-inherited-service.md",
+      "prerequisites": [
+        "INH-101",
+        "INH-102",
+        "INH-103",
+        "INH-104"
+      ]
+    }
+  ]
+}

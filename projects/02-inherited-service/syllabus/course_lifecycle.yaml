@@ -1,0 +1,12 @@
+# course_lifecycle.yaml — the staleness ledger
+#
+# Routing SCHEDULES review. It is explicitly barred from modifying content.
+# See protocol/MASTER_SYLLABUS.md.
+
+policy:
+  review_interval_days: 90
+  rule: "A matching discussion schedules a review; it never silently edits content."
+
+courses: {}
+
+review_routes: []

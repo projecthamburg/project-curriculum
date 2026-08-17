@@ -1,0 +1,15 @@
+{
+  "category": "chat-log",
+  "source_tool": "unknown",
+  "tier": "3",
+  "can_establish_expectation": false,
+  "export_format": "unparsed",
+  "session_id": "4c199cdfd26b3b17",
+  "origin_file": "/home/user/project-curriculum/examples/inherited-service/notes/thoughts.txt",
+  "association": "explicit",
+  "timestamp": "2026-08-17",
+  "timestamp_confidence": "file-derived",
+  "turn_count": 0,
+  "captured_at": "2026-08-17T16:55:58Z",
+  "raw_is_immutable": true
+}

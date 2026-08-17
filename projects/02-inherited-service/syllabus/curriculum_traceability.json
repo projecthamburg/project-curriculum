@@ -1,0 +1,35 @@
+{
+  "artifacts": [
+    {
+      "path": "../governance/ice-outputs/ch01_2026-08-17_record-format-inconsistency_ICE.md",
+      "disposition": "seeded-concerns-and-ideas-only",
+      "courses": [
+        "INH-104"
+      ],
+      "thesis_chapters": [
+        "pathway"
+      ]
+    },
+    {
+      "path": "COVERAGE_PROFILE.md",
+      "disposition": "run-record",
+      "courses": [
+        "INH-101",
+        "INH-102",
+        "INH-103",
+        "INH-104"
+      ],
+      "thesis_chapters": []
+    },
+    {
+      "path": "../governance/reports/intake_inherited-service.json",
+      "disposition": "pathway-determination",
+      "courses": [
+        "INH-104"
+      ],
+      "thesis_chapters": [
+        "pathway"
+      ]
+    }
+  ]
+}

@@ -33,11 +33,14 @@ as this repository's own work.
 **Exists and runs:** `protocol/` (eight normative contracts) · `governance/` (index, session
 discovery, chat-log import, ICE scaffolding, security scan, project intake) · `templates/`.
 
-**Does not exist yet — do not reference as working, do not invent:** `SPEC.md` (deferred until a
-real seeding run has executed) · the CI validators for the protocol contracts · the seeding run
-itself · a CORE course catalog (empty, so the bootstrap exception applies) · global-adjacent
-session discovery (documented in `governance/PROJECTS.md`, not implemented — capture is therefore
-incomplete and says so).
+Two seeding runs have executed end to end: `projects/01-the-jig-is-back/` (Pathway A) and
+`projects/02-inherited-service/` (Pathway B). Both pass all nine gates.
+
+**Does not exist yet — do not reference as working, do not invent:** `SPEC.md` · a CORE course
+catalog (empty, so the bootstrap exception applies) · global-adjacent session discovery
+(documented in `governance/PROJECTS.md`, not implemented — capture is therefore incomplete and
+says so) · the adversarial panel (VALIDATION.md Layer 3, designed but run by hand) · a Pathway B
+run against a real codebase (02's parent is a 75-line synthetic fixture; scale is untested).
 
 `docs/UNDERSTANDING.md` §7 is the accurate statement of what is decided and what is not.
 

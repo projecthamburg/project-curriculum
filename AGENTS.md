@@ -46,8 +46,9 @@ session discovery, chat-log import, ICE chapter scaffolding, security scan, proj
   the code is not written. Capture is therefore not complete, and says so.
 - The **adversarial panel** (VALIDATION.md Layer 3) — designed, not implemented. Layers 1 and
   2 exist; Layer 3 is run by hand today.
-- **A Pathway B worked example.** The pathway is specified and gate G9 enforces its
-  declaration, but no project has been seeded without conversation history yet.
+- **A Pathway B run against a REAL codebase.** `projects/02-inherited-service/` proves the
+  pathway end to end, but its parent is a 75-line synthetic fixture authored here. Scale is
+  untested.
 
 `docs/UNDERSTANDING.md` §7 is the current, accurate statement of what is decided and what is not.
 When a missing piece lands, this section gets updated as part of building it, not afterwards.

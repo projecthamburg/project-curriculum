@@ -1,0 +1,7 @@
+{
+  "project_id": "02-inherited-service",
+  "ice_domain": "inherited-service",
+  "content_root": "..",
+  "external_root": "/home/user/project-curriculum/examples/inherited-service",
+  "manifest": "sources/02-project-files-manifest.yaml"
+}
