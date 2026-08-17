@@ -250,12 +250,49 @@ The already-proven trio, plus one documented negative:
 | `governance/CONCERNS.md`, `security/findings/`, `security/REGISTRY.md` | Organization-specific and security-sensitive |
 | `blueprint/src/` | A separate product (xray / manifest / registry / sonar / synapse / cortex). Only its **adoption pattern** generalizes, not its code |
 | `search_index.json` | 6.4 MB build artifact, rebuildable from scratch |
-| The `01-` / `02-` numbering | Explicitly replaced — see §4. A single global sequence cannot survive issues, forks, and multiple contributors |
+| `blueprint/syllabus/`, and Blueprint as an assessment dependency | Out of scope for v0.1 by decision. See §3.1 for the one thing that must survive its removal |
 | "Supervisor" as the top-level name | Supervisor is the *runtime component*, not the protocol. Keeping the concept independent of the implementation is the point |
 
-One thing that is **not** a clean take-or-leave: the ICE pipeline itself. The model (GOV-105) is
-fully generalizable and must come across, but the canonical tooling lives in the private
-supervisor repo. The public protocol needs an ICE implementation that does not depend on it.
+### 3.1 Blueprint is out — but its epistemic rule is not
+
+Blueprint (`blueprint/src/` — xray / manifest / registry / sonar / synapse / cortex) is excluded
+from v0.1. One consequence to be deliberate about: where a syllabus's assignments or exams
+currently use Blueprint output as evidence, that evidence source disappears, and those assessments
+ground in git history, direct codebase reads, and real runs instead.
+
+What must survive its removal is **the rule, not the tool**: *each build stage ends with a real run
+against real code, not "tests pass."* Documentation asserting that something worked is not evidence
+that it did. That is the same commitment as thesis-defense, one level down, and it is the reason
+this architecture does not merely generate confident prose.
+
+### 3.2 ICE — resolved, and simpler than the private version
+
+An earlier draft of this note listed "ICE without the supervisor repo" as unresolved. It is
+resolved, and the public shape is *better* than the private one.
+
+Today ICE is split across two repos: `ice_pipeline.py` and the canonical chapters live in the
+private `_logs/supervisor`, and `governance/ice-outputs/` in `system-instructions` is a **read
+mirror** synced by hand. That is unshippable publicly — nobody forking has a supervisor sibling.
+
+The public shape removes the split entirely. Three pieces, all publishable:
+
+1. **Capture** — `discover_sessions.py`, which already exists per-project and already handles five
+   providers (Codex CLI, Claude Code CLI, Kimi, Cursor in-repo, Claude Desktop) matched by real
+   `cwd`/`workDir`, plus the global-adjacent two-stage sweep. No supervisor dependency. **Plus a
+   sixth path: scanning committed `.md`/`.txt` chat logs**, for every provider with no native local
+   store — ChatGPT web/desktop, Gemini, AI Studio, OpenRouter, Kimi desktop. That path is not a
+   convenience; `discover_sessions.py`'s own docstring records that no programmatic reader for
+   ChatGPT exists anywhere, and manual export is the only known workflow.
+2. **The model** — GOV-105 restated as a normative spec. It is prose; it publishes as-is.
+3. **The author** — a coding agent (Claude Code as supervisor) querying the chunked search index
+   over the chat logs and writing the chapter.
+
+So `ice-outputs/` in a Project Curriculum workspace is **canonical, not a mirror**. One repo, no
+sync step, no drift.
+
+The only thing genuinely left behind is small: chapter scaffolding, and the **per-domain chapter
+watermark** that stops two projects reindexing at once from colliding on the same chapter number.
+`governance/PROJECTS.md` already explains exactly why that sequence must be per-domain.
 
 ---
 
@@ -278,10 +315,19 @@ project-curriculum/
 └── .github/           workflows, ISSUE_TEMPLATE, PR template, CODEOWNERS
 ```
 
-### Naming and identity
+### Naming and identity — two namespaces, not one
 
-Numeric project IDs are replaced by **upstream identity + seed identity**, because the same
-repository can legitimately be seeded many times with different questions:
+An earlier draft of this note said numeric project IDs are "explicitly replaced." That was wrong:
+it applied a recommendation about the *published corpus* to the *local workspace*, where it does
+not belong. There are two namespaces, and the collision problem exists in only one of them.
+
+**A workspace's own projects keep the existing scheme** — `projects/<NN>-<parent-folder-name>/`,
+number assigned in the registry, not derived from the folder. One registry, one person assigning
+numbers, no collision. This is the local flow and it works; it does not change.
+
+**The published corpus uses upstream identity + seed identity**, because a single counter breaks
+there: many contributors cannot coordinate one sequence, and the same upstream repository is
+legitimately seeded several times with different questions.
 
 ```
 profiles/github/<owner>/<repo>/<seed-slug>/PROFILE.yaml
@@ -453,16 +499,41 @@ a working system, not a client of someone else's server.
 
 ## 7. Open questions to resolve before the first substantive release
 
-1. **The licence.** Unresolved, and it blocks both outside contributions and any redistribution of
-   third-party transcripts. Apache vs MPL vs AGPL is a philosophy question, not a formality.
-2. **`.claude` hook vs `CLAUDE.md`.** A `SessionStart` hook executes a shell script in a repository
-   strangers clone. For a public repo, a plain `CLAUDE.md` may be the more honest default, with the
-   hook offered as opt-in.
-3. **The no-code research example does not exist yet.** The only real instance (MapleScholar) is
-   private. Without a public one, the project reads as a coding-agent framework.
-4. **Corpus search at scale.** A per-repo lexical index is right for one workspace. Decide early
-   whether 52+ published profiles are one queryable corpus or 52 separate ones.
-5. **ICE without the supervisor repo.** The canonical pipeline is private; the public protocol
-   needs its own.
-6. **Session-evidence redistribution rights.** A repository's code licence says nothing about the
-   right to republish a conversation about it. Reference-by-default, copy only on verified rights.
+**Still open — needs a decision:**
+
+1. **The licence.** It blocks two things mechanically. *Contributions*: with no `LICENSE`, an
+   accepted PR has no terms, and relicensing later may require every contributor's agreement — one
+   unreachable contributor can freeze the choice permanently. *Third-party transcripts*: see (2).
+   The substantive question is philosophical, not procedural — Apache-2.0 permits exactly the
+   Elasticsearch/OpenSearch outcome; MPL-2.0's obligations trigger on distribution, which a SaaS
+   operator may never do; only AGPL-3.0 reaches network use. Working answer, pending counsel:
+   AGPL-3.0 runtime · CC BY 4.0 spec and authored profiles · upstream licences retained · DCO.
+   **Accept no outside contributions until this lands.**
+2. **Session-evidence redistribution rights.** A repository's code licence says nothing about a
+   conversation *about* that code — separate work, separate owner. Yours: publish after a secret
+   sweep. Committed into a public repo by its owner: check, then reference or copy. A third
+   party's: **reference, never copy** — store upstream URL, pinned commit, and content hash, and
+   let the seeding run read it at execution time. Riding alongside and mattering more than
+   copyright: personal data in transcripts, and the standing mandatory secret sweep.
+3. **Corpus search at scale.** Per-project indexes stay — that self-containment is what makes a
+   fork work with none of Project Hamburg's infrastructure. Two narrower calls: (a) **stop
+   committing `search_index.json`** — core's is already 6.4 MB and every reindex rewrites the whole
+   blob, the same class of problem that put `blueprint/runs/*` and a 163 MB capture into
+   `.gitignore`; rebuild it from the manifest instead. (b) Add **one thin catalogue index** over
+   just each published profile's `PROFILE.yaml`/`README.md`, so the corpus is browsable without
+   cloning and rebuilding every project's index.
+
+**Resolved since the first draft:**
+
+4. **`.claude` hook vs `CLAUDE.md`.** Resolved in favour of `CLAUDE.md`. The hook is correct in a
+   private repo; in a public one it asks every forker to execute an unread shell script in order to
+   deliver static text. `CLAUDE.md` auto-loads with no execution and no trust prompt, and nothing is
+   lost — where the hook would compute state, the file simply points at the live registry. Keep the
+   hook in `templates/` as opt-in. The documented negative stands: no Codex `SessionStart` hook.
+5. **ICE without the supervisor repo.** Resolved — see §3.2.
+6. **The no-code research example.** Largely resolved by the decision to scan committed `.md`/`.txt`
+   chat logs (§3.2): a no-code seed no longer requires finding a public repo that happens to
+   contain sessions, only a seed pack of exported conversations plus a stated objective. The
+   strongest available candidate is this project's own design conversation — a genuine no-code
+   research project whose implementation evidence is this repository, recursive in exactly the way
+   the architecture intends. Caveat: it contains a third party's replies, which fall under (2).
