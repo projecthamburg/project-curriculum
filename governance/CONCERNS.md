@@ -77,6 +77,22 @@ Going forward, no invented session identifier is added to any commit; the standa
 `Co-Authored-By` trailer is the only attribution line used unless a real, independently
 verifiable identifier exists at commit time.
 
-## Closed
+### 5. This repository's own first real session capture is not committable as-is
 
-_None yet._
+A peer session ran `discover_sessions.py --real` against this repository's own root layer and
+correctly captured this conversation (session `b6de044a-ee20-46f3-917e-f490ebb343de`) — the
+"repository profiles itself" recursion working exactly as designed.
+
+The conversation includes a third-party ChatGPT export (Mordecai's design conversation with
+ChatGPT, uploaded early in the session) that this agent read and quoted from at length,
+including **Jake's own words**, quoted verbatim, and Mordecai's own business/nonprofit context
+from that export. The derived `.md`/`.json` rendering therefore embeds that material verbatim —
+not paraphrased, not referenced, copied — which is exactly what item 2 above says not to do
+with anything a third party authored.
+
+**Disposition:** quarantine. The four files produced by this capture
+(`governance/sources/2026-08-23_claude-code_b6de044a-ee20-46f3-917e-.{md,json,meta.json}` and
+the updated `_ingested.json`) are left on disk, **deliberately not `git add`ed**, pending one of:
+Jake's permission to publish his words, a redaction pass removing his and any other
+third-party/sensitive content before this is committed, or a decision to keep this capture local
+and never publish it. Mordecai's own call — flagged rather than acted on.
