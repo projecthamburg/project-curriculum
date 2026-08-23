@@ -368,6 +368,8 @@ def convert_claude_code(c, stem) -> list:
             # recoverable only from the raw JSONL, and it is real Expectation evidence.
             att = r.get("attachment") or {}
             prompt = att.get("prompt")
+            if isinstance(prompt, list):
+                prompt, _ = _flatten_cc_content(prompt)
             if (att.get("type") == "queued_command"
                     and (att.get("origin") or {}).get("kind") == "human"
                     and prompt and prompt not in normal_user_texts):
